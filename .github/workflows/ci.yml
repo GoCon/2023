@@ -1,0 +1,30 @@
+name: CI
+on: 
+  push:
+    branches:
+      - main
+  pull_request:
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [16.x]
+    steps:
+      - uses: actions/checkout@v3
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+      - name: install deps
+        run: yarn
+      - name: lint
+        run: yarn lint
+      - name: build
+        run: yarn build
+#      - name: Deploy
+#        uses: peaceiris/actions-gh-pages@v3
+#        if: github.ref == 'refs/heads/main'
+#        with:
+#          github_token: ${{ secrets.GITHUB_TOKEN }}
+#          publish_dir: ./out
