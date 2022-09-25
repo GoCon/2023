@@ -21,6 +21,7 @@ export const Colors = {
   },
   background: {
     gopher_blue: '#00ADD8',
+    gradation_blue: 'linear-gradient(180deg, #4E96E9 19.27%, rgba(77, 148, 230, 0) 88.54%)',
     darken_1: 'rgba(0,0,0,0.125)'
   }
 }
