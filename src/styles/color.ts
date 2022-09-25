@@ -11,12 +11,8 @@ export const Colors = {
   },
   button: {
     primary: {
-      enabled: '#252A3A',
-      disabled: '#BDC6D0'
-    },
-    secondary: {
-      enabled: '#0078F9',
-      disabled: '#BDC6D0'
+      enabled: '#4D94E6', // Brand color
+      text: '#FFFFFF',
     },
   },
   background: {
