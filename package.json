@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build && next export",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "format": "prettier --ignore-path .gitignore --write \"**/*.{ts,tsx}\""
   },
   "dependencies": {
     "@emotion/react": "^11.10.0",
