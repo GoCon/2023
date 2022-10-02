@@ -7,7 +7,8 @@
     "build": "next build && next export",
     "start": "next start",
     "lint": "next lint",
-    "format": "prettier --ignore-path .gitignore --write \"**/*.{ts,tsx}\""
+    "format": "prettier --ignore-path .gitignore --write \"**/*.{ts,tsx}\"",
+    "prepare": "husky install"
   },
   "dependencies": {
     "@emotion/react": "^11.10.0",
@@ -26,7 +27,7 @@
     "eslint": "8.23.0",
     "eslint-config-next": "12.2.5",
     "eslint-config-prettier": "^8.5.0",
-    "husky": "^8.0.1",
+    "husky": "^8.0.0",
     "prettier": "2.7.1",
     "typescript": "4.8.2"
   }
