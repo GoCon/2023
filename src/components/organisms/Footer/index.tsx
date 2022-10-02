@@ -1,6 +1,6 @@
 import { Box, Typography } from '@mui/material'
 import { Colors } from 'src/styles/color'
-import { useTranslation } from "react-i18next"
+import { useTranslation } from 'react-i18next'
 
 export const footerHeight = 60
 
@@ -18,7 +18,7 @@ export const Footer = () => {
         p: 1.5
       }}
     >
-      <Typography variant='caption' color={Colors.text.secondary}>
+      <Typography variant="caption" color={Colors.text.secondary}>
         {t('gopher_copyright')}
       </Typography>
     </Box>
