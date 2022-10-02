@@ -12,8 +12,8 @@ export const Colors = {
   button: {
     primary: {
       enabled: '#4D94E6', // Brand color
-      text: '#FFFFFF',
-    },
+      text: '#FFFFFF'
+    }
   },
   background: {
     gopher_blue: '#00ADD8',

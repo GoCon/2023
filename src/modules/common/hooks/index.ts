@@ -1,6 +1,6 @@
 import { useMediaQuery } from '@mui/material'
 import { Theme } from '@mui/system'
-import { useSyncExternalStore } from "react";
+import { useSyncExternalStore } from 'react'
 
 export const useSize = () => {
   const isPCOrOver = useMediaQuery((theme: Theme) => theme.breakpoints.up('md'))
@@ -14,12 +14,12 @@ export function useScrollY(): number {
     subscribeScroll,
     () => window.scrollY,
     () => 0
-  );
+  )
 }
 
 function subscribeScroll(callback: () => void): () => void {
-  window.addEventListener("scroll", callback);
+  window.addEventListener('scroll', callback)
   return () => {
-    window.removeEventListener("scroll", callback);
-  };
+    window.removeEventListener('scroll', callback)
+  }
 }

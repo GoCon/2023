@@ -8,7 +8,7 @@ type ButtonProps = {
   onClick?: () => void
 }
 
-export const Button = ({ text, width='370px', onClick }: ButtonProps ) => {
+export const Button = ({ text, width = '370px', onClick }: ButtonProps) => {
   return (
     <ButtonBase
       sx={{
@@ -21,7 +21,9 @@ export const Button = ({ text, width='370px', onClick }: ButtonProps ) => {
       }}
       onClick={onClick}
     >
-      <Typography variant="body1" sx={{ color: Colors.button.primary.text }}>{text}</Typography>
+      <Typography variant="body1" sx={{ color: Colors.button.primary.text }}>
+        {text}
+      </Typography>
     </ButtonBase>
   )
 }

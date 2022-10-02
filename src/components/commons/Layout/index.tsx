@@ -14,13 +14,13 @@ export const Layout: NextPage<LayoutProps> = ({ children }) => {
     <>
       <Head>
         <title>Go Conference 2023</title>
-        <meta name='description' content='Go Conference is a half-annual conference of programming language Go.' />
-        <link rel='icon' href='/favicon.ico' />
+        <meta name="description" content="Go Conference is a half-annual conference of programming language Go." />
+        <link rel="icon" href="/favicon.ico" />
       </Head>
       <Box>
         <Header />
       </Box>
-      <Box component='main' sx={{ minHeight: 'calc(100vh - 124px)', marginTop: "64px" }}>
+      <Box component="main" sx={{ minHeight: 'calc(100vh - 124px)', marginTop: '64px' }}>
         {children}
       </Box>
       <Box>
