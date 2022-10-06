@@ -3,7 +3,7 @@ import type { NextPage } from 'next'
 import { Button } from 'src/components/atoms'
 import { Layout } from 'src/components/commons'
 import { useTranslation } from 'react-i18next'
-import { useRouter } from 'next/router'
+import { TopDescription } from 'src/components/organisms/TopDescription'
 
 export const PageTop: NextPage = () => {
   const { t } = useTranslation()
@@ -19,6 +19,7 @@ export const PageTop: NextPage = () => {
       <Box>
         <Button text={t('consider_a_sponsor')} />
       </Box>
+      <TopDescription />
     </Layout>
   )
 }
