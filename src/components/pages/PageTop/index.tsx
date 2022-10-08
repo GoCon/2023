@@ -13,6 +13,7 @@ export const PageTop: NextPage = () => {
     <Layout>
       implement later
       <MainVisual />
+      <TopDescription />
       <Typography variant="h2">Wanted to Speakers!</Typography>
       <Box>
         <Button text={t('apply_for_speaker')} onClick={() => console.log('clicked!')} />
@@ -21,7 +22,6 @@ export const PageTop: NextPage = () => {
       <Box>
         <Button text={t('consider_a_sponsor')} />
       </Box>
-      <TopDescription />
     </Layout>
   )
 }
