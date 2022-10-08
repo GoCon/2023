@@ -8,14 +8,16 @@ export const MainVisual = () => {
   const image_path = isTabletOrOver ? '/Background-pc.png' : '/Background-sp.png'
 
   return (
-    <Container sx={{ position: 'relative', width: '100%', height: isTabletOrOver ? '845px' : '512px' }}>
-      <Box sx={{ position: 'absolute', zIndex: '1', top: isTabletOrOver ? '115px' : '0px' }}>
+    <Box>
+      <Box
+        sx={{ position: 'absolute', top: isTabletOrOver ? '170px' : '90px', left: isTabletOrOver ? '105px' : '35px' }}
+      >
         <Typography
           sx={{
             fontFamily: 'Poppins',
             fontStyle: 'normal',
             fontWeight: '500',
-            fontSize: isTabletOrOver ? '110px' : '43px',
+            fontSize: isTabletOrOver ? '70px' : '43px',
             lineHeight: '100%',
             letterSpacing: '5px',
             color: Colors.text.primary
@@ -28,7 +30,7 @@ export const MainVisual = () => {
             fontFamily: 'Montserrat',
             fontStyle: 'normal',
             fontWeight: '600',
-            fontSize: isTabletOrOver ? '90px' : '43px',
+            fontSize: isTabletOrOver ? '50px' : '43px',
             lineHeight: '100%',
             letterSpacing: '6px',
             color: Colors.text.primary
@@ -41,7 +43,7 @@ export const MainVisual = () => {
             fontFamily: 'Poppins',
             fontStyle: 'normal',
             fontWeight: '500',
-            fontSize: isTabletOrOver ? '63px' : '21px',
+            fontSize: isTabletOrOver ? '23px' : '21px',
             lineHeight: '100%',
             color: Colors.text.primary
           }}
@@ -53,7 +55,7 @@ export const MainVisual = () => {
             fontFamily: 'Poppins',
             fontStyle: 'normal',
             fontWeight: '500',
-            fontSize: isTabletOrOver ? '40px' : '16px',
+            fontSize: isTabletOrOver ? '20px' : '16px',
             lineHeight: '100%',
             color: Colors.text.primary
           }}
@@ -61,7 +63,7 @@ export const MainVisual = () => {
           -&emsp;Online&emsp;-
         </Typography>
       </Box>
-      <Image src={image_path} layout={'fill'} objectFit="cover" alt="main visual" />
-    </Container>
+      <img src={image_path} alt="main visual" style={{ width: '100%' }} />
+    </Box>
   )
 }
