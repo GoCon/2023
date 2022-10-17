@@ -1,4 +1,4 @@
-import { Box, Link as MuiLink, Typography } from '@mui/material'
+import { Box, Typography } from '@mui/material'
 import { Colors } from 'src/styles/color'
 import { useTranslation } from 'react-i18next'
 import { useSize } from 'src/modules/common/hooks'
