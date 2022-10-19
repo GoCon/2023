@@ -11,7 +11,6 @@ export const PageTop: NextPage = () => {
 
   return (
     <Layout>
-      implement later
       <MainVisual />
       <TopDescription />
       <Typography variant="h2">Wanted to Speakers!</Typography>

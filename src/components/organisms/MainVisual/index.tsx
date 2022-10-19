@@ -5,7 +5,7 @@ import Image from 'next/image'
 
 export const MainVisual = () => {
   const { isTabletOrOver } = useSize()
-  const image_path = isTabletOrOver ? '/Background-pc.png' : '/Background-sp.png'
+  const image_path = isTabletOrOver ? './Background-pc.png' : './Background-sp.png'
 
   return (
     <Box>
