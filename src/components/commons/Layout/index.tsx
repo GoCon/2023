@@ -41,7 +41,7 @@ export const Layout: NextPage<LayoutProps> = ({ children }) => {
         <title>Go Conference 2023</title>
         <base href={config.basePath + '/'} />
         <meta name="description" content="Go Conference is a half-annual conference of programming language Go." />
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href="./favicon.ico" />
       </Head>
       <Box>
         <Header />
