@@ -18,7 +18,7 @@ export const Layout: NextPage<LayoutProps> = ({ children }) => {
   const [authorized, setAuthorized] = useLocalStorageState('authorized', { defaultValue: false })
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (toSha256(e.target.value) === process.env.NEXT_PUBLIC_AUTH_PASSWORD_HASH ?? '') setAuthorized(true)
+    if (toSha256(e.target.value) === process.env.NEXT_PUBLIC_AUTH_PASSWORD_HASH) setAuthorized(true)
   }
 
   if (process.env.NEXT_PUBLIC_AUTH_PASSWORD_HASH && !authorized)
