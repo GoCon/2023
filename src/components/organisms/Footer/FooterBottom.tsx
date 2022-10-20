@@ -1,5 +1,5 @@
 import { Box } from '@mui/material'
-import { useSize } from 'src/modules/common/hooks'
+import { useSize } from 'src/modules/hooks'
 
 interface FooterBottomProps {
   children: React.ReactNode

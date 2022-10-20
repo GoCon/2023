@@ -1,7 +1,7 @@
 import { Box, Typography } from '@mui/material'
 import { Colors } from 'src/styles/color'
 import { useTranslation } from 'react-i18next'
-import { useSize } from 'src/modules/common/hooks'
+import { useSize } from 'src/modules/hooks'
 import { FooterBottom } from 'src/components/organisms/Footer/FooterBottom'
 import { IconTwitter, Link } from 'src/components/atoms'
 

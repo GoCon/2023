@@ -1,8 +1,11 @@
 import type { NextPage } from 'next'
 import { ReactNode } from 'react'
 import Head from 'next/head'
+
 import { Header } from 'src/components/organisms'
 import { Footer } from 'src/components/organisms'
+import { toSha256 } from 'src/modules/util/hash'
+
 import { Box, Input } from '@mui/material'
 import useLocalStorageState from 'use-local-storage-state'
 
@@ -15,10 +18,10 @@ export const Layout: NextPage<LayoutProps> = ({ children }) => {
   const [authorized, setAuthorized] = useLocalStorageState('authorized', { defaultValue: false })
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (e.target.value === process.env.NEXT_PUBLIC_AUTH_PASSWORD) setAuthorized(true)
+    if (toSha256(e.target.value) === process.env.NEXT_PUBLIC_AUTH_PASSWORD_HASH ?? '') setAuthorized(true)
   }
 
-  if (process.env.NEXT_PUBLIC_AUTH_PASSWORD && !authorized)
+  if (process.env.NEXT_PUBLIC_AUTH_PASSWORD_HASH && !authorized)
     return (
       <Box
         sx={{
