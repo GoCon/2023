@@ -1,6 +1,6 @@
 import { Box, Typography } from '@mui/material'
 import { Colors } from 'src/styles/color'
-import { useSize } from 'src/modules/common/hooks'
+import { useSize } from 'src/modules/hooks'
 import { useTranslation } from 'react-i18next'
 
 export const TopDescription = () => {

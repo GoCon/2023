@@ -1,11 +1,11 @@
 import { Box, Container, Typography } from '@mui/material'
 import { Colors } from 'src/styles/color'
-import { useSize } from 'src/modules/common/hooks'
+import { useSize } from 'src/modules/hooks'
 import Image from 'next/image'
 
 export const MainVisual = () => {
   const { isTabletOrOver } = useSize()
-  const image_path = isTabletOrOver ? '/Background-pc.png' : '/Background-sp.png'
+  const image_path = isTabletOrOver ? './Background-pc.png' : './Background-sp.png'
 
   return (
     <Box>

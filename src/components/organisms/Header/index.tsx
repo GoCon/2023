@@ -4,7 +4,7 @@ import { AppBar, Toolbar, Typography, Box } from '@mui/material'
 import { Colors } from 'src/styles/color'
 import { useTranslation } from 'react-i18next'
 import { Logo } from 'src/components/atoms'
-import { useScrollY } from 'src/modules/common/hooks'
+import { useScrollY } from 'src/modules/hooks'
 
 const handleChangeLanguage = () => {
   switch (i18n.language) {
