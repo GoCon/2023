@@ -10,7 +10,7 @@ export const TopDescription = () => {
     <Box
       sx={{
         width: '100%',
-        backgroundColor: Colors.background.primary,
+        backgroundColor: Colors.background.brand_color,
         p: isTabletOrOver ? '40px' : '24px 16px'
       }}
     >
