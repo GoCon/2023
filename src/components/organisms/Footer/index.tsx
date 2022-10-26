@@ -1,6 +1,6 @@
 import { Box, Typography } from '@mui/material'
 import { Colors } from 'src/styles/color'
-import { useTranslation } from 'react-i18next'
+import { Trans, useTranslation } from 'react-i18next'
 import { useSize } from 'src/modules/hooks'
 import { FooterBottom } from 'src/components/organisms/Footer/FooterBottom'
 import { IconTwitter, Link } from 'src/components/atoms'
@@ -190,20 +190,28 @@ export const Footer = () => {
               : {}
           }
         >
-          {['Go Conference', 'The Go gopher was designed by Renee French. Illustrations by tottie.'].map(item => (
-            <Typography
-              key={item}
-              sx={{
-                fontWeight: 400,
-                fontSize: isTabletOrOver ? '12px' : '10px',
-                lineHeight: '140%',
-                color: Colors.text.secondary_default,
-                textAlign: isTabletOrOver ? 'right' : 'left'
-              }}
-            >
-              {item}
-            </Typography>
-          ))}
+          <Typography
+            sx={{
+              fontWeight: 400,
+              fontSize: isTabletOrOver ? '12px' : '10px',
+              lineHeight: '140%',
+              color: Colors.text.secondary_default,
+              textAlign: isTabletOrOver ? 'right' : 'left'
+            }}
+          >
+            <Box>Go Conference</Box>
+            <Trans t={t} i18nKey="gopher_copyright">
+              the_gopher_was_desigined_by
+              <Link href="http://reneefrench.blogspot.com/" target="_blank">
+                author
+              </Link>
+              illustrations_by
+              <Link href="https://twitter.com/tottie_designer" target="_blank">
+                author
+              </Link>
+              .
+            </Trans>
+          </Typography>
         </Box>
       </FooterBottom>
     </Box>
