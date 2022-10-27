@@ -5,6 +5,7 @@ import { Layout } from 'src/components/commons'
 import { useTranslation } from 'react-i18next'
 import { MainVisual } from 'src/components/organisms/MainVisual'
 import { TopDescription } from 'src/components/organisms/TopDescription'
+import { SponsorsSection } from 'src/components/organisms/SponsorsSection'
 
 export const PageTop: NextPage = () => {
   const { t } = useTranslation()
@@ -17,10 +18,7 @@ export const PageTop: NextPage = () => {
       <Box>
         <Button text={t('apply_for_speaker')} onClick={() => console.log('clicked!')} />
       </Box>
-      <Typography variant="h2">Sponsors</Typography>
-      <Box>
-        <Button text={t('consider_a_sponsor')} />
-      </Box>
+      <SponsorsSection />
     </Layout>
   )
 }

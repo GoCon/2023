@@ -1,6 +1,6 @@
 export const Colors = {
   text: {
-    primary: '#252A3A',
+    primary: '#2E353B',
     secondary: '#636363',
     secondary_default: '#666666',
     white: '#FFFFFF',
@@ -17,7 +17,8 @@ export const Colors = {
     }
   },
   background: {
-    primary: '#4D94E6', // Brand color
+    brand_color: '#4D94E6',
+    primary: '#FFFFFF',
     secondary: '#F7F9FB',
     gopher_blue: '#00ADD8',
     gradation_blue: 'linear-gradient(180deg, #4E96E9 19.27%, rgba(77, 148, 230, 0) 88.54%)',
