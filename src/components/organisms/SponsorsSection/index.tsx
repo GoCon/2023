@@ -20,6 +20,10 @@ export const SponsorsSection: FC = () => {
       <Typography variant="h1" mb={5} textAlign={'center'}>
         Sponsors
       </Typography>
+      {/* TODO: This description will be changed as soon as the official wording is fixed. */}
+      <Typography variant="body1" mb={5} fontSize={{ md: '1.5rem', xs: '1rem' }}>
+        {t('sponsors_description')}
+      </Typography>
       {/* NOTE: Hide SponsorsCard until the top level sponsors has fixed.
       <Box gap={3} mb={5} display={'flex'} flexDirection={'column'} width={'100%'} alignItems={'center'}>
         <SponsorsCard planType="platinumGold" logoImages={[]} />
