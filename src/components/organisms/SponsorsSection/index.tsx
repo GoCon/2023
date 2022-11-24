@@ -13,8 +13,9 @@ export const SponsorsSection: FC = () => {
       display={'flex'}
       flexDirection={'column'}
       alignItems={'center'}
-      mb={12.5}
+      mb={{ md: 12.5, xs: 7.5 }}
       px={{ xs: 2 }}
+      py={{ md: 10, xs: 4 }}
     >
       <Typography variant="h1" mb={5} textAlign={'center'}>
         Sponsors
@@ -26,9 +27,7 @@ export const SponsorsSection: FC = () => {
         <SponsorsCard planType="silver" logoImages={[]}/>
         <SponsorsCard planType="bronze" logoImages={[]}/>
       </Box> */}
-      <Box mb={10}>
-        <Button text={t('consider_a_sponsor')} />
-      </Box>
+      <Button text={t('consider_a_sponsor')} />
     </Box>
   )
 }
