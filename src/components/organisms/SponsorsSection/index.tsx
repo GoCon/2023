@@ -1,4 +1,5 @@
 import type { FC } from 'react'
+import Link from 'next/link'
 import { Box, Typography } from '@mui/material'
 import { Button } from 'src/components/atoms'
 import { useTranslation } from 'react-i18next'
@@ -31,7 +32,11 @@ export const SponsorsSection: FC = () => {
         <SponsorsCard planType="silver" logoImages={[]}/>
         <SponsorsCard planType="bronze" logoImages={[]}/>
       </Box> */}
-      <Button text={t('consider_a_sponsor')} />
+      <Link href="https://forms.gle/nbTxbQ6Fe4D4uY9B7">
+        <a target="_blank">
+          <Button text={t('consider_a_sponsor')} />
+        </a>
+      </Link>
     </Box>
   )
 }
