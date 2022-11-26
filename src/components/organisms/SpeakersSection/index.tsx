@@ -26,12 +26,10 @@ export const SpeakersSection: FC = () => {
       alignItems={'center'}
       py={{ md: 10, xs: 4 }}
     >
-      <Typography variant="h1" mb={5}>
-        Wanted to Speakers!
-      </Typography>
+      <Typography variant="h2">Wanted to Speakers!</Typography>
       <Box mb={1}>
-        <Typography>{t('application_started')}: 2022.12.01 Thu</Typography>
-        <Typography>{t('application_closed')}: 2023.01.31 Sat</Typography>
+        <Typography variant="body2">{t('application_started')}: 2022.12.01 Thu</Typography>
+        <Typography variant="body2">{t('application_closed')}: 2023.01.31 Sat</Typography>
       </Box>
       <Box display="grid" gridTemplateColumns="1fr 1fr 1fr" gap={2}>
         <Box display="flex" alignItems="flex-end" justifyContent="flex-end" gap={0.5}>

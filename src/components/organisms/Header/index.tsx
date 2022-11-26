@@ -46,7 +46,7 @@ export const Header = () => {
           </Box>
         )}
         <Box sx={{ margin: '0 24px 0 auto' }}>
-          <Typography onClick={handleChangeLanguage} sx={{ color: fontColor, fontFamily: 'Poppins' }}>
+          <Typography onClick={handleChangeLanguage} sx={{ color: fontColor }}>
             {t('change_language')}
           </Typography>
         </Box>

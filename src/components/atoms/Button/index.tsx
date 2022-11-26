@@ -21,7 +21,7 @@ export const Button = ({ text, width = '370px', onClick }: ButtonProps) => {
       }}
       onClick={onClick}
     >
-      <Typography variant="body1" sx={{ color: Colors.button.primary.text }}>
+      <Typography fontSize="16px" sx={{ color: Colors.button.primary.text }}>
         {text}
       </Typography>
     </ButtonBase>
