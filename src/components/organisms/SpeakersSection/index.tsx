@@ -3,17 +3,29 @@ import Link from 'next/link'
 import { Box, Typography } from '@mui/material'
 import { Button } from 'src/components/atoms'
 import { useTranslation } from 'react-i18next'
+import { Colors } from 'src/styles/color'
 
-// TODO: デザイン組み込み
 export const SpeakersSection: FC = () => {
   const { t } = useTranslation()
 
   return (
-    <Box>
-      <Typography variant="h2">Wanted to Speakers!</Typography>
+    <Box
+      bgcolor={Colors.background.primary}
+      display={'flex'}
+      flexDirection={'column'}
+      alignItems={'center'}
+      py={{ md: 10, xs: 4 }}
+    >
+      <Typography variant="h1" mb={5}>
+        Wanted to Speakers!
+      </Typography>
+      <Box mb={1}>
+        <Typography>応募開始: 2022.12.01 Thu</Typography>
+        <Typography>応募締切: 2023.01.31 Sat</Typography>
+      </Box>
       <Link href="https://sessionize.com/go-conference-2023-online/">
         <a target="_blank">
-          <Button text={t('apply_for_speaker')} onClick={() => console.log('clicked!')} />
+          <Button text={t('apply_for_speaker')} />
         </a>
       </Link>
     </Box>
