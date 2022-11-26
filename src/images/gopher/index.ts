@@ -1,0 +1,7 @@
+export * as GopherConductor from './gopher-conductor.png'
+export * as GopherDrummer from './gopher-drummer.png'
+export * as GopherFlowerBlue from './gopher-flower-blue.png'
+export * as GopherFlowerPink from './gopher-flower-pink.png'
+export * as GopherPartyPopper from './gopher-party-popper.png'
+export * as GopherPomPom from './gopher-pom-pom.png'
+export * as GopherTrumpeter from './gopher-trumpeter.png'
