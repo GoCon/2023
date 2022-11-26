@@ -6,7 +6,7 @@ export const MainVisual = () => {
   const image_path = isTabletOrOver ? './Background-pc.png' : './Background-sp.png'
 
   return (
-    <Box sx={{ maxWidth: '1280px', margin: '0 auto' }}>
+    <Box sx={{ maxWidth: '1440px', margin: '0 auto' }}>
       <img src={image_path} alt="main visual" style={{ width: '100%' }} />
     </Box>
   )
