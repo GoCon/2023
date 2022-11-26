@@ -8,16 +8,15 @@ type ButtonProps = {
   onClick?: () => void
 }
 
-export const Button = ({ text, width = '370px', onClick }: ButtonProps) => {
+export const Button = ({ text, onClick }: ButtonProps) => {
   return (
     <ButtonBase
       sx={{
         hight: '54px',
-        width,
+        minWidth: { md: '360px', xs: '280px' },
         borderRadius: '100px',
-        background: Colors.button.primary.enabled,
-        px: '24px',
-        py: '16px'
+        p: '16px 24px',
+        backgroundColor: Colors.button.primary.enabled
       }}
       onClick={onClick}
     >
