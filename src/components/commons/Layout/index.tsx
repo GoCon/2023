@@ -49,7 +49,7 @@ export const Layout: NextPage<LayoutProps> = ({ children }) => {
       <Box>
         <Header />
       </Box>
-      <Box component="main" sx={{ minHeight: 'calc(100vh - 124px)', marginTop: '64px' }}>
+      <Box component="main" sx={{ minHeight: 'calc(100vh - 124px)' }}>
         {children}
       </Box>
       <Box>

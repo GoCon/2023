@@ -4,7 +4,7 @@ import { AppBar, Toolbar, Typography, Box } from '@mui/material'
 import { Colors } from 'src/styles/color'
 import { useTranslation } from 'react-i18next'
 import { Logo } from 'src/components/atoms'
-import { useScrollY } from 'src/modules/hooks'
+import { useScrollY, useSize } from 'src/modules/hooks'
 
 const handleChangeLanguage = () => {
   switch (i18n.language) {
@@ -22,6 +22,8 @@ export const Header = () => {
   const isScrolled = useScrollY() > 0
   const fontColor = isScrolled ? 'white' : 'black'
   const { t } = useTranslation()
+  const { isPCOrOver } = useSize()
+  const isLogoDisplayed = isPCOrOver || isScrolled
 
   return (
     <AppBar position="fixed" sx={{ backgroundColor: '#fff0', height: '100px', boxShadow: 0 }}>
@@ -38,9 +40,11 @@ export const Header = () => {
       />
 
       <Toolbar disableGutters>
-        <Box>
-          <Logo sx={{ width: '233px', height: '40px', color: fontColor, marginLeft: '12px' }} />
-        </Box>
+        {isLogoDisplayed && (
+          <Box>
+            <Logo sx={{ width: '233px', height: '40px', color: fontColor, marginLeft: '12px' }} />
+          </Box>
+        )}
         <Box sx={{ margin: '0 24px 0 auto' }}>
           <Typography onClick={handleChangeLanguage} sx={{ color: fontColor, fontFamily: 'Poppins' }}>
             {t('change_language')}
