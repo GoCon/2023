@@ -12,7 +12,7 @@ import {
   GopherPartyPopper,
   GopherPomPom,
   GopherTrumpeter
-} from 'src/assets/gopher'
+} from 'src/images/gopher'
 import Image from 'next/image'
 
 export const SpeakersSection: FC = () => {
