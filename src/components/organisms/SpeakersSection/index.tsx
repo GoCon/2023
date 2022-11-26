@@ -20,8 +20,8 @@ export const SpeakersSection: FC = () => {
         Wanted to Speakers!
       </Typography>
       <Box mb={1}>
-        <Typography>応募開始: 2022.12.01 Thu</Typography>
-        <Typography>応募締切: 2023.01.31 Sat</Typography>
+        <Typography>{t('application_started')}: 2022.12.01 Thu</Typography>
+        <Typography>{t('application_closed')}: 2023.01.31 Sat</Typography>
       </Box>
       <Link href="https://sessionize.com/go-conference-2023-online/">
         <a target="_blank">
