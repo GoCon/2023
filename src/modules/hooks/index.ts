@@ -1,6 +1,7 @@
 import { useMediaQuery } from '@mui/material'
 import { Theme } from '@mui/system'
 import { useSyncExternalStore } from 'react'
+import { useEffect, useRef } from 'react'
 
 export const useSize = () => {
   const isPCOrOver = useMediaQuery((theme: Theme) => theme.breakpoints.up('md'))
@@ -22,4 +23,18 @@ function subscribeScroll(callback: () => void): () => void {
   return () => {
     window.removeEventListener('scroll', callback)
   }
+}
+
+// ref: https://zenn.dev/akhr_s/articles/065e18ab3c4883
+export const useInterval = (callback: () => void, interval: number = 1000) => {
+  const callbackRef = useRef(() => {})
+
+  useEffect(() => {
+    callbackRef.current = callback
+  }, [callback])
+
+  useEffect(() => {
+    const timerId = setInterval(() => callbackRef.current(), interval)
+    return () => clearInterval(timerId)
+  }, [interval])
 }
