@@ -33,6 +33,13 @@ export const theme: ThemeOptions = {
         marginBottom: '16px'
       }
     },
+    h4: {
+      fontSize: '20px',
+      fontWeight: 700,
+      [breakpoints.down('sm')]: {
+        fontSize: '16px'
+      }
+    },
     body1: {
       fontSize: '24px',
       [breakpoints.down('sm')]: {
@@ -43,6 +50,12 @@ export const theme: ThemeOptions = {
       fontSize: '18px',
       [breakpoints.down('sm')]: {
         fontSize: '14px'
+      }
+    },
+    caption: {
+      fontSize: '12px',
+      [breakpoints.down('sm')]: {
+        fontSize: '10px'
       }
     }
   }
