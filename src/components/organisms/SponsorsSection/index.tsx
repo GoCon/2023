@@ -18,11 +18,11 @@ export const SponsorsSection: FC = () => {
       px={{ xs: 2 }}
       py={{ md: 10, xs: 4 }}
     >
-      <Typography variant="h1" mb={5} textAlign={'center'}>
+      <Typography variant="h2" textAlign={'center'}>
         Sponsors
       </Typography>
       {/* TODO: This description will be changed as soon as the official wording is fixed. */}
-      <Typography variant="body1" mb={5} fontSize={{ md: '1.5rem', xs: '1rem' }}>
+      <Typography variant="body1" mb={{ md: 5, xs: 2 }}>
         {t('sponsors_description')}
       </Typography>
       {/* NOTE: Hide SponsorsCard until the top level sponsors has fixed.

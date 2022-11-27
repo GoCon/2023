@@ -14,9 +14,11 @@ import {
   GopherTrumpeter
 } from 'src/images/gopher'
 import Image from 'next/image'
+import { useSize } from 'src/modules/hooks'
 
 export const SpeakersSection: FC = () => {
   const { t } = useTranslation()
+  const { isTabletOrOver } = useSize()
 
   return (
     <Box
@@ -25,32 +27,51 @@ export const SpeakersSection: FC = () => {
       flexDirection={'column'}
       alignItems={'center'}
       py={{ md: 10, xs: 4 }}
+      position="relative"
     >
-      <Typography variant="h1" mb={5}>
-        Wanted to Speakers!
-      </Typography>
+      <Typography variant="h2">Wanted to Speakers!</Typography>
       <Box mb={1}>
-        <Typography>{t('application_started')}: 2022.12.01 Thu</Typography>
-        <Typography>{t('application_closed')}: 2023.01.31 Sat</Typography>
+        <Typography variant="body2">{t('application_started')}: 2022.12.01 Thu</Typography>
+        <Typography variant="body2">{t('application_closed')}: 2023.01.31 Sat</Typography>
       </Box>
-      <Box display="grid" gridTemplateColumns="1fr 1fr 1fr" gap={2}>
-        <Box display="flex" alignItems="flex-end" justifyContent="flex-end" gap={0.5}>
-          <Image src={GopherConductor} alt="gopher conductor" />
-          <Image src={GopherDrummer} alt="gopher drummer" />
-          <Image src={GopherTrumpeter} alt="gopher trumpeter" />
-          <Image src={GopherPomPom} alt="gopher pom pom" />
-        </Box>
+      <Box display="grid" gridTemplateColumns={isTabletOrOver ? '1fr 1fr 1fr' : '1fr'} gap={2}>
+        {isTabletOrOver && (
+          <Box display="flex" alignItems="flex-end" justifyContent="flex-end" gap={0.5}>
+            <Image src={GopherConductor} alt="gopher conductor" />
+            <Image src={GopherDrummer} alt="gopher drummer" />
+            <Image src={GopherTrumpeter} alt="gopher trumpeter" />
+            <Image src={GopherPomPom} alt="gopher pom pom" />
+          </Box>
+        )}
         <Link href="https://sessionize.com/go-conference-2023-online/">
           <a target="_blank">
             <Button text={t('apply_for_speaker')} />
           </a>
         </Link>
-        <Box display="flex" alignItems="flex-end" gap={0.5}>
-          <Image src={GopherFlowerBlue} alt="gopher flower blue" />
-          <Image src={GopherFlowerPink} alt="gopher flower pink" />
-          <Image src={GopherPartyPopper} alt="gopher party popper" />
-        </Box>
+        {isTabletOrOver && (
+          <Box display="flex" alignItems="flex-end" gap={0.5}>
+            <Image src={GopherFlowerBlue} alt="gopher flower blue" />
+            <Image src={GopherFlowerPink} alt="gopher flower pink" />
+            <Image src={GopherPartyPopper} alt="gopher party popper" />
+          </Box>
+        )}
       </Box>
+      {!isTabletOrOver && (
+        <Box
+          sx={{
+            position: 'absolute',
+            zIndex: 0,
+            top: '56px',
+            right: 0,
+            display: 'flex',
+            alignItems: 'flex-end',
+            opacity: 0.7
+          }}
+        >
+          <Image src={GopherConductor} alt="gopher conductor" width="56px" objectFit="contain" />
+          <Image src={GopherDrummer} alt="gopher drummer" width="52px" objectFit="contain" />
+        </Box>
+      )}
     </Box>
   )
 }
