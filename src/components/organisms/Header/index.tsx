@@ -17,13 +17,31 @@ const handleChangeLanguage = () => {
   }
 }
 
+interface HeaderItemColors {
+  default: string
+  hover: string
+  activeBg: string
+}
+
 // TODO: 各ページへのリンクを実装, スマートフォンモード実装
 export const Header = () => {
   const isScrolled = useScrollY() > 0
-  const fontColor = isScrolled ? 'white' : 'black'
+  const headerItemColors: HeaderItemColors = isScrolled
+    ? { default: Colors.text.white, hover: Colors.text.white_hover, activeBg: Colors.header.active.white }
+    : { default: Colors.text.primary, hover: Colors.text.primary_hover, activeBg: Colors.header.active.default }
   const { t } = useTranslation()
   const { isPCOrOver } = useSize()
   const isLogoDisplayed = isPCOrOver || isScrolled
+  const headerItemBehaviorStyles = {
+    '&:hover': {
+      cursor: 'pointer',
+      color: headerItemColors.hover
+    },
+    '&:active': {
+      color: headerItemColors.hover,
+      backgroundColor: headerItemColors.activeBg
+    }
+  }
 
   return (
     <AppBar position="fixed" sx={{ backgroundColor: '#fff0', height: '100px', boxShadow: 0 }}>
@@ -42,11 +60,28 @@ export const Header = () => {
       <Toolbar disableGutters>
         {isLogoDisplayed && (
           <Box>
-            <Logo sx={{ width: '233px', height: '40px', color: fontColor, marginLeft: '12px' }} />
+            <Logo
+              sx={{
+                width: '233px',
+                height: '40px',
+                color: headerItemColors.default,
+                marginLeft: '12px',
+                borderRadius: '8px',
+                ...headerItemBehaviorStyles
+              }}
+            />
           </Box>
         )}
         <Box sx={{ margin: '0 24px 0 auto' }}>
-          <Typography onClick={handleChangeLanguage} sx={{ color: fontColor }}>
+          <Typography
+            onClick={handleChangeLanguage}
+            sx={{
+              color: headerItemColors.default,
+              p: '4px 8px',
+              borderRadius: '8px',
+              ...headerItemBehaviorStyles
+            }}
+          >
             {t('change_language')}
           </Typography>
         </Box>
