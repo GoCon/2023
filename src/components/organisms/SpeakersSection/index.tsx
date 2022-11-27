@@ -3,7 +3,7 @@ import Link from 'next/link'
 import { Box, Typography } from '@mui/material'
 import { Button } from 'src/components/atoms'
 import { useTranslation } from 'react-i18next'
-import { Colors } from 'src/styles/color'
+import { Colors, confettiColors } from 'src/styles/color'
 import {
   GopherConductor,
   GopherDrummer,
@@ -15,10 +15,17 @@ import {
 } from 'src/images/gopher'
 import Image from 'next/image'
 import { useSize } from 'src/modules/hooks'
+import { useReward } from 'react-rewards'
 
 export const SpeakersSection: FC = () => {
   const { t } = useTranslation()
   const { isTabletOrOver } = useSize()
+  const { reward } = useReward('confettiGopherPopper', 'confetti', {
+    angle: 135,
+    colors: confettiColors,
+    position: 'absolute',
+    startVelocity: 20
+  })
 
   return (
     <Box
@@ -52,7 +59,10 @@ export const SpeakersSection: FC = () => {
           <Box display="flex" alignItems="flex-end" gap={0.5}>
             <Image src={GopherFlowerBlue} alt="gopher flower blue" />
             <Image src={GopherFlowerPink} alt="gopher flower pink" />
-            <Image src={GopherPartyPopper} alt="gopher party popper" />
+            <Box onClick={reward} sx={{ '&:hover': { cursor: 'pointer' } }}>
+              <span id="confettiGopherPopper" />
+              <Image src={GopherPartyPopper} alt="gopher party popper" />
+            </Box>
           </Box>
         )}
       </Box>
