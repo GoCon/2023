@@ -53,7 +53,7 @@ export const MainVisual = () => {
   )
 
   return (
-    <Box sx={{ width: '100%' }}>
+    <Box sx={{ width: '100%', overflow: 'hidden' }}>
       <Box
         sx={{
           position: 'relative',
