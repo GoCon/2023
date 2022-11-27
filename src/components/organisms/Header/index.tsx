@@ -17,12 +17,18 @@ const handleChangeLanguage = () => {
   }
 }
 
+interface HeaderItemColors {
+  default: string
+  hover: string
+  activeBg: string
+}
+
 // TODO: 各ページへのリンクを実装, スマートフォンモード実装
 export const Header = () => {
   const isScrolled = useScrollY() > 0
-  const fontColors: { default: string; hover: string } = isScrolled
-    ? { default: Colors.text.white, hover: Colors.text.white_hover }
-    : { default: Colors.text.primary, hover: Colors.text.primary_hover }
+  const headerItemColors: HeaderItemColors = isScrolled
+    ? { default: Colors.text.white, hover: Colors.text.white_hover, activeBg: Colors.header.active.white }
+    : { default: Colors.text.primary, hover: Colors.text.primary_hover, activeBg: Colors.header.active.default }
   const { t } = useTranslation()
   const { isPCOrOver } = useSize()
   const isLogoDisplayed = isPCOrOver || isScrolled
@@ -48,11 +54,16 @@ export const Header = () => {
               sx={{
                 width: '233px',
                 height: '40px',
-                color: fontColors.default,
+                color: headerItemColors.default,
                 marginLeft: '12px',
+                borderRadius: '8px',
                 '&:hover': {
                   cursor: 'pointer',
-                  color: fontColors.hover
+                  color: headerItemColors.hover
+                },
+                '&:active': {
+                  color: headerItemColors.hover,
+                  backgroundColor: headerItemColors.activeBg
                 }
               }}
             />
@@ -62,11 +73,16 @@ export const Header = () => {
           <Typography
             onClick={handleChangeLanguage}
             sx={{
-              color: fontColors.default,
-              fontFamily: 'Poppins',
+              color: headerItemColors.default,
+              p: '4px 8px',
+              borderRadius: '8px',
               '&:hover': {
                 cursor: 'pointer',
-                color: fontColors.hover
+                color: headerItemColors.hover
+              },
+              '&:active': {
+                color: headerItemColors.hover,
+                backgroundColor: headerItemColors.activeBg
               }
             }}
           >

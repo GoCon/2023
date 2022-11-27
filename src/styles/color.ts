@@ -30,5 +30,12 @@ export const Colors = {
     primary: {
       highlight: '#E5E5E5'
     }
+  },
+  header: {
+    // background-color when a header item is clicked
+    active: {
+      default: 'rgba(46, 53, 59, 0.1)',
+      white: 'rgba(255, 255, 255, 0.1)'
+    }
   }
 }
