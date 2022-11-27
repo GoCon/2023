@@ -29,4 +29,4 @@ export const Colors = {
       highlight: '#E5E5E5'
     }
   }
-}
+} as const

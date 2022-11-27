@@ -16,26 +16,12 @@ export const TopDescription = () => {
     >
       <Box maxWidth={'680px'} margin={'auto'}>
         <Box sx={{ textAlign: 'center' }}>
-          <Typography
-            variant="h2"
-            sx={{
-              color: Colors.text.white,
-              fontWeight: 500,
-              fontSize: isTabletOrOver ? '50px' : '24px',
-              padding: isTabletOrOver ? '40px' : '8px'
-            }}
-          >
+          <Typography variant="h2" sx={{ color: Colors.text.white }}>
             What is Go Conference?
           </Typography>
         </Box>
         <Box sx={{ textAlign: 'center', mb: isTabletOrOver ? '40px' : '16px' }}>
-          <Typography
-            variant="body1"
-            sx={{
-              color: Colors.text.white,
-              fontSize: isTabletOrOver ? '24px' : '16px'
-            }}
-          >
+          <Typography variant="body1" sx={{ color: Colors.text.white }}>
             {t('about')}
           </Typography>
         </Box>
@@ -50,7 +36,6 @@ export const TopDescription = () => {
               variant="body2"
               sx={{
                 color: Colors.text.white,
-                fontSize: isTabletOrOver ? '18px' : '14px',
                 textAlign: 'right',
                 minWidth: isTabletOrOver ? '120px' : '100px',
                 marginLeft: isTabletOrOver ? '32px' : '0'
@@ -62,7 +47,6 @@ export const TopDescription = () => {
               variant="body2"
               sx={{
                 color: Colors.text.white,
-                fontSize: isTabletOrOver ? '18px' : '14px',
                 marginLeft: '12px'
               }}
             >
@@ -79,7 +63,6 @@ export const TopDescription = () => {
               variant="body2"
               sx={{
                 color: Colors.text.white,
-                fontSize: isTabletOrOver ? '18px' : '14px',
                 textAlign: 'right',
                 minWidth: isTabletOrOver ? '120px' : '100px',
                 marginLeft: isTabletOrOver ? '32px' : '0'
@@ -91,7 +74,6 @@ export const TopDescription = () => {
               variant="body2"
               sx={{
                 color: Colors.text.white,
-                fontSize: isTabletOrOver ? '18px' : '14px',
                 marginLeft: '12px'
               }}
             >
@@ -108,7 +90,6 @@ export const TopDescription = () => {
               variant="body2"
               sx={{
                 color: Colors.text.white,
-                fontSize: isTabletOrOver ? '18px' : '14px',
                 textAlign: 'right',
                 minWidth: isTabletOrOver ? '120px' : '100px',
                 marginLeft: isTabletOrOver ? '32px' : '0'
@@ -120,7 +101,6 @@ export const TopDescription = () => {
               variant="body2"
               sx={{
                 color: Colors.text.white,
-                fontSize: isTabletOrOver ? '18px' : '14px',
                 marginLeft: '12px'
               }}
             >

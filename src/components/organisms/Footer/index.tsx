@@ -184,15 +184,11 @@ export const Footer = () => {
           sx={
             isTabletOrOver
               ? {
-                  fontFamily: 'Poppins',
                   position: 'absolute',
                   right: '0px',
-                  color: Colors.text.primary,
                   fontSize: '12px'
                 }
               : {
-                  fontFamily: 'Poppins',
-                  color: Colors.text.primary,
                   fontSize: '10px'
                 }
           }
@@ -208,17 +204,19 @@ export const Footer = () => {
           >
             Go Conference
           </Typography>
-          <Trans t={t} i18nKey="gopher_copyright" fontSize={isTabletOrOver ? '12px' : '10px'}>
-            the_gopher_was_desigined_by
-            <Link href="http://reneefrench.blogspot.com/" target="_blank">
-              author
-            </Link>
-            illustrations_by
-            <Link href="https://twitter.com/tottie_designer" target="_blank">
-              author
-            </Link>
-            .
-          </Trans>
+          <Typography fontSize={isTabletOrOver ? '12px' : '10px'}>
+            <Trans t={t} i18nKey="gopher_copyright">
+              the_gopher_was_desigined_by
+              <Link href="http://reneefrench.blogspot.com/" target="_blank">
+                author
+              </Link>
+              illustrations_by
+              <Link href="https://twitter.com/tottie_designer" target="_blank">
+                author
+              </Link>
+              .
+            </Trans>
+          </Typography>
         </Box>
       </FooterBottom>
     </Box>

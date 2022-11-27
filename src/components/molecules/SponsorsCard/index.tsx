@@ -74,7 +74,7 @@ export const SponsorsCard: FC<Props> = ({ planType, logoImages }) => {
 
   return (
     <Box bgcolor={Colors.background.primary} maxWidth={'1024px'} width={'100%'} borderRadius={5} p={{ xs: 3, md: 5 }}>
-      <Typography variant="h3" align="center" mb={3} fontWeight={600} color={Colors.text.primary}>
+      <Typography variant="h3" align="center" mb={3}>
         {heading}
       </Typography>
       <Grid container spacing={{ xs: 1, md: 3 }} mx={'auto'} width={gridWidth} columns={columns}>
