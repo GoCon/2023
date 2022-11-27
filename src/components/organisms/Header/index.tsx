@@ -20,7 +20,9 @@ const handleChangeLanguage = () => {
 // TODO: 各ページへのリンクを実装, スマートフォンモード実装
 export const Header = () => {
   const isScrolled = useScrollY() > 0
-  const fontColor = isScrolled ? 'white' : 'black'
+  const fontColors: { default: string; hover: string } = isScrolled
+    ? { default: Colors.text.white, hover: Colors.text.white_hover }
+    : { default: Colors.text.primary, hover: Colors.text.primary_hover }
   const { t } = useTranslation()
   const { isPCOrOver } = useSize()
   const isLogoDisplayed = isPCOrOver || isScrolled
@@ -42,11 +44,32 @@ export const Header = () => {
       <Toolbar disableGutters>
         {isLogoDisplayed && (
           <Box>
-            <Logo sx={{ width: '233px', height: '40px', color: fontColor, marginLeft: '12px' }} />
+            <Logo
+              sx={{
+                width: '233px',
+                height: '40px',
+                color: fontColors.default,
+                marginLeft: '12px',
+                '&:hover': {
+                  cursor: 'pointer',
+                  color: fontColors.hover
+                }
+              }}
+            />
           </Box>
         )}
         <Box sx={{ margin: '0 24px 0 auto' }}>
-          <Typography onClick={handleChangeLanguage} sx={{ color: fontColor, fontFamily: 'Poppins' }}>
+          <Typography
+            onClick={handleChangeLanguage}
+            sx={{
+              color: fontColors.default,
+              fontFamily: 'Poppins',
+              '&:hover': {
+                cursor: 'pointer',
+                color: fontColors.hover
+              }
+            }}
+          >
             {t('change_language')}
           </Typography>
         </Box>

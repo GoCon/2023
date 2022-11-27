@@ -1,9 +1,11 @@
 export const Colors = {
   text: {
     primary: '#2E353B',
+    primary_hover: '#82919D',
     secondary: '#636363',
     secondary_default: '#666666',
     white: '#FFFFFF',
+    white_hover: '#CADFF8',
     default: '#333333',
     link: '#0078F9',
     tertiary: '#BDC6D0',
