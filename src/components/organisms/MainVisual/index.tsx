@@ -1,11 +1,11 @@
 import { Box } from '@mui/material'
 import { useInterval, useSize } from 'src/modules/hooks'
 import { useReward } from 'react-rewards'
+import { confettiColors } from 'src/styles/color'
 
 export const MainVisual = () => {
   const { isTabletOrOver } = useSize()
   const image_path = isTabletOrOver ? './Background-pc.png' : './Background-sp.png'
-  const confettiColors = ['#DC5A3E', '#DBCB48', '#4EC76D']
   const confettiLeftConfig = {
     angle: 45,
     colors: confettiColors,

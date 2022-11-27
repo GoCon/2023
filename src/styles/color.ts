@@ -39,3 +39,5 @@ export const Colors = {
     }
   }
 } as const
+
+export const confettiColors = ['#DC5A3E', '#DBCB48', '#4EC76D']
