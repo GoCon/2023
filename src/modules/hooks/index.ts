@@ -26,7 +26,7 @@ function subscribeScroll(callback: () => void): () => void {
 }
 
 // ref: https://zenn.dev/akhr_s/articles/065e18ab3c4883
-export const useInterval = (callback: () => void, interval: number = 1000) => {
+export const useInterval = (callback: () => void, interval: number = 1000, callImmediately: boolean = false) => {
   const callbackRef = useRef(() => {})
 
   useEffect(() => {
@@ -34,7 +34,9 @@ export const useInterval = (callback: () => void, interval: number = 1000) => {
   }, [callback])
 
   useEffect(() => {
+    // call the function immediately after rendered
+    callImmediately && callbackRef.current()
     const timerId = setInterval(() => callbackRef.current(), interval)
     return () => clearInterval(timerId)
-  }, [interval])
+  }, [interval, callImmediately])
 }

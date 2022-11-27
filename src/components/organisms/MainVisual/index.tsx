@@ -39,14 +39,18 @@ export const MainVisual = () => {
     confettiRightConfig
   )
 
-  useInterval(() => {
-    if (!isAnimatingTopLeft || !isAnimatingTopRight || !isAnimatingBottomLeft || !isAnimatingBottomRight) {
-      rewardTopLeft()
-      rewardTopRight()
-      rewardBottomLeft()
-      rewardBottomRight()
-    }
-  })
+  useInterval(
+    () => {
+      if (!isAnimatingTopLeft || !isAnimatingTopRight || !isAnimatingBottomLeft || !isAnimatingBottomRight) {
+        rewardTopLeft()
+        rewardTopRight()
+        rewardBottomLeft()
+        rewardBottomRight()
+      }
+    },
+    4000,
+    true // call the function immediately after rendered
+  )
 
   return (
     <Box sx={{ width: '100%' }}>
