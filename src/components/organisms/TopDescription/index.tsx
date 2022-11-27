@@ -22,7 +22,10 @@ export const TopDescription = () => {
         </Box>
         <Box sx={{ textAlign: 'center', mb: isTabletOrOver ? '40px' : '16px' }}>
           <Typography variant="body1" sx={{ color: Colors.text.white }}>
-            {t('about')}
+            {t('about1')}
+          </Typography>
+          <Typography variant="body1" sx={{ color: Colors.text.white }}>
+            {t('about2')}
           </Typography>
         </Box>
         <Box mb={'40px'}>
