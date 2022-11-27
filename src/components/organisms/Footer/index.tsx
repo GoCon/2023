@@ -179,7 +179,7 @@ export const Footer = () => {
           >
             Go Conference
           </Typography>
-          <Typography variant="caption" fontSize={isTabletOrOver ? '12px' : '10px'}>
+          <Typography variant="caption">
             <Trans t={t} i18nKey="gopher_copyright">
               the_gopher_was_desigined_by
               <Link href="http://reneefrench.blogspot.com/" target="_blank">

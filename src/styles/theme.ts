@@ -51,6 +51,12 @@ export const theme: ThemeOptions = {
       [breakpoints.down('sm')]: {
         fontSize: '14px'
       }
+    },
+    caption: {
+      fontSize: '12px',
+      [breakpoints.down('sm')]: {
+        fontSize: '10px'
+      }
     }
   }
 }
