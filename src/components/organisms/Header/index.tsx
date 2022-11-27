@@ -32,6 +32,16 @@ export const Header = () => {
   const { t } = useTranslation()
   const { isPCOrOver } = useSize()
   const isLogoDisplayed = isPCOrOver || isScrolled
+  const headerItemBehaviorStyles = {
+    '&:hover': {
+      cursor: 'pointer',
+      color: headerItemColors.hover
+    },
+    '&:active': {
+      color: headerItemColors.hover,
+      backgroundColor: headerItemColors.activeBg
+    }
+  }
 
   return (
     <AppBar position="fixed" sx={{ backgroundColor: '#fff0', height: '100px', boxShadow: 0 }}>
@@ -57,14 +67,7 @@ export const Header = () => {
                 color: headerItemColors.default,
                 marginLeft: '12px',
                 borderRadius: '8px',
-                '&:hover': {
-                  cursor: 'pointer',
-                  color: headerItemColors.hover
-                },
-                '&:active': {
-                  color: headerItemColors.hover,
-                  backgroundColor: headerItemColors.activeBg
-                }
+                ...headerItemBehaviorStyles
               }}
             />
           </Box>
@@ -76,14 +79,7 @@ export const Header = () => {
               color: headerItemColors.default,
               p: '4px 8px',
               borderRadius: '8px',
-              '&:hover': {
-                cursor: 'pointer',
-                color: headerItemColors.hover
-              },
-              '&:active': {
-                color: headerItemColors.hover,
-                backgroundColor: headerItemColors.activeBg
-              }
+              ...headerItemBehaviorStyles
             }}
           >
             {t('change_language')}
