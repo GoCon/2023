@@ -3,11 +3,11 @@ import { useInterval, useSize } from 'src/modules/hooks'
 import { useReward } from 'react-rewards'
 import { confettiColors } from 'src/styles/color'
 import Image from 'next/image'
-import { BackgroundPc, BackgroundSp } from './images'
+import { KeyVisualWithTextPc, KeyVisualWithTextMobile } from './images'
 
 export const MainVisual = () => {
   const { isTabletOrOver } = useSize()
-  const imageData = isTabletOrOver ? BackgroundPc : BackgroundSp
+  const keyVisualWithText = isTabletOrOver ? KeyVisualWithTextPc : KeyVisualWithTextMobile
   const confettiLeftConfig = {
     angle: 45,
     colors: confettiColors,
@@ -66,7 +66,7 @@ export const MainVisual = () => {
       >
         <Box id="confettiTopLeft" sx={{ position: 'absolute', left: '32px' }} />
         <Box sx={{ maxWidth: '1440px', margin: '0 auto' }}>
-          <Image src={imageData} alt="Go Conference 2023 Online at Friday, June Second" quality={100} />
+          <Image src={keyVisualWithText} alt="Go Conference 2023 Online at Friday, June Second" quality={100} />
         </Box>
         <Box id="confettiTopRight" sx={{ position: 'absolute', right: '32px' }} />
       </Box>

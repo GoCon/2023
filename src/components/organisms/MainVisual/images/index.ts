@@ -1,2 +1,2 @@
-export * as BackgroundPc from './background-pc.png'
-export * as BackgroundSp from './background-sp.png'
+export * as KeyVisualWithTextMobile from './key-visual-with-text-mobile.png'
+export * as KeyVisualWithTextPc from './key-visual-with-text-pc.png'
