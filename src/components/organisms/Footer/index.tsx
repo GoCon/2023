@@ -44,13 +44,7 @@ export const Footer = () => {
               gap: '16px'
             }}
           >
-            <Typography
-              sx={{
-                fontWeight: 700,
-                fontSize: '16px',
-                color: Colors.text.default
-              }}
-            >
+            <Typography variant="h4" sx={{ color: Colors.text.default }}>
               About
             </Typography>
             <Box
@@ -61,26 +55,12 @@ export const Footer = () => {
               }}
             >
               <Link href="https://go.dev/conduct" target="_blank">
-                <Typography
-                  sx={{
-                    fontWeight: 400,
-                    fontSize: '14px',
-                    color: Colors.text.default,
-                    lineHeight: '140%'
-                  }}
-                >
+                <Typography variant="body2" sx={{ color: Colors.text.default }}>
                   Code of Conduct
                 </Typography>
               </Link>
               <Link href="mailto:info@gocon.jp" target="_blank">
-                <Typography
-                  sx={{
-                    fontWeight: 400,
-                    fontSize: '14px',
-                    color: Colors.text.default,
-                    lineHeight: '140%'
-                  }}
-                >
+                <Typography variant="body2" sx={{ color: Colors.text.default }}>
                   INFO@GOCON.JP
                 </Typography>
               </Link>
@@ -96,10 +76,8 @@ export const Footer = () => {
             }}
           >
             <Typography
+              variant="h4"
               sx={{
-                fontWeight: 700,
-                fontSize: '16px',
-                lineHeight: '140%',
                 color: Colors.text.default
               }}
             >
@@ -119,10 +97,9 @@ export const Footer = () => {
               ].map(([label, href]) => (
                 <Link href={href} key={label} target="_blank">
                   <Typography
+                    variant="body2"
                     key={label}
                     sx={{
-                      fontSize: '14px',
-                      lineHeight: '140%',
                       color: Colors.text.default
                     }}
                   >
@@ -169,10 +146,8 @@ export const Footer = () => {
           </Box>
           <Link href="https://twitter.com/hashtag/gocon" target="_blank">
             <Typography
+              variant="body2"
               sx={{
-                fontWeight: 400,
-                fontSize: '16px',
-                lineHeight: '140%',
                 color: Colors.text.secondary_default
               }}
             >
