@@ -1,7 +1,7 @@
 import { Box, Typography } from '@mui/material'
 import { Colors } from 'src/styles/color'
 import { useSize } from 'src/modules/hooks'
-import { useTranslation } from 'react-i18next'
+import { Trans, useTranslation } from 'react-i18next'
 
 export const TopDescription = () => {
   const { t } = useTranslation()
@@ -21,11 +21,11 @@ export const TopDescription = () => {
           </Typography>
         </Box>
         <Box sx={{ textAlign: 'center', mb: isTabletOrOver ? '40px' : '16px' }}>
-          <Typography variant="body1" sx={{ color: Colors.text.white }}>
-            {t('about1')}
-          </Typography>
-          <Typography variant="body1" sx={{ color: Colors.text.white }}>
-            {t('about2')}
+          <Typography
+            variant="body1"
+            sx={{ color: Colors.text.white, wordBreak: 'keep-all', overflowWrap: 'break-word' }}
+          >
+            <Trans t={t} i18nKey="about" />
           </Typography>
         </Box>
         <Box mb={'40px'}>
