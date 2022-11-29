@@ -32,7 +32,7 @@ export const SponsorsSection: FC = () => {
         <SponsorsCard planType="silver" logoImages={[]}/>
         <SponsorsCard planType="bronze" logoImages={[]}/>
       </Box> */}
-      <Link href="https://forms.gle/nbTxbQ6Fe4D4uY9B7">
+      <Link href="https://drive.google.com/file/d/1wwFeJk0rT0SydwDi2wx4wVVAD6psDUrL/view?usp=share_link">
         <a target="_blank">
           <Button text={t('consider_a_sponsor')} />
         </a>
