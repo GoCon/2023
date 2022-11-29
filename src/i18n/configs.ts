@@ -18,6 +18,10 @@ i18n.use(initReactI18next).init({
   lng: 'ja',
   interpolation: {
     escapeValue: false
+  },
+  react: {
+    transSupportBasicHtmlNodes: true,
+    transKeepBasicHtmlNodesFor: ['wbr']
   }
 })
 
