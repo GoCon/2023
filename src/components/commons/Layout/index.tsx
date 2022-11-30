@@ -51,6 +51,7 @@ export const Layout: NextPage<LayoutProps> = ({ children }) => {
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://gocon.jp/2023" />
         <meta property="og:image" content="https://gocon.jp/2023/ogp-thumbnail.png" />
+        <meta name="twitter:card" content="summary_large_image" />
       </Head>
       <Box>
         <Header />
