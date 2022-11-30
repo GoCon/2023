@@ -49,6 +49,7 @@ export const Layout: NextPage<LayoutProps> = ({ children }) => {
         <meta property="og:title" content="Go Conference 2023" />
         <meta property="og:description" content="Go Conference is a conference for Go programming language users." />
         <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://gocon.jp" />
         <meta property="og:url" content="https://gocon.jp/2023" />
         <meta property="og:image" content="https://gocon.jp/2023/ogp-thumbnail.png" />
       </Head>
