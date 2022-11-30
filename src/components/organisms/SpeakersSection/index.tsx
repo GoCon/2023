@@ -36,7 +36,7 @@ export const SpeakersSection: FC = () => {
       py={{ md: 10, xs: 4 }}
       position="relative"
     >
-      <Typography variant="h2">Wanted to Speakers!</Typography>
+      <Typography variant="h2">Call for Speakers!</Typography>
       <Box mb={1}>
         <Typography variant="body2">{t('application_started')}: 2022.12.01 Thu</Typography>
         <Typography variant="body2">{t('application_closed')}: 2023.01.31 Sat</Typography>
