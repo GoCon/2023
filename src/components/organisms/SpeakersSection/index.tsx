@@ -39,7 +39,7 @@ export const SpeakersSection: FC = () => {
       <Typography variant="h2">Call for Speakers!</Typography>
       <Box mb={1}>
         <Typography variant="body2">{t('application_started')}: 2022.12.01 Thu</Typography>
-        <Typography variant="body2">{t('application_closed')}: 2023.01.31 Sat</Typography>
+        <Typography variant="body2">{t('application_closed')}: 2023.01.31 Tue</Typography>
       </Box>
       <Box display="grid" gridTemplateColumns={isTabletOrOver ? '1fr 1fr 1fr' : '1fr'} gap={2}>
         {isTabletOrOver && (
