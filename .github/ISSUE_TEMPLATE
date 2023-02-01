@@ -14,6 +14,14 @@ body:
       required: true
 
   - type: textarea
+    id: account
+    attributes:
+      label: SNS Accounts
+      placeholder: [Twitter](https://twitter.com/goconjp)
+    validations:
+      required: false
+
+  - type: textarea
     id: description
     attributes:
       label: Description
