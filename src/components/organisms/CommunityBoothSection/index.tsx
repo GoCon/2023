@@ -24,7 +24,7 @@ export const CommunityBoothSection: FC = () => {
       <Typography variant="body1" mb={{ md: 5, xs: 2 }}>
         {t('community_booth_description')}
       </Typography>
-      <Link href="https://docs.google.com/presentation/d/1XV5M7qUpSyOfKgbdVLGkc6OurE4L9OxWgrLde_xZwjE/edit?usp=sharing">
+      <Link href="https://drive.google.com/file/d/1QUr1BWF7Mu1vU40UieBcvkMf5B-tAf91/view?usp=share_link">
         <a target="_blank">
           <Button text={t('consider_a_community_booth')} />
         </a>
