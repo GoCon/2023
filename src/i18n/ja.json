@@ -5,6 +5,8 @@
   "application_started": "応募開始",
   "application_closed": "応募締切",
   "consider_a_sponsor": "スポンサーを検討する",
+  "consider_a_community_booth": "コミュニティブースを検討する",
+  "community_booth_description": "コミュニティブース募集中です!",
   "about": "Go Conference は<wbr/>プログラミング言語Goユーザーの<wbr/>ための<wbr/>カンファレンスです。<wbr/>今年で10周年!",
   "session": "セッション",
   "session_num": "30セッション程度(2022年12月公募開始)",
