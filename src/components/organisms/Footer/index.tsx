@@ -64,6 +64,14 @@ export const Footer = () => {
                   INFO@GOCON.JP
                 </Typography>
               </Link>
+              <Link
+                href="https://drive.google.com/file/d/1Xon1uyLT-810sxnkLMngmL67z68K3XJG/view?usp=share_link"
+                target="_blank"
+              >
+                <Typography variant="body2" sx={{ color: Colors.text.default }}>
+                  {t('act_on_specified_commercial_transactions')}
+                </Typography>
+              </Link>
             </Box>
           </Box>
           <Box
