@@ -69,7 +69,7 @@ export const Footer = () => {
                 target="_blank"
               >
                 <Typography variant="body2" sx={{ color: Colors.text.default }}>
-                  {t('specified_commercial_transaction')}
+                  {t('act_on_specified_commercial_transactions')}
                 </Typography>
               </Link>
             </Box>
