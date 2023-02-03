@@ -7,7 +7,6 @@ import {
   TopDescription,
   SponsorsSection,
   CommunityBoothSection,
-  SpeakersSection
 } from 'src/components/organisms'
 
 export const PageTop: NextPage = () => {
@@ -21,7 +20,6 @@ export const PageTop: NextPage = () => {
     <Layout>
       <MainVisual />
       <TopDescription />
-      <SpeakersSection />
       <SponsorsSection />
       <CommunityBoothSection />
     </Layout>
