@@ -5,6 +5,8 @@
   "application_started": "応募開始",
   "application_closed": "応募締切",
   "consider_a_sponsor": "スポンサーを検討する",
+  "consider_a_community_booth": "コミュニティブースを検討する",
+  "community_booth_description": "コミュニティブース募集中です!",
   "about": "Go Conference は<wbr/>プログラミング言語Goユーザーの<wbr/>ための<wbr/>カンファレンスです。<wbr/>今年で10周年!",
   "session": "セッション",
   "session_num": "30セッション程度(2022年12月公募開始)",
@@ -12,5 +14,6 @@
   "target_info": "Goエンジニア、エンジニア志望の方、Goに興味のある方",
   "host": "主催",
   "gophers_japan": "一般社団法人Gophers Japan",
+  "act_on_specified_commercial_transactions": "特定商取引法に基づく表記",
   "sponsors_description": "スポンサー募集中です!"
 }
