@@ -6,6 +6,7 @@
     "dev": "next dev",
     "build": "next build && next export",
     "start": "next start",
+    "serve": "yarn build -o ./out/2023 && serve ./out",
     "lint": "next lint",
     "format": "prettier --ignore-path .gitignore --write \"**/*.{ts,tsx}\"",
     "prepare": "husky install",
@@ -45,6 +46,7 @@
     "husky": "8.0.1",
     "lint-staged": "13.0.3",
     "prettier": "2.7.1",
+    "serve": "^14.2.0",
     "storybook-addon-material-ui5": "1.0.0",
     "storybook-addon-next": "^1.6.9",
     "typescript": "4.8.2"
