@@ -1,5 +1,5 @@
 import { GetStaticPaths, GetStaticProps } from 'next'
-import { PagePartner, PartnerRank } from 'src/components/pages/PagePartner'
+import { PagePartner } from 'src/components/pages/PagePartner'
 
 import partners from 'data/partners.json'
 
@@ -31,17 +31,17 @@ export const getStaticPaths: GetStaticPaths<PathProps> = async () => {
 /**
  * partners.json から path params に対応した情報の抜き出し page の props として返す
  */
-export const getStaticProps: GetStaticProps<PageProps> = async context => {
-  const rank = context.params?.rank as Rank | undefined
-  if (!rank) throw new Error(`rank is required : ${context.params}`)
+export const getStaticProps: GetStaticProps<PageProps> = async ({ params }) => {
+  const rank = params?.rank as Rank | undefined
+  if (!rank) throw new Error(`rank is required : ${params}`)
   if (rank !== 'platinum' && rank !== 'gold') throw new Error('invalid rank')
 
-  const id = context.params?.id as string | undefined
-  if (!id) throw new Error(`id is required : ${context.params}`)
+  const id = params?.id as string | undefined
+  if (!id) throw new Error(`id is required : ${params}`)
 
   const { name, description } = partners[rank].find(p => p.id === id) ?? {}
-  if (!name) throw new Error(`name is required : ${context.params}`)
-  if (!description) throw new Error(`description is required : ${context.params}`)
+  if (!name) throw new Error(`name is required : ${params}`)
+  if (!description) throw new Error(`description is required : ${params}`)
 
   return {
     props: { id, name, rank, description }
