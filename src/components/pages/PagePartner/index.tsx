@@ -9,10 +9,10 @@ export type PartnerRank = 'platinum' | 'gold'
 type PagePartnerProps = {
   id: string
   name: string
-  desc: string
+  description: string
 }
 
-export const PagePartner = ({ id, name, desc }: PagePartnerProps) => {
+export const PagePartner = ({ id, name, description }: PagePartnerProps) => {
   return (
     <Layout>
       <Box sx={{ mx: '160px' }} display="flex" flexDirection="column">
@@ -23,7 +23,7 @@ export const PagePartner = ({ id, name, desc }: PagePartnerProps) => {
           </Typography>
         </Box>
         <Box>
-          <Typography variant="body1">{desc}</Typography>
+          <Typography variant="body1">{description}</Typography>
         </Box>
       </Box>
     </Layout>

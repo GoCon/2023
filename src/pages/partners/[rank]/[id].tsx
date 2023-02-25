@@ -8,7 +8,7 @@ export type Rank = keyof typeof partners
 type PageProps = {
   id: string
   name: string
-  desc: string
+  description: string
   rank: Extract<Rank, 'platinum' | 'gold'>
 }
 
@@ -39,12 +39,12 @@ export const getStaticProps: GetStaticProps<PageProps> = async context => {
   const id = context.params?.id as string | undefined
   if (!id) throw new Error(`id is required : ${context.params}`)
 
-  const { name, desc } = partners[rank].find(p => p.id === id) ?? {}
+  const { name, description } = partners[rank].find(p => p.id === id) ?? {}
   if (!name) throw new Error(`name is required : ${context.params}`)
-  if (!desc) throw new Error(`desc is required : ${context.params}`)
+  if (!description) throw new Error(`desc is required : ${context.params}`)
 
   return {
-    props: { id, name, rank, desc }
+    props: { id, name, rank, description }
   }
 }
 
