@@ -6,13 +6,13 @@ import { Header } from 'src/components/organisms'
 
 export type PartnerRank = 'platinum' | 'gold'
 
-type PagePartnerProps = {
+type Props = {
   id: string
   name: string
   description: string
 }
 
-export const PagePartner = ({ id, name, description }: PagePartnerProps) => {
+export const PagePartner = ({ id, name, description }: Props) => {
   return (
     <Layout>
       <Box sx={{ mx: '160px' }} display="flex" flexDirection="column">
