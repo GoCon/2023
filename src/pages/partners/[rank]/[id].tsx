@@ -41,7 +41,7 @@ export const getStaticProps: GetStaticProps<PageProps> = async context => {
 
   const { name, description } = partners[rank].find(p => p.id === id) ?? {}
   if (!name) throw new Error(`name is required : ${context.params}`)
-  if (!description) throw new Error(`desc is required : ${context.params}`)
+  if (!description) throw new Error(`description is required : ${context.params}`)
 
   return {
     props: { id, name, rank, description }
