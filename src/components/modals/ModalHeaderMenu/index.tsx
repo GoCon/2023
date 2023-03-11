@@ -1,38 +1,21 @@
-import { useMemo } from 'react'
-
 import { Box, Modal, Slide, ButtonBase, Typography, IconButton } from '@mui/material'
 import CloseIcon from '@mui/icons-material/Close'
 import { useTheme } from '@mui/material/styles'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { Logo } from 'src/components/atoms'
-import { handleChangeLanguage } from 'src/i18n/util'
 import { Colors } from 'src/styles/color'
-import { useTranslation } from 'react-i18next'
+import { HeaderMenuItem } from 'src/components/organisms/Header'
 
-export interface ModalMenuProps {
+export interface ModalHeaderMenuProps {
   open: boolean
   onClose: () => void
-  projectName?: string
+  menuList: HeaderMenuItem[]
 }
 
-export const ModalHeaderMenu = ({ open, onClose, projectName }: ModalMenuProps) => {
+export const ModalHeaderMenu = ({ open, onClose, menuList }: ModalHeaderMenuProps) => {
   const theme = useTheme()
   const router = useRouter()
-  const { t } = useTranslation()
-
-  const menuList = useMemo(() => {
-    return [
-      { path: '/', label: 'Home' },
-      { path: '/sessions', label: 'Sessions' },
-      { path: '/timetable', label: 'Timetable' },
-      { path: '/floor_guide', label: 'Floor Guide' },
-      {
-        label: t('change_language'),
-        onClick: handleChangeLanguage
-      }
-    ]
-  }, [t])
 
   return (
     <Modal open={open} onClose={onClose} sx={{ display: 'flex', zIndex: 9999 }}>
@@ -73,7 +56,7 @@ export const ModalHeaderMenu = ({ open, onClose, projectName }: ModalMenuProps) 
           <Box display="flex" flex={1} flexDirection="column" alignItems="center" justifyContent="space-between">
             {menuList.map((list, i) => {
               return (
-                <Link key={i} href={list.path || router.asPath}>
+                <Link key={i} href={list.href || router.asPath}>
                   <Box
                     sx={{
                       cursor: 'pointer',
@@ -81,7 +64,7 @@ export const ModalHeaderMenu = ({ open, onClose, projectName }: ModalMenuProps) 
                       boxSizing: 'border-box',
                       color: Colors.text.white,
                       textDecoration: 'none',
-                      borderBottom: router.pathname === list.path ? '3px solid' : ''
+                      borderBottom: router.pathname === list.href ? '3px solid' : ''
                     }}
                   >
                     {list.onClick ? (
