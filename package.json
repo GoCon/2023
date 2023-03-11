@@ -15,6 +15,7 @@
   "dependencies": {
     "@emotion/react": "11.10.0",
     "@emotion/styled": "11.10.0",
+    "@mui/icons-material": "5.11.11",
     "@mui/material": "5.10.7",
     "i18next": "21.9.2",
     "next": "12.3.1",

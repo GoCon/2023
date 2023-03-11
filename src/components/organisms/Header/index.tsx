@@ -1,21 +1,11 @@
-import React from 'react'
-import i18n from 'src/i18n/configs'
-import { AppBar, Toolbar, Typography, Box } from '@mui/material'
+import React, { useState } from 'react'
+import MenuRoundedIcon from '@mui/icons-material/MenuRounded'
+import { AppBar, Toolbar, Box, IconButton } from '@mui/material'
 import { Colors } from 'src/styles/color'
-import { useTranslation } from 'react-i18next'
 import { Logo } from 'src/components/atoms'
 import { useScrollY, useSize } from 'src/modules/hooks'
-
-const handleChangeLanguage = () => {
-  switch (i18n.language) {
-    case 'ja':
-      i18n.changeLanguage('en')
-      return
-    case 'en':
-      i18n.changeLanguage('ja')
-      return
-  }
-}
+import { HeaderMenu } from 'src/components/molecules/HeaderMenu'
+import { ModalHeaderMenu } from 'src/components/modals/ModalHeaderMenu'
 
 interface HeaderItemColors {
   default: string
@@ -23,13 +13,12 @@ interface HeaderItemColors {
   activeBg: string
 }
 
-// TODO: 各ページへのリンクを実装, スマートフォンモード実装
 export const Header = () => {
   const isScrolled = useScrollY() > 0
+  const [modalMenuOpen, setModalMenuOpen] = useState(false)
   const headerItemColors: HeaderItemColors = isScrolled
     ? { default: Colors.text.white, hover: Colors.text.white_hover, activeBg: Colors.header.active.white }
     : { default: Colors.text.primary, hover: Colors.text.primary_hover, activeBg: Colors.header.active.default }
-  const { t } = useTranslation()
   const { isPCOrOver } = useSize()
   const isLogoDisplayed = isPCOrOver || isScrolled
   const headerItemBehaviorStyles = {
@@ -62,8 +51,8 @@ export const Header = () => {
           <Box>
             <Logo
               sx={{
-                width: '233px',
-                height: '40px',
+                width: isPCOrOver ? '233px' : '140px',
+                height: isPCOrOver ? '40px' : '24px',
                 color: headerItemColors.default,
                 marginLeft: '12px',
                 borderRadius: '8px',
@@ -72,20 +61,17 @@ export const Header = () => {
             />
           </Box>
         )}
-        <Box sx={{ margin: '0 24px 0 auto' }}>
-          <Typography
-            onClick={handleChangeLanguage}
-            sx={{
-              color: headerItemColors.default,
-              p: '4px 8px',
-              borderRadius: '8px',
-              ...headerItemBehaviorStyles
-            }}
-          >
-            {t('change_language')}
-          </Typography>
-        </Box>
+        {isPCOrOver ? (
+          <HeaderMenu />
+        ) : (
+          <Box flex={1} display="flex" justifyContent="flex-end">
+            <IconButton onClick={() => setModalMenuOpen(true)}>
+              <MenuRoundedIcon sx={{ fontSize: 24, color: headerItemColors.default }} />
+            </IconButton>
+          </Box>
+        )}
       </Toolbar>
+      <ModalHeaderMenu open={modalMenuOpen} onClose={() => setModalMenuOpen(false)} />
     </AppBar>
   )
 }
