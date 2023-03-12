@@ -55,7 +55,22 @@ export const theme: ThemeOptions = {
   components: {
     MuiTypography: {
       defaultProps: {
-        color: Colors.text.primary
+        color: Colors.text.primary,
+        fontFamily: [
+          'Poppins',
+          'Montserrat',
+          '-apple-system',
+          'BlinkMacSystemFont',
+          'Segoe UI',
+          'Roboto',
+          'Oxygen',
+          'Ubuntu',
+          'Cantarell',
+          'Fira Sans',
+          'Droid Sans',
+          'Helvetica Neue',
+          'sans-serif'
+        ].join(',')
       }
     }
   }
