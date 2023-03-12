@@ -17,7 +17,7 @@ export const HeaderMenu = ({ menuList, itemColor, itemBehaviorStyles }: HeaderMe
   const isScrolled = useScrollY() > 0
 
   return (
-    <Box sx={{ margin: '0 24px 0 auto' }}>
+    <Box sx={{ display: 'flex', gap: '8px', margin: '0 24px 0 auto' }}>
       {menuList.map((list, i) => {
         return list.href ? (
           <Link href={list.href} key={i}>
