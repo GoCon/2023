@@ -36,7 +36,6 @@ export const HeaderMenu = ({ menuList, itemColor, itemBehaviorStyles }: HeaderMe
           <Typography
             onClick={list.onClick}
             sx={{
-              display: 'inline',
               color: itemColor.default,
               p: '4px 8px',
               ...itemBehaviorStyles
