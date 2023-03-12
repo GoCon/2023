@@ -1,6 +1,5 @@
 import { Box, Modal, Slide, ButtonBase, Typography, IconButton } from '@mui/material'
 import CloseIcon from '@mui/icons-material/Close'
-import { useTheme } from '@mui/material/styles'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { Logo } from 'src/components/atoms'
