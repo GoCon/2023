@@ -2,13 +2,7 @@ import type { NextPage } from 'next'
 import { Layout } from 'src/components/commons'
 import { useTranslation } from 'react-i18next'
 import { useSessionize } from 'src/modules/sessionize/hooks'
-import {
-  MainVisual,
-  TopDescription,
-  SponsorsSection,
-  CommunityBoothSection,
-  SpeakersSection
-} from 'src/components/organisms'
+import { MainVisual, TopDescription, SponsorsSection, CommunityBoothSection } from 'src/components/organisms'
 
 export const PageTop: NextPage = () => {
   const { t } = useTranslation()
@@ -21,7 +15,6 @@ export const PageTop: NextPage = () => {
     <Layout>
       <MainVisual />
       <TopDescription />
-      <SpeakersSection />
       <SponsorsSection />
       <CommunityBoothSection />
     </Layout>
