@@ -2,8 +2,6 @@ import React from 'react'
 import { Typography, Box } from '@mui/material'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
-import { useTranslation } from 'react-i18next'
-import { useScrollY } from 'src/modules/hooks'
 import { HeaderItemColor, HeaderMenuItem, HeaderItemBehaviorStyles } from 'src/components/organisms/Header'
 
 export interface HeaderMenuProps {
