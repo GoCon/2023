@@ -12,23 +12,24 @@ export interface HeaderMenuProps {
 
 export const HeaderMenu = ({ menuList, itemColor, itemBehaviorStyles }: HeaderMenuProps) => {
   const router = useRouter()
-  const isScrolled = useScrollY() > 0
 
   return (
     <Box sx={{ display: 'flex', gap: '8px', margin: '0 24px 0 auto' }}>
       {menuList.map((list, i) => {
         return list.href ? (
           <Link href={list.href} key={i}>
-            <Typography
-              sx={{
-                borderBottom: router.pathname === list.href ? '3px solid' : '',
-                color: itemColor.default,
-                p: '4px 8px',
-                ...itemBehaviorStyles
-              }}
-            >
-              {list.label}
-            </Typography>
+            <a>
+              <Typography
+                sx={{
+                  borderBottom: router.pathname === list.href ? '3px solid' : '',
+                  color: itemColor.default,
+                  p: '4px 8px',
+                  ...itemBehaviorStyles
+                }}
+              >
+                {list.label}
+              </Typography>
+            </a>
           </Link>
         ) : (
           <Typography

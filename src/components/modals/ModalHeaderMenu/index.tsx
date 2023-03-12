@@ -13,7 +13,6 @@ export interface ModalHeaderMenuProps {
 }
 
 export const ModalHeaderMenu = ({ open, onClose, menuList }: ModalHeaderMenuProps) => {
-  const theme = useTheme()
   const router = useRouter()
 
   return (
@@ -54,27 +53,29 @@ export const ModalHeaderMenu = ({ open, onClose, menuList }: ModalHeaderMenuProp
             {menuList.map((list, i) => {
               return (
                 <Link key={i} href={list.href || router.asPath}>
-                  <Box
-                    sx={{
-                      cursor: 'pointer',
-                      boxSizing: 'border-box',
-                      color: Colors.text.white,
-                      textDecoration: 'none',
-                      borderBottom: router.pathname === list.href ? '3px solid' : ''
-                    }}
-                  >
-                    {list.onClick ? (
-                      <ButtonBase onClick={list.onClick}>
+                  <a>
+                    <Box
+                      sx={{
+                        cursor: 'pointer',
+                        boxSizing: 'border-box',
+                        color: Colors.text.white,
+                        textDecoration: 'none',
+                        borderBottom: router.pathname === list.href ? '3px solid' : ''
+                      }}
+                    >
+                      {list.onClick ? (
+                        <ButtonBase onClick={list.onClick}>
+                          <Typography variant="body1" color="inherit" sx={{ textAlign: 'left' }}>
+                            {list.label}
+                          </Typography>
+                        </ButtonBase>
+                      ) : (
                         <Typography variant="body1" color="inherit" sx={{ textAlign: 'left' }}>
                           {list.label}
                         </Typography>
-                      </ButtonBase>
-                    ) : (
-                      <Typography variant="body1" color="inherit" sx={{ textAlign: 'left' }}>
-                        {list.label}
-                      </Typography>
-                    )}
-                  </Box>
+                      )}
+                    </Box>
+                  </a>
                 </Link>
               )
             })}
