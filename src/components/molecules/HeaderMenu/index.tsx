@@ -23,7 +23,6 @@ export const HeaderMenu = ({ menuList, itemColor, itemBehaviorStyles }: HeaderMe
           <Link href={list.href} key={i}>
             <Typography
               sx={{
-                display: 'inline',
                 borderBottom: router.pathname === list.href ? '3px solid' : '',
                 color: itemColor.default,
                 p: '4px 8px',
