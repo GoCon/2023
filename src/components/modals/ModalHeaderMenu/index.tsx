@@ -17,49 +17,46 @@ export const ModalHeaderMenu = ({ open, onClose, menuList }: ModalHeaderMenuProp
   const router = useRouter()
 
   return (
-    <Modal open={open} onClose={onClose} sx={{ display: 'flex', zIndex: 9999 }}>
+    <Modal open={open} onClose={onClose} sx={{ display: 'flex', zIndex: 9999, bottom: 'auto' }}>
       <Slide in={open} direction="down">
         <Box
-          height="270px"
           width={1}
-          pt="2px"
+          pt="12px"
           pb="24px"
-          px="4px"
+          px="16px"
           color={Colors.text.white}
           sx={{ background: Colors.background.brand_color }}
           display="flex"
-          flex={1}
           flexDirection="column"
-          alignItems="center"
-          marginBottom="21px"
-          justifyContent="space-between"
         >
-          <Box display="flex" alignItems="center" width={1} mb="16px">
+          <Box display="flex" alignItems="center" justifyContent="space-between" width={1} mb="16px">
             <Box>
               <Logo
                 sx={{
                   width: '140px',
                   height: '24px',
-                  color: Colors.text.white,
-                  marginLeft: '12px',
-                  marginTop: '8px'
+                  color: Colors.text.white
                 }}
               />
             </Box>
-            <Box flex={1} display="flex" justifyContent="flex-end" onClick={onClose}>
-              <IconButton color="inherit">
-                <CloseIcon fontSize="large" />
-              </IconButton>
-            </Box>
+            <IconButton color="inherit" onClick={onClose}>
+              <CloseIcon fontSize="large" />
+            </IconButton>
           </Box>
-          <Box display="flex" flex={1} flexDirection="column" alignItems="center" justifyContent="space-between">
+          <Box
+            display="flex"
+            flex={1}
+            gap="16px"
+            flexDirection="column"
+            alignItems="center"
+            justifyContent="space-between"
+          >
             {menuList.map((list, i) => {
               return (
                 <Link key={i} href={list.href || router.asPath}>
                   <Box
                     sx={{
                       cursor: 'pointer',
-                      height: '28px',
                       boxSizing: 'border-box',
                       color: Colors.text.white,
                       textDecoration: 'none',
