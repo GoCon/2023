@@ -1,19 +1,8 @@
 import { createTheme, ThemeOptions } from '@mui/material/styles'
 import { Colors } from './color'
 
-const defaultTheme = createTheme()
-
-const { breakpoints } = defaultTheme
-
-export const theme: ThemeOptions = {
-  ...defaultTheme,
-  components: {
-    MuiTypography: {
-      defaultProps: {
-        color: Colors.text.primary
-      }
-    }
-  },
+const { breakpoints } = createTheme()
+const defaultTheme = createTheme({
   typography: {
     h2: {
       fontSize: '50px',
@@ -56,6 +45,32 @@ export const theme: ThemeOptions = {
       fontSize: '12px',
       [breakpoints.down('sm')]: {
         fontSize: '10px'
+      }
+    }
+  }
+})
+
+export const theme: ThemeOptions = {
+  ...defaultTheme,
+  components: {
+    MuiTypography: {
+      defaultProps: {
+        color: Colors.text.primary,
+        fontFamily: [
+          'Poppins',
+          'Montserrat',
+          '-apple-system',
+          'BlinkMacSystemFont',
+          'Segoe UI',
+          'Roboto',
+          'Oxygen',
+          'Ubuntu',
+          'Cantarell',
+          'Fira Sans',
+          'Droid Sans',
+          'Helvetica Neue',
+          'sans-serif'
+        ].join(',')
       }
     }
   }
