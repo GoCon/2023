@@ -2,7 +2,7 @@ import React from 'react'
 import { Typography, Box } from '@mui/material'
 import { useRouter } from 'next/router'
 import { HeaderItemColor, HeaderMenuItem, HeaderItemBehaviorStyles } from 'src/components/organisms/Header'
-import Link from 'next/link'
+// import Link from 'next/link'
 
 export interface HeaderMenuProps {
   menuList: HeaderMenuItem[]
