@@ -1,8 +1,8 @@
 import React from 'react'
 import { Typography, Box } from '@mui/material'
-import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { HeaderItemColor, HeaderMenuItem, HeaderItemBehaviorStyles } from 'src/components/organisms/Header'
+import Link from 'next/link'
 
 export interface HeaderMenuProps {
   menuList: HeaderMenuItem[]
@@ -17,8 +17,24 @@ export const HeaderMenu = ({ menuList, itemColor, itemBehaviorStyles }: HeaderMe
     <Box sx={{ display: 'flex', gap: '8px', margin: '0 24px 0 auto' }}>
       {menuList.map((list, i) => {
         return list.href ? (
-          <Link href={list.href} key={i}>
-            <a>
+          list.href === '/' ? (
+            <Link href={list.href} key={i}>
+              <a>
+                <Typography
+                  sx={{
+                    borderBottom: router.pathname === list.href ? '3px solid' : '',
+                    color: itemColor.default,
+                    p: '4px 8px',
+                    ...itemBehaviorStyles
+                  }}
+                >
+                  {list.label}
+                </Typography>
+              </a>
+            </Link>
+          ) : (
+            // TODO(taigakiyokawa): Revert using `next/link` when pages have implemented.
+            <a href={list.href} target="_blank" rel="noreferrer" key={i}>
               <Typography
                 sx={{
                   borderBottom: router.pathname === list.href ? '3px solid' : '',
@@ -30,7 +46,7 @@ export const HeaderMenu = ({ menuList, itemColor, itemBehaviorStyles }: HeaderMe
                 {list.label}
               </Typography>
             </a>
-          </Link>
+          )
         ) : (
           <Typography
             onClick={list.onClick}
