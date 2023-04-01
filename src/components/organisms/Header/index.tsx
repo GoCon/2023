@@ -54,7 +54,8 @@ export const Header = () => {
 
   const menuList: HeaderMenuItem[] = useMemo(() => {
     return [
-      { href: '/', label: 'Home' },
+      // TODO(maito1201): Display Home label when screen transition is implemented
+      // { href: '/', label: 'Home' },
       // TODO(taigakiyokawa): Revert to `/sessions` when the page has implemented.
       { href: 'https://sessionize.com/api/v2/jmtn42ls/view/Sessions', label: 'Sessions' },
       // TODO(taigakiyokawa): Revert to `/timetable` when the page has implemented.
