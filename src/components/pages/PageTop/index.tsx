@@ -16,7 +16,6 @@ export const PageTop: NextPage = () => {
       <MainVisual />
       <TopDescription />
       <SponsorsSection />
-      <CommunityBoothSection />
     </Layout>
   )
 }
