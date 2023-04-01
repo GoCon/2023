@@ -1,0 +1,43 @@
+name: Go Conference 2023 Proposal
+description: Go Conference 2023 Proposal
+title: "[Session title]: "
+assignees:
+  - sivchari
+  - Hiroya3
+body:
+  - type: input
+    id: speaker
+    attributes:
+      label: Speaker
+      placeholder: "Gopher"
+    validations:
+      required: true
+
+  - type: textarea
+    id: account
+    attributes:
+      label: SNS Accounts
+      placeholder: "[Twitter](https://twitter.com/goconjp)"
+    validations:
+      required: false
+
+  - type: textarea
+    id: description
+    attributes:
+      label: Description
+      placeholder: "What's new in Go1.20 ?"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: type
+    attributes:
+      label: Session type
+      options:
+        - LT (5min)
+        - Short Talk (20min)
+        - Challenge Session (20min)
+        - Long Talk (40min)
+    validations:
+      required: true
+

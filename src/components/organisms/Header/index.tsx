@@ -1,47 +1,73 @@
-import React from 'react'
-import i18n from 'src/i18n/configs'
-import { AppBar, Toolbar, Typography, Box } from '@mui/material'
+import React, { useState, useMemo } from 'react'
+import MenuRoundedIcon from '@mui/icons-material/MenuRounded'
+import { AppBar, Toolbar, Box, IconButton } from '@mui/material'
 import { Colors } from 'src/styles/color'
-import { useTranslation } from 'react-i18next'
 import { Logo } from 'src/components/atoms'
 import { useScrollY, useSize } from 'src/modules/hooks'
+import { HeaderMenu } from 'src/components/molecules/HeaderMenu'
+import { ModalHeaderMenu } from 'src/components/modals/ModalHeaderMenu'
+import { handleChangeLanguage } from 'src/i18n/util'
+import { useTranslation } from 'react-i18next'
 
-const handleChangeLanguage = () => {
-  switch (i18n.language) {
-    case 'ja':
-      i18n.changeLanguage('en')
-      return
-    case 'en':
-      i18n.changeLanguage('ja')
-      return
-  }
-}
-
-interface HeaderItemColors {
+export interface HeaderItemColor {
   default: string
   hover: string
   activeBg: string
 }
 
-// TODO: 各ページへのリンクを実装, スマートフォンモード実装
+export type HeaderMenuItem = {
+  href?: string
+  label: string
+  onClick?: () => void
+}
+
+export type HeaderItemBehaviorStyles = {
+  '&:hover': {
+    cursor: string
+    color: string
+  }
+  '&:active': {
+    color: string
+    backgroundColor: string
+  }
+}
+
 export const Header = () => {
-  const isScrolled = useScrollY() > 0
-  const headerItemColors: HeaderItemColors = isScrolled
-    ? { default: Colors.text.white, hover: Colors.text.white_hover, activeBg: Colors.header.active.white }
-    : { default: Colors.text.primary, hover: Colors.text.primary_hover, activeBg: Colors.header.active.default }
+  const [modalMenuOpen, setModalMenuOpen] = useState(false)
   const { t } = useTranslation()
+  const isScrolled = useScrollY() > 0
   const { isPCOrOver } = useSize()
   const isLogoDisplayed = isPCOrOver || isScrolled
-  const headerItemBehaviorStyles = {
+  const headerItemColor: HeaderItemColor = isScrolled
+    ? { default: Colors.text.white, hover: Colors.text.white_hover, activeBg: Colors.header.active.white }
+    : { default: Colors.text.primary, hover: Colors.text.primary_hover, activeBg: Colors.header.active.default }
+  const headerItemBehaviorStyles: HeaderItemBehaviorStyles = {
     '&:hover': {
       cursor: 'pointer',
-      color: headerItemColors.hover
+      color: headerItemColor.hover
     },
     '&:active': {
-      color: headerItemColors.hover,
-      backgroundColor: headerItemColors.activeBg
+      color: headerItemColor.hover,
+      backgroundColor: headerItemColor.activeBg
     }
   }
+
+  const menuList: HeaderMenuItem[] = useMemo(() => {
+    return [
+      // TODO(maito1201): Display Home label when screen transition is implemented
+      // { href: '/', label: 'Home' },
+      // TODO(taigakiyokawa): Revert to `/sessions` when the page has implemented.
+      { href: 'https://sessionize.com/api/v2/jmtn42ls/view/Sessions', label: 'Sessions' },
+      // TODO(taigakiyokawa): Revert to `/timetable` when the page has implemented.
+      { href: 'https://sessionize.com/api/v2/jmtn42ls/view/GridSmart', label: 'Timetable' },
+      // TODO(taigakiyokawa): Revert comment out when the page has implemented.
+      // { href: '/floor_guide', label: 'Floor Guide' },
+      {
+        label: t('change_language'),
+        onClick: handleChangeLanguage
+      }
+    ]
+  }, [t])
 
   return (
     <AppBar position="fixed" sx={{ backgroundColor: '#fff0', height: '100px', boxShadow: 0 }}>
@@ -62,9 +88,9 @@ export const Header = () => {
           <Box>
             <Logo
               sx={{
-                width: '233px',
-                height: '40px',
-                color: headerItemColors.default,
+                width: isPCOrOver ? '233px' : '140px',
+                height: isPCOrOver ? '40px' : '24px',
+                color: headerItemColor.default,
                 marginLeft: '12px',
                 borderRadius: '8px',
                 ...headerItemBehaviorStyles
@@ -72,20 +98,17 @@ export const Header = () => {
             />
           </Box>
         )}
-        <Box sx={{ margin: '0 24px 0 auto' }}>
-          <Typography
-            onClick={handleChangeLanguage}
-            sx={{
-              color: headerItemColors.default,
-              p: '4px 8px',
-              borderRadius: '8px',
-              ...headerItemBehaviorStyles
-            }}
-          >
-            {t('change_language')}
-          </Typography>
-        </Box>
+        {isPCOrOver ? (
+          <HeaderMenu itemColor={headerItemColor} menuList={menuList} itemBehaviorStyles={headerItemBehaviorStyles} />
+        ) : (
+          <Box flex={1} display="flex" justifyContent="flex-end">
+            <IconButton onClick={() => setModalMenuOpen(true)}>
+              <MenuRoundedIcon sx={{ fontSize: 24, color: headerItemColor.default }} />
+            </IconButton>
+          </Box>
+        )}
       </Toolbar>
+      <ModalHeaderMenu open={modalMenuOpen} onClose={() => setModalMenuOpen(false)} menuList={menuList} />
     </AppBar>
   )
 }
