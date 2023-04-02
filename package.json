@@ -22,10 +22,10 @@
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-i18next": "11.18.6",
-    "react-rewards": "^2.0.4",
+    "react-rewards": "2.0.4",
     "swr": "2.0.3",
     "use-local-storage-state": "18.1.1",
-    "zod": "^3.21.4"
+    "zod": "3.21.4"
   },
   "devDependencies": {
     "@babel/core": "7.19.3",
@@ -49,7 +49,7 @@
     "lint-staged": "13.0.3",
     "prettier": "2.7.1",
     "storybook-addon-material-ui5": "1.0.0",
-    "storybook-addon-next": "^1.6.9",
+    "storybook-addon-next": "1.6.9",
     "typescript": "4.8.2"
   },
   "lint-staged": {
