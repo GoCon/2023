@@ -3,20 +3,10 @@ import Link from 'next/link'
 import { Box, Typography } from '@mui/material'
 import { Button } from 'src/components/atoms'
 import { useTranslation } from 'react-i18next'
-import { Colors, confettiColors } from 'src/styles/color'
-import { useSize } from 'src/modules/hooks'
-import { useReward } from 'react-rewards'
+import { Colors } from 'src/styles/color'
 
 export const SpeakersSection: FC = () => {
   const { t } = useTranslation()
-  const { isTabletOrOver } = useSize()
-  const { reward } = useReward('confettiGopherPopper', 'confetti', {
-    angle: 135,
-    colors: confettiColors,
-    position: 'absolute',
-    startVelocity: 20
-  })
-
   return (
     <Box
       bgcolor={Colors.background.primary}

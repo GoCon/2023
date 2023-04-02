@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from 'react'
+import { useState, useMemo } from 'react'
 import MenuRoundedIcon from '@mui/icons-material/MenuRounded'
 import { AppBar, Toolbar, Box, IconButton } from '@mui/material'
 import { Colors } from 'src/styles/color'
