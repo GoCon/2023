@@ -1,9 +1,6 @@
 import { PageTop } from 'src/components/pages'
 
-type InitialProps = {}
-type Props = {} & InitialProps
-
-const Index = (_: Props) => {
+const Index = () => {
   return <PageTop />
 }
 

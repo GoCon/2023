@@ -1,5 +1,5 @@
 import type { NextPage } from 'next'
-import { ReactNode } from 'react'
+import { ReactNode, ChangeEvent } from 'react'
 import Head from 'next/head'
 
 import { Header } from 'src/components/organisms'
@@ -17,7 +17,7 @@ export const Layout: NextPage<LayoutProps> = ({ children }) => {
   const config = require('../../../../next.config')
   const [authorized, setAuthorized] = useLocalStorageState('authorized', { defaultValue: false })
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     if (toSha256(e.target.value) === process.env.NEXT_PUBLIC_AUTH_PASSWORD_HASH) setAuthorized(true)
   }
 
