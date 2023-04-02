@@ -1,4 +1,3 @@
-import React from 'react'
 import { ButtonBase, Typography } from '@mui/material'
 import { Colors } from 'src/styles/color'
 

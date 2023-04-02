@@ -1,8 +1,6 @@
 import { Box, Typography } from '@mui/material'
-import { NextPage } from 'next'
 import Image from 'next/image'
 import { Layout } from 'src/components/commons'
-import { Header } from 'src/components/organisms'
 
 export type PartnerRank = 'platinum' | 'gold'
 

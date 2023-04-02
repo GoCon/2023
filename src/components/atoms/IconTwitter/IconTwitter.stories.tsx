@@ -6,6 +6,6 @@ const meta: ComponentMeta<typeof IconTwitter> = {
 }
 export default meta
 
-const Template: ComponentStory<typeof IconTwitter> = args => <IconTwitter />
+const Template: ComponentStory<typeof IconTwitter> = () => <IconTwitter />
 
 export const Default = Template.bind({})

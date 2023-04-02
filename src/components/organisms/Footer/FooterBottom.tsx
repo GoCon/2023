@@ -1,8 +1,9 @@
 import { Box } from '@mui/material'
 import { useSize } from 'src/modules/hooks'
+import { ReactNode } from 'react'
 
 interface FooterBottomProps {
-  children: React.ReactNode
+  children: ReactNode
 }
 
 export const FooterBottom = ({ children }: FooterBottomProps) => {
