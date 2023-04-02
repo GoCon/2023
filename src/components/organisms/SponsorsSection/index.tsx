@@ -1,6 +1,6 @@
 import type { FC } from 'react'
 import { Box, Typography } from '@mui/material'
-import { useTranslation } from 'react-i18next'
+import { Trans, useTranslation } from 'react-i18next'
 import { Colors, confettiColors } from 'src/styles/color'
 import {
   GopherConductor,
@@ -38,9 +38,11 @@ export const SponsorsSection: FC = () => {
       <Typography variant="h2" textAlign={'center'}>
         Sponsors
       </Typography>
-      {/* TODO: This description will be changed as soon as the official wording is fixed. */}
-      <Typography variant="body1" mb={{ md: 5, xs: 2 }}>
-        {t('sponsors_description')}
+      <Typography
+        variant="body1"
+        sx={{ mb: { md: 5, xs: 2 }, textAlign: 'center', wordBreak: 'keep-all', overflowWrap: 'break-word' }}
+      >
+        <Trans t={t} i18nKey="sponsors_application_closed" />
       </Typography>
       {/* NOTE: Hide SponsorsCard until the top level sponsors has fixed.
       <Box gap={3} mb={5} display={'flex'} flexDirection={'column'} width={'100%'} alignItems={'center'}>
