@@ -1,4 +1,3 @@
-import React from 'react'
 import { Typography, Box } from '@mui/material'
 import { useRouter } from 'next/router'
 import { HeaderItemColor, HeaderMenuItem, HeaderItemBehaviorStyles } from 'src/components/organisms/Header'
