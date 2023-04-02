@@ -1,7 +1,5 @@
 import type { FC } from 'react'
-import Link from 'next/link'
 import { Box, Typography } from '@mui/material'
-import { Button } from 'src/components/atoms'
 import { useTranslation } from 'react-i18next'
 import { Colors, confettiColors } from 'src/styles/color'
 import {
@@ -60,11 +58,6 @@ export const SponsorsSection: FC = () => {
             <Image src={GopherPomPom} alt="gopher pom pom" />
           </Box>
         )}
-        <Link href="https://drive.google.com/file/d/1wwFeJk0rT0SydwDi2wx4wVVAD6psDUrL/view?usp=share_link">
-          <a target="_blank">
-            <Button text={t('consider_a_sponsor')} />
-          </a>
-        </Link>
         {isTabletOrOver && (
           <Box display="flex" alignItems="flex-end" gap={0.5}>
             <Image src={GopherFlowerBlue} alt="gopher flower blue" />
