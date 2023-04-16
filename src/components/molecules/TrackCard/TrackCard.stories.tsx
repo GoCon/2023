@@ -20,7 +20,7 @@ Default.args = {
   id: 'A1-1',
   title: faker.lorem.paragraph(),
   minute: 20,
-  speaker: 'Jon Doe',
+  speaker: faker.name.fullName(),
   speakerIcon: faker.image.avatar()
 }
 
@@ -29,7 +29,7 @@ Colored.args = {
   id: 'A1-1',
   title: faker.lorem.paragraph(),
   minute: 20,
-  speaker: 'Jon Doe',
+  speaker: faker.name.fullName(),
   speakerIcon: faker.image.avatar(),
   color: Colors.background.secondary_green,
   idColor: Colors.background.primary_green
