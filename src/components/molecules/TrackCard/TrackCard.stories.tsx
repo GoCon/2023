@@ -24,8 +24,8 @@ Default.args = {
   speakerIcon: faker.image.avatar()
 }
 
-export const Colored = Template.bind({})
-Colored.args = {
+export const Green = Template.bind({})
+Green.args = {
   id: 'A1-1',
   title: faker.lorem.paragraph(),
   minute: 20,
@@ -33,15 +33,4 @@ Colored.args = {
   speakerIcon: faker.image.avatar(),
   color: Colors.background.secondary_green,
   idColor: Colors.background.primary_green
-}
-
-export const TitleOnly = Template.bind({})
-TitleOnly.args = {
-  title: 'opening'
-}
-
-export const FullWidth = Template.bind({})
-FullWidth.args = {
-  title: 'lunch time',
-  fullWidth: true
 }
