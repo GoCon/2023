@@ -26,7 +26,8 @@ export const TrackCard = ({
       sx={{
         backgroundColor: color,
         padding: '16px',
-        borderRadius: '4px'
+        borderRadius: '4px',
+        width: '100%'
       }}
     >
       <Box
