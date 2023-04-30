@@ -14,7 +14,6 @@ const getLayoutValuesByPlanType = (
   planType: Props['planType']
 ): {
   heading: string
-  gridWidth: string
   columns: number
   columnWidth: {
     xs: number
@@ -25,28 +24,24 @@ const getLayoutValuesByPlanType = (
     case 'platinumGold':
       return {
         heading: 'Platinum "Go"ld',
-        gridWidth: '100%',
         columns: 12,
         columnWidth: { xs: 12, md: 6 }
       }
     case 'gold':
       return {
         heading: '"Go"ld',
-        gridWidth: '80%',
         columns: 12,
         columnWidth: { xs: 12, md: 6 }
       }
     case 'silver':
       return {
         heading: 'Silver',
-        gridWidth: '100%',
         columns: 12,
         columnWidth: { xs: 6, md: 4 }
       }
     case 'bronze':
       return {
         heading: 'Bronze',
-        gridWidth: '100%',
         columns: 15,
         columnWidth: { xs: 5, md: 3 }
       }
@@ -68,7 +63,6 @@ const getLayoutValuesByPlanType = (
 export const SponsorsCard: FC<Props> = ({ planType, sponsors }) => {
   const {
     heading,
-    gridWidth,
     columns,
     columnWidth: { xs, md }
   } = getLayoutValuesByPlanType(planType)
@@ -78,7 +72,7 @@ export const SponsorsCard: FC<Props> = ({ planType, sponsors }) => {
       <Typography variant="h3" align="center" mb={3}>
         {heading}
       </Typography>
-      <Grid container spacing={{ xs: 1, md: 3 }} mx={'auto'} width={gridWidth} columns={columns}>
+      <Grid container spacing={{ xs: 1, md: 3 }} mx={'auto'} columns={columns}>
         {sponsors.map(({ id, name, logo }) => {
           return (
             <Grid xs={xs} md={md} key={`${planType}-${id}-${name}`}>
