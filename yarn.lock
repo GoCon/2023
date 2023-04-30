@@ -3032,10 +3032,10 @@
   resolved "https://registry.yarnpkg.com/@types/node/-/node-18.8.0.tgz#b8ee8d83a99470c0661bd899417fcd77060682fe"
   integrity sha512-u+h43R6U8xXDt2vzUaVP3VwjjLyOJk6uEciZS8OSyziUQGOwmk+l+4drxcsDboHXwyTaqS1INebghmWMRxq3LA==
 
-"@types/node@18.7.13":
-  version "18.7.13"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-18.7.13.tgz#23e6c5168333480d454243378b69e861ab5c011a"
-  integrity sha512-46yIhxSe5xEaJZXWdIBP7GU4HDTG8/eo0qd9atdiL+lFpA03y8KS+lkTN834TWJj5767GbWv4n/P6efyTFt1Dw==
+"@types/node@18.16.3":
+  version "18.16.3"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-18.16.3.tgz#6bda7819aae6ea0b386ebc5b24bdf602f1b42b01"
+  integrity sha512-OPs5WnnT1xkCBiuQrZA4+YAV4HEJejmHneyraIaxsbev5yCEr6KMwINNFP9wQeFIw8FWcoTqF3vQsa5CDaI+8Q==
 
 "@types/node@^14.0.10 || ^16.0.0", "@types/node@^14.14.20 || ^16.0.0":
   version "16.11.63"
