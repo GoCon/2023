@@ -75,14 +75,14 @@ const bronzeSponsors: SponsorInfo[] = [
   // { id: 43, name: '株式会社ディー・エヌ・エー', logo: 'sponsors/bronze/43_dena.png' },
   { id: 44, name: '株式会社モリサワ', logo: 'sponsors/bronze/44_morisawa.png' },
   // { id: 45, name: '株式会社フクロウラボ', logo: 'sponsors/bronze/45_fukurou_labo.png' },
-  { id: 0, name: '合同会社ザウエル', logo: 'sponsors/bronze/46_zauel.png' },
-  { id: 0, name: '株式会社Showcase Gig', logo: 'sponsors/bronze/47_showcase_gig.jpg' },
+  { id: 46, name: '合同会社ザウエル', logo: 'sponsors/bronze/46_zauel.png' },
+  { id: 47, name: '株式会社Showcase Gig', logo: 'sponsors/bronze/47_showcase_gig.jpg' },
   // { id: 48, name: 'STORES 株式会社', logo: 'sponsors/bronze/48_stores.png' },
-  { id: 0, name: '株式会社トレタ', logo: 'sponsors/bronze/49_toreta.png' },
-  { id: 0, name: '株式会社MIXI', logo: 'sponsors/bronze/50_mixi.png' },
-  { id: 0, name: 'freee株式会社', logo: 'sponsors/bronze/51_freee.png' },
-  { id: 0, name: 'and factory株式会社', logo: 'sponsors/bronze/52_and_factory.png' },
-  { id: 0, name: '株式会社muneee', logo: 'sponsors/bronze/53_muneee.png' }
+  { id: 49, name: '株式会社トレタ', logo: 'sponsors/bronze/49_toreta.png' },
+  { id: 50, name: '株式会社MIXI', logo: 'sponsors/bronze/50_mixi.png' },
+  { id: 51, name: 'freee株式会社', logo: 'sponsors/bronze/51_freee.png' },
+  { id: 52, name: 'and factory株式会社', logo: 'sponsors/bronze/52_and_factory.png' },
+  { id: 53, name: '株式会社muneee', logo: 'sponsors/bronze/53_muneee.png' }
 ]
 
 /**
