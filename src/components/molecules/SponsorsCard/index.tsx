@@ -1,12 +1,13 @@
 import Grid from '@mui/material/Unstable_Grid2'
-import Image, { StaticImageData } from 'next/image'
+import Image from 'next/image'
 import { FC } from 'react'
 import { Colors } from 'src/styles/color'
 import { Box, Typography } from '@mui/material'
+import { SponsorInfo } from 'src/modules/sponsors'
 
 type Props = {
   planType: 'platinumGold' | 'gold' | 'silver' | 'bronze'
-  logoImages: { image: StaticImageData; alt: string }[]
+  sponsors: SponsorInfo[]
 }
 
 const getLayoutValuesByPlanType = (
@@ -61,10 +62,10 @@ const getLayoutValuesByPlanType = (
  *  `gold`
  *  `silver`
  *  `bronze`
- * @param logoImages - list for set of StaticImageData and alt string.
+ * @param sponsors - list of sponsor's information (uses `id` as `key`, `name` as `alt`, and `logo` as `src`).
  * @returns
  */
-export const SponsorsCard: FC<Props> = ({ planType, logoImages }) => {
+export const SponsorsCard: FC<Props> = ({ planType, sponsors }) => {
   const {
     heading,
     gridWidth,
@@ -78,10 +79,10 @@ export const SponsorsCard: FC<Props> = ({ planType, logoImages }) => {
         {heading}
       </Typography>
       <Grid container spacing={{ xs: 1, md: 3 }} mx={'auto'} width={gridWidth} columns={columns}>
-        {logoImages.map(({ image, alt }, index) => {
+        {sponsors.map(({ id, name, logo }) => {
           return (
-            <Grid xs={xs} md={md} key={`${image}${alt}${index}`}>
-              <Image src={image} layout="responsive" alt={alt} quality={100} />
+            <Grid xs={xs} md={md} key={id}>
+              <Image src={logo} alt={name} quality={100} width="640px" height="360px" objectFit="contain" />
             </Grid>
           )
         })}
