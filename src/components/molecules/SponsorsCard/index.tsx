@@ -81,7 +81,7 @@ export const SponsorsCard: FC<Props> = ({ planType, sponsors }) => {
       <Grid container spacing={{ xs: 1, md: 3 }} mx={'auto'} width={gridWidth} columns={columns}>
         {sponsors.map(({ id, name, logo }) => {
           return (
-            <Grid xs={xs} md={md} key={id}>
+            <Grid xs={xs} md={md} key={`${planType}-${id}-${name}`}>
               <Image src={logo} alt={name} quality={100} width="640px" height="360px" objectFit="contain" />
             </Grid>
           )
