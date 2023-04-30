@@ -1,6 +1,5 @@
 import type { FC } from 'react'
 import { Box, Typography } from '@mui/material'
-import { Trans, useTranslation } from 'react-i18next'
 import { Colors, confettiColors } from 'src/styles/color'
 import {
   GopherConductor,
@@ -14,9 +13,10 @@ import {
 import Image from 'next/image'
 import { useSize } from 'src/modules/hooks'
 import { useReward } from 'react-rewards'
+import { sponsors } from 'src/modules/sponsors'
+import { SponsorsCard } from 'src/components/molecules/SponsorsCard'
 
 export const SponsorsSection: FC = () => {
-  const { t } = useTranslation()
   const { isTabletOrOver } = useSize()
   const { reward } = useReward('confettiGopherPopper', 'confetti', {
     angle: 135,
@@ -24,6 +24,7 @@ export const SponsorsSection: FC = () => {
     position: 'absolute',
     startVelocity: 20
   })
+  const { gold, silver, bronze } = sponsors
 
   return (
     <Box
@@ -38,19 +39,13 @@ export const SponsorsSection: FC = () => {
       <Typography variant="h2" textAlign={'center'}>
         Sponsors
       </Typography>
-      <Typography
-        variant="body1"
-        sx={{ mb: { md: 5, xs: 2 }, textAlign: 'center', wordBreak: 'keep-all', overflowWrap: 'break-word' }}
-      >
-        <Trans t={t} i18nKey="sponsors_application_closed" />
-      </Typography>
-      {/* NOTE: Hide SponsorsCard until the top level sponsors has fixed.
       <Box gap={3} mb={5} display={'flex'} flexDirection={'column'} width={'100%'} alignItems={'center'}>
-        <SponsorsCard planType="platinumGold" logoImages={[]} />
-        <SponsorsCard planType="gold" logoImages={[]} />
-        <SponsorsCard planType="silver" logoImages={[]}/>
-        <SponsorsCard planType="bronze" logoImages={[]}/>
-      </Box> */}
+        {/* NOTE: Hide SponsorsCard until the top level sponsors has fixed. */}
+        {/* <SponsorsCard planType="platinumGold" sponsors={platinum} /> */}
+        <SponsorsCard planType="gold" sponsors={gold} />
+        <SponsorsCard planType="silver" sponsors={silver} />
+        <SponsorsCard planType="bronze" sponsors={bronze} />
+      </Box>
       <Box display="flex" alignItems="flex-end" justifyContent="flex-end" gap={0.5}>
         <Image src={GopherConductor} alt="gopher conductor" />
         <Image src={GopherDrummer} alt="gopher drummer" />
