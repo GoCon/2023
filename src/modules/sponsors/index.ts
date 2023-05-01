@@ -72,7 +72,7 @@ const silverSponsors: SponsorInfo[] = [
 const bronzeSponsors: SponsorInfo[] = [
   { id: 41, name: 'テイラー株式会社', logo: 'sponsors/bronze/41_tailor.png' },
   { id: 42, name: '株式会社カオナビ', logo: 'sponsors/bronze/42_kaonavi.png' },
-  // { id: 43, name: '株式会社ディー・エヌ・エー', logo: 'sponsors/bronze/43_dena.png' },
+  { id: 43, name: '株式会社ディー・エヌ・エー', logo: 'sponsors/bronze/43_dena.png' },
   { id: 44, name: '株式会社モリサワ', logo: 'sponsors/bronze/44_morisawa.png' },
   // { id: 45, name: '株式会社フクロウラボ', logo: 'sponsors/bronze/45_fukurou_labo.png' },
   { id: 46, name: '合同会社ザウエル', logo: 'sponsors/bronze/46_zauel.png' },
