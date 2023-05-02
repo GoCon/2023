@@ -1,6 +1,6 @@
 import type { ComponentMeta, ComponentStory } from '@storybook/react'
 import { SponsorsCard } from '.'
-import SponsorsLogoSample from 'src/components/molecules/SponsorsCard/images/SponsorsLogoSample.png'
+import { sponsors } from 'src/modules/sponsors'
 
 const meta: ComponentMeta<typeof SponsorsCard> = {
   component: SponsorsCard
@@ -8,11 +8,6 @@ const meta: ComponentMeta<typeof SponsorsCard> = {
 export default meta
 
 const Template: ComponentStory<typeof SponsorsCard> = args => <SponsorsCard {...args} />
-
-const sampleLogo = {
-  image: SponsorsLogoSample,
-  alt: 'Logo Sample'
-}
 
 export const PlatinumGold = Template.bind({})
 PlatinumGold.parameters = {
@@ -22,7 +17,10 @@ PlatinumGold.parameters = {
 }
 PlatinumGold.args = {
   planType: 'platinumGold',
-  logoImages: [sampleLogo, sampleLogo]
+  sponsors: [
+    { id: 1, name: 'sample', logo: 'sponsors/00_sample.png' },
+    { id: 2, name: 'sample', logo: 'sponsors/00_sample.png' }
+  ]
 }
 
 export const Gold = Template.bind({})
@@ -33,7 +31,7 @@ Gold.parameters = {
 }
 Gold.args = {
   planType: 'gold',
-  logoImages: [sampleLogo, sampleLogo]
+  sponsors: sponsors.gold
 }
 
 export const Silver = Template.bind({})
@@ -44,7 +42,7 @@ Silver.parameters = {
 }
 Silver.args = {
   planType: 'silver',
-  logoImages: [sampleLogo, sampleLogo, sampleLogo, sampleLogo, sampleLogo, sampleLogo]
+  sponsors: sponsors.silver
 }
 
 export const Bronze = Template.bind({})
@@ -55,21 +53,5 @@ Bronze.parameters = {
 }
 Bronze.args = {
   planType: 'bronze',
-  logoImages: [
-    sampleLogo,
-    sampleLogo,
-    sampleLogo,
-    sampleLogo,
-    sampleLogo,
-    sampleLogo,
-    sampleLogo,
-    sampleLogo,
-    sampleLogo,
-    sampleLogo,
-    sampleLogo,
-    sampleLogo,
-    sampleLogo,
-    sampleLogo,
-    sampleLogo
-  ]
+  sponsors: sponsors.bronze
 }

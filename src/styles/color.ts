@@ -24,7 +24,13 @@ export const Colors = {
     secondary: '#F7F9FB',
     gopher_blue: '#00ADD8',
     gradation_blue: 'linear-gradient(180deg, #4E96E9 19.27%, rgba(77, 148, 230, 0) 88.54%)',
-    darken_1: 'rgba(0,0,0,0.125)'
+    darken_1: 'rgba(0,0,0,0.125)',
+    // NOTE(@maito1201): primary_blue is brand_color
+    primary_pink: '#EF5DA8',
+    primary_green: '#61B236',
+    secondary_pink: '#F8D9E8',
+    secondary_green: '#D9EBD4',
+    secondary_blue: '#D5E5F7'
   },
   border: {
     primary: {
