@@ -1,5 +1,4 @@
 import type { FC } from 'react'
-import Link from 'next/link'
 import { Box, Typography } from '@mui/material'
 import { Button } from 'src/components/atoms'
 import { useTranslation } from 'react-i18next'
@@ -20,11 +19,9 @@ export const SpeakersSection: FC = () => {
       <Box mb={1}>
         <Typography variant="body2">{t('application_result_will_be_noticed')}</Typography>
       </Box>
-      <Link href="https://sessionize.com/go-conference-2023-online/">
-        <a target="_blank">
-          <Button text={t('check_cfp')} />
-        </a>
-      </Link>
+      <a href="https://sessionize.com/go-conference-2023-online/" target="_blank">
+        <Button text={t('check_cfp')} />
+      </a>
     </Box>
   )
 }
