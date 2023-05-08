@@ -1,21 +1,19 @@
-import { GetStaticPaths, GetStaticProps } from 'next'
+import { GetStaticPaths, GetStaticProps, NextPage } from 'next'
 import { PagePartner } from 'src/components/pages/PagePartner'
-import { sponsors } from 'src/modules/sponsors'
+import { type SponsorInfo, sponsors } from 'src/modules/sponsors'
 
-type PageProps = {
+type Props = Omit<SponsorInfo, 'id'>
+
+type PathParams = {
   id: string
-  name: string
-  description: string
   rank: 'platinum' | 'gold'
 }
 
-export const PartnerPage = (props: PageProps) => {
+export const PartnerPage: NextPage<Props> = props => {
   return <PagePartner {...props} />
 }
 
-type PathProps = Pick<PageProps, 'id' | 'rank'>
-
-export const getStaticPaths: GetStaticPaths<PathProps> = async () => {
+export const getStaticPaths: GetStaticPaths<PathParams> = async () => {
   const { platinum, gold } = sponsors
   const platinumSponsorsParams = platinum.map(({ id }) => ({
     params: { rank: 'platinum' as const, id: id.toString() }
@@ -33,7 +31,7 @@ export const getStaticPaths: GetStaticPaths<PathProps> = async () => {
 /**
  * partners.json から path params に対応した情報の抜き出し page の props として返す
  */
-export const getStaticProps: GetStaticProps<PageProps> = async ({ params }) => {
+export const getStaticProps: GetStaticProps<Props> = async ({ params }) => {
   if (!params || !params.rank) {
     throw new Error(`rank is required : ${params}`)
   }
@@ -51,10 +49,10 @@ export const getStaticProps: GetStaticProps<PageProps> = async ({ params }) => {
     throw new Error(`Sponsor's information did not found.`)
   }
 
-  const { name, description = '' } = matchedSponsor
+  const { name, logo, description } = matchedSponsor
 
   return {
-    props: { id, name, rank, description }
+    props: { name, logo, description }
   }
 }
 
