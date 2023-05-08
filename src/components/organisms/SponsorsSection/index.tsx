@@ -24,7 +24,7 @@ export const SponsorsSection: FC = () => {
     position: 'absolute',
     startVelocity: 20
   })
-  const { gold, silver, bronze } = sponsors
+  const { platinum, gold, silver, bronze } = sponsors
 
   return (
     <Box
@@ -40,8 +40,7 @@ export const SponsorsSection: FC = () => {
         Sponsors
       </Typography>
       <Box gap={3} mb={5} display={'flex'} flexDirection={'column'} width={'100%'} alignItems={'center'}>
-        {/* NOTE: Hide SponsorsCard until the top level sponsors has fixed. */}
-        {/* <SponsorsCard planType="platinumGold" sponsors={platinum} /> */}
+        <SponsorsCard planType="platinumGold" sponsors={platinum} />
         <SponsorsCard planType="gold" sponsors={gold} />
         <SponsorsCard planType="silver" sponsors={silver} />
         <SponsorsCard planType="bronze" sponsors={bronze} />
