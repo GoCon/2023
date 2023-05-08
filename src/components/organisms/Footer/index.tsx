@@ -3,7 +3,7 @@ import { Colors } from 'src/styles/color'
 import { Trans, useTranslation } from 'react-i18next'
 import { useSize } from 'src/modules/hooks'
 import { FooterBottom } from 'src/components/organisms/Footer/FooterBottom'
-import { IconTwitter, Link } from 'src/components/atoms'
+import { IconTwitter } from 'src/components/atoms'
 
 export const footerHeight = 60
 
@@ -54,24 +54,24 @@ export const Footer = () => {
                 gap: '8px'
               }}
             >
-              <Link href="https://go.dev/conduct" target="_blank">
+              <a href="https://go.dev/conduct" target="_blank">
                 <Typography variant="body2" sx={{ color: Colors.text.default }}>
                   Code of Conduct
                 </Typography>
-              </Link>
-              <Link href="mailto:info@gocon.jp" target="_blank">
+              </a>
+              <a href="mailto:info@gocon.jp" target="_blank">
                 <Typography variant="body2" sx={{ color: Colors.text.default }}>
                   INFO@GOCON.JP
                 </Typography>
-              </Link>
-              <Link
-                href="https://drive.google.com/file/d/1Xon1uyLT-810sxnkLMngmL67z68K3XJG/view?usp=share_link"
+              </a>
+              <a
+                href="https://drive.google.com/file/d/1Xon1uyLT-810sxnkLMngmL67z68K3XJG/view?usp=share_a"
                 target="_blank"
               >
                 <Typography variant="body2" sx={{ color: Colors.text.default }}>
                   {t('act_on_specified_commercial_transactions')}
                 </Typography>
-              </Link>
+              </a>
             </Box>
           </Box>
           <Box
@@ -103,7 +103,7 @@ export const Footer = () => {
                 ['2021 Autumn', 'https://gocon.jp/2021autumn/'],
                 ['2021 Spring', 'https://gocon.jp/2021spring/']
               ].map(([label, href]) => (
-                <Link href={href} key={label} target="_blank">
+                <a href={href} key={label} target="_blank">
                   <Typography
                     variant="body2"
                     key={label}
@@ -113,7 +113,7 @@ export const Footer = () => {
                   >
                     {label}
                   </Typography>
-                </Link>
+                </a>
               ))}
             </Box>
           </Box>
@@ -152,7 +152,7 @@ export const Footer = () => {
           >
             <IconTwitter />
           </Box>
-          <Link href="https://twitter.com/hashtag/gocon" target="_blank">
+          <a href="https://twitter.com/hashtag/gocon" target="_blank">
             <Typography
               variant="body2"
               sx={{
@@ -161,7 +161,7 @@ export const Footer = () => {
             >
               #GOCON
             </Typography>
-          </Link>
+          </a>
         </Box>
         <Box
           sx={
@@ -190,13 +190,13 @@ export const Footer = () => {
           <Typography variant="caption">
             <Trans t={t} i18nKey="gopher_copyright">
               the_gopher_was_desigined_by
-              <Link href="http://reneefrench.blogspot.com/" target="_blank">
+              <a href="http://reneefrench.blogspot.com/" target="_blank">
                 author
-              </Link>
+              </a>
               illustrations_by
-              <Link href="https://twitter.com/tottie_designer" target="_blank">
+              <a href="https://twitter.com/tottie_designer" target="_blank">
                 author
-              </Link>
+              </a>
               .
             </Trans>
           </Typography>

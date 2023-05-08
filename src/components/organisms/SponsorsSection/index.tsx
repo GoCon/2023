@@ -46,12 +46,12 @@ export const SponsorsSection: FC = () => {
         <SponsorsCard planType="silver" sponsors={silver} />
         <SponsorsCard planType="bronze" sponsors={bronze} />
       </Box>
-      <Box display="flex" alignItems="flex-end" justifyContent="flex-end" gap={0.5}>
-        <Image src={GopherConductor} alt="gopher conductor" />
-        <Image src={GopherDrummer} alt="gopher drummer" />
-        <Image src={GopherTrumpeter} alt="gopher trumpeter" />
-        <Image src={GopherPomPom} alt="gopher pom pom" />
-        <Image src={GopherFlowerBlue} alt="gopher flower blue" />
+      <Box display="flex" alignItems="flex-end" justifyContent="center" gap={0.5} width="100%">
+        <Image src={GopherConductor} alt="gopher conductor" style={{ minWidth: 0, objectFit: 'contain' }} />
+        <Image src={GopherDrummer} alt="gopher drummer" style={{ minWidth: 0, objectFit: 'contain' }} />
+        <Image src={GopherTrumpeter} alt="gopher trumpeter" style={{ minWidth: 0, objectFit: 'contain' }} />
+        <Image src={GopherPomPom} alt="gopher pom pom" style={{ minWidth: 0, objectFit: 'contain' }} />
+        <Image src={GopherFlowerBlue} alt="gopher flower blue" style={{ minWidth: 0, objectFit: 'contain' }} />
         {isTabletOrOver && (
           <>
             <Image src={GopherFlowerPink} alt="gopher flower pink" />

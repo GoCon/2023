@@ -1,5 +1,4 @@
 import type { FC } from 'react'
-import Link from 'next/link'
 import { Box, Typography } from '@mui/material'
 import { Button } from 'src/components/atoms'
 import { useTranslation } from 'react-i18next'
@@ -24,11 +23,9 @@ export const CommunityBoothSection: FC = () => {
       <Typography variant="body1" mb={{ md: 5, xs: 2 }}>
         {t('community_booth_description')}
       </Typography>
-      <Link href="https://drive.google.com/file/d/1QUr1BWF7Mu1vU40UieBcvkMf5B-tAf91/view?usp=share_link">
-        <a target="_blank">
-          <Button text={t('consider_a_community_booth')} />
-        </a>
-      </Link>
+      <a href="https://drive.google.com/file/d/1QUr1BWF7Mu1vU40UieBcvkMf5B-tAf91/view?usp=share_link" target="_blank">
+        <Button text={t('consider_a_community_booth')} />
+      </a>
     </Box>
   )
 }

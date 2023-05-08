@@ -66,7 +66,17 @@ export const MainVisual = () => {
       >
         <Box id="confettiTopLeft" sx={{ position: 'absolute', left: '32px' }} />
         <Box sx={{ maxWidth: '1440px', margin: '0 auto' }}>
-          <Image src={keyVisualWithText} alt="Go Conference 2023 Online at Friday, June Second" quality={100} />
+          <Image
+            src={keyVisualWithText}
+            alt="Go Conference 2023 Online at Friday, June Second"
+            style={{
+              width: '100%',
+              height: 'auto',
+              objectFit: 'contain'
+            }}
+            quality={100}
+            priority
+          />
         </Box>
         <Box id="confettiTopRight" sx={{ position: 'absolute', right: '32px' }} />
       </Box>
