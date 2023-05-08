@@ -72,7 +72,7 @@ export const SponsorsCard: FC<Props> = ({ planType, sponsors }) => {
       <Typography variant="h3" align="center" mb={3}>
         {heading}
       </Typography>
-      <Grid container spacing={{ xs: 1, md: 3 }} mx={'auto'} columns={columns}>
+      <Grid container spacing={{ xs: 1, md: 3 }} mx={'auto'} columns={columns} justifyContent="center">
         {sponsors.map(({ id, name, logo }) => {
           return (
             <Grid xs={xs} md={md} key={`${planType}-${id}-${name}`}>
