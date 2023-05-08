@@ -1,15 +1,12 @@
 import { GetStaticPaths, GetStaticProps } from 'next'
 import { PagePartner } from 'src/components/pages/PagePartner'
-
-import partners from 'data/partners.json'
-
-export type Rank = keyof typeof partners
+import { sponsors } from 'src/modules/sponsors'
 
 type PageProps = {
   id: string
   name: string
   description: string
-  rank: Extract<Rank, 'platinum' | 'gold'>
+  rank: 'platinum' | 'gold'
 }
 
 export const PartnerPage = (props: PageProps) => {
@@ -19,11 +16,16 @@ export const PartnerPage = (props: PageProps) => {
 type PathProps = Pick<PageProps, 'id' | 'rank'>
 
 export const getStaticPaths: GetStaticPaths<PathProps> = async () => {
-  const platinumPartners = partners.platinum.map(p => ({ params: { rank: 'platinum' as const, id: p.id } }))
-  const goldPartners = partners.gold.map(p => ({ params: { rank: 'gold' as const, id: p.id } }))
+  const { platinum, gold } = sponsors
+  const platinumSponsorsParams = platinum.map(({ id }) => ({
+    params: { rank: 'platinum' as const, id: id.toString() }
+  }))
+  const goldSponsorsParams = gold.map(({ id }) => ({
+    params: { rank: 'gold' as const, id: id.toString() }
+  }))
 
   return {
-    paths: [...platinumPartners, ...goldPartners],
+    paths: [...platinumSponsorsParams, ...goldSponsorsParams],
     fallback: false
   }
 }
@@ -32,16 +34,24 @@ export const getStaticPaths: GetStaticPaths<PathProps> = async () => {
  * partners.json から path params に対応した情報の抜き出し page の props として返す
  */
 export const getStaticProps: GetStaticProps<PageProps> = async ({ params }) => {
-  const rank = params?.rank as Rank | undefined
-  if (!rank) throw new Error(`rank is required : ${params}`)
-  if (rank !== 'platinum' && rank !== 'gold') throw new Error('invalid rank')
+  if (!params || !params.rank) {
+    throw new Error(`rank is required : ${params}`)
+  }
+  if (params.rank !== 'platinum' && params.rank !== 'gold') {
+    throw new Error('invalid rank')
+  }
+  if (!params.id || typeof params.id !== 'string') {
+    throw new Error(`id is required : ${params}`)
+  }
 
-  const id = params?.id as string | undefined
-  if (!id) throw new Error(`id is required : ${params}`)
+  const { rank, id } = params
 
-  const { name, description } = partners[rank].find(p => p.id === id) ?? {}
-  if (!name) throw new Error(`name is required : ${params}`)
-  if (!description) throw new Error(`description is required : ${params}`)
+  const matchedSponsor = sponsors[rank].find(sponsor => sponsor.id.toString() === id)
+  if (!matchedSponsor) {
+    throw new Error(`Sponsor's information did not found.`)
+  }
+
+  const { name, description = '' } = matchedSponsor
 
   return {
     props: { id, name, rank, description }
