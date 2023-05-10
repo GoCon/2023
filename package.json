@@ -28,7 +28,7 @@
     "zod": "3.21.4"
   },
   "devDependencies": {
-    "@babel/core": "7.19.3",
+    "@babel/core": "7.21.5",
     "@faker-js/faker": "7.6.0",
     "@storybook/addon-actions": "6.5.12",
     "@storybook/addon-essentials": "6.5.12",
