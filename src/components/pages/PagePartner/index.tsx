@@ -1,25 +1,28 @@
-import { Box, Typography } from '@mui/material'
+import { Typography } from '@mui/material'
 import { NextPage } from 'next'
 import Image from 'next/image'
 import { Layout } from 'src/components/commons'
 import { type SponsorInfo } from 'src/modules/sponsors'
+import Grid from '@mui/material/Unstable_Grid2'
 
 type Props = Omit<SponsorInfo, 'id'>
 
 export const PagePartner: NextPage<Props> = ({ name, logo, description }) => {
   return (
     <Layout>
-      <Box sx={{ mx: '160px' }} display="flex" flexDirection="column">
-        <Box sx={{ mt: '120px', py: '24px' }} display="flex">
-          <Image src={logo} width={200} height={120} alt={name} />
-          <Typography variant="h1" sx={{ ml: '24px', width: '100%', textAlign: 'center', alignContent: 'center' }}>
+      <Grid container spacing={4} sx={{ maxWidth: '1024px', m: '128px auto 0', px: '16px' }}>
+        <Grid xs={12} md={4} sx={{ position: 'relative', aspectRatio: '16/9' }}>
+          <Image src={logo} fill alt={name} style={{ objectFit: 'contain' }} />
+        </Grid>
+        <Grid xs={12} md={8} sx={{ display: 'flex', alignItems: 'center' }}>
+          <Typography variant="h2" sx={{ textAlign: 'center', mb: 0 }}>
             {name}
           </Typography>
-        </Box>
-        <Box>
+        </Grid>
+        <Grid>
           <Typography variant="body1">{description}</Typography>
-        </Box>
-      </Box>
+        </Grid>
+      </Grid>
     </Layout>
   )
 }
