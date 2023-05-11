@@ -8,6 +8,7 @@ import { HeaderMenu } from 'src/components/molecules/HeaderMenu'
 import { ModalHeaderMenu } from 'src/components/modals/ModalHeaderMenu'
 import { handleChangeLanguage } from 'src/i18n/util'
 import { useTranslation } from 'react-i18next'
+import Link from 'next/link'
 
 export interface HeaderItemColor {
   default: string
@@ -86,16 +87,18 @@ export const Header = () => {
       <Toolbar disableGutters>
         {isLogoDisplayed && (
           <Box>
-            <Logo
-              sx={{
-                width: isPCOrOver ? '233px' : '140px',
-                height: isPCOrOver ? '40px' : '24px',
-                color: headerItemColor.default,
-                marginLeft: '12px',
-                borderRadius: '8px',
-                ...headerItemBehaviorStyles
-              }}
-            />
+            <Link href="/">
+              <Logo
+                sx={{
+                  width: isPCOrOver ? '233px' : '140px',
+                  height: isPCOrOver ? '40px' : '24px',
+                  color: headerItemColor.default,
+                  marginLeft: '12px',
+                  borderRadius: '8px',
+                  ...headerItemBehaviorStyles
+                }}
+              />
+            </Link>
           </Box>
         )}
         {isPCOrOver ? (
