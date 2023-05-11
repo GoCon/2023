@@ -5,17 +5,41 @@ export type SponsorInfo = {
   id: number // the order of display that is determined by lottery.
   name: string // company name, also as an "alt" for next/image.
   logo: string // path to the logo image.
-  description?: string // this used to each sponsor's introduction page.
+  description?: string // this is only used for the Platinum "Go"ld and the "Go"ld sponsor's introduction pages.
 }
 
 const platinumSponsors: SponsorInfo[] = [
-  { id: 1, name: 'GO株式会社', logo: 'sponsors/platinum/01_go.png' },
-  { id: 2, name: '株式会社カンム', logo: 'sponsors/platinum/02_kanmu.png' }
+  {
+    id: 1,
+    name: 'GO株式会社',
+    logo: 'sponsors/platinum/01_go.png',
+    description:
+      'GO株式会社（旧： 株式会社Mobility Technologies）は、JapanTaxi株式会社と、株式会社ディー・エヌ・エーのタクシーアプリ事業などが統合して2020年に誕生しました。「移動で人を幸せに。」をミッションに、交通課題・社会課題の解決を実現するべく、タクシーアプリ『GO』を展開しています。今後も業界において圧倒的なシェアを有する『GO』のさらなる発展のみならず、人材不足や車両のEV化等タクシー業界全体の社会課題解決、またタクシー以外のモビリティ領域でのソリューション提供を推進していきます。'
+  },
+  {
+    id: 2,
+    name: '株式会社カンム',
+    logo: 'sponsors/platinum/02_kanmu.png',
+    description:
+      '世界には金融サービスを利用することができないというunbanked層が存在します。 日本ではunbanked層は少ないのですが、面倒、難しい、怖い、不安という気持ちから 様々な金融サービスから距離をとっている心理的unbanked層が多いと感じています。 そんな心理的unbankedを解決するソフトウェアを開発します。'
+  }
 ]
 
 const goldSponsors: SponsorInfo[] = [
-  { id: 3, name: 'MODE, Inc.', logo: 'sponsors/gold/03_mode.jpg' },
-  { id: 4, name: 'BASE株式会社', logo: 'sponsors/gold/04_base.jpg' }
+  {
+    id: 3,
+    name: 'MODE, Inc.',
+    logo: 'sponsors/gold/03_mode.jpg',
+    description:
+      'MODEは、B2B向けのIoTプラットフォームを提供しており、シリコンバレーと東京の2拠点で開発を進めています。従来の個別のIoTソリューションと違い、エッジコンピューティング・データ基盤・BIツールまで至る、現実世界とクラウドまでの経路を"フルスタック"な技術で提供しています。エッジコンピューティングのためのシステムプログラミングから、クラウドサイドのプラットフォーム設計・開発まであらゆるレイヤーのソフトウェアの技術を要求されるため、大変ながらも刺激的なサービス提供現場と、手前味噌ながら感じています。'
+  },
+  {
+    id: 4,
+    name: 'BASE株式会社',
+    logo: 'sponsors/gold/04_base.jpg',
+    description:
+      'BASE株式会社は「Payment to the People, Power to the People.」をミッションに掲げ、個人やスモールチームに向けて、EC/決済/金融のサービスを展開しています。'
+  }
 ]
 
 const silverSponsors: SponsorInfo[] = [
