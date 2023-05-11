@@ -9,7 +9,7 @@ export type SponsorInfo = {
 }
 
 const platinumSponsors: SponsorInfo[] = [
-  // { id: 1, name: 'GO株式会社', logo: 'sponsors/platinum/01_go.png' },
+  { id: 1, name: 'GO株式会社', logo: 'sponsors/platinum/01_go.png' },
   { id: 2, name: '株式会社カンム', logo: 'sponsors/platinum/02_kanmu.png' }
 ]
 
