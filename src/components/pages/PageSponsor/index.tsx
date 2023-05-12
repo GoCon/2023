@@ -1,13 +1,13 @@
 import { Typography } from '@mui/material'
-import { NextPage } from 'next'
 import Image from 'next/image'
 import { Layout } from 'src/components/commons'
 import { type SponsorInfo } from 'src/modules/sponsors'
 import Grid from '@mui/material/Unstable_Grid2'
+import { FC } from 'react'
 
 type Props = Omit<SponsorInfo, 'id'>
 
-export const PagePartner: NextPage<Props> = ({ name, logo, description }) => {
+export const PageSponsor: FC<Props> = ({ name, logo, description }) => {
   return (
     <Layout>
       <Grid container spacing={4} sx={{ maxWidth: '1024px', m: '128px auto 0', px: '16px' }}>
