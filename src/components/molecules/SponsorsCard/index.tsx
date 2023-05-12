@@ -72,11 +72,13 @@ export const SponsorsCard: FC<Props> = ({ planType, sponsors }) => {
       <Typography variant="h3" align="center" mb={3}>
         {heading}
       </Typography>
-      <Grid container spacing={{ xs: 1, md: 3 }} mx={'auto'} columns={columns}>
+      <Grid container spacing={{ xs: 1, md: 3 }} mx={'auto'} columns={columns} justifyContent="center">
         {sponsors.map(({ id, name, logo }) => {
           return (
             <Grid xs={xs} md={md} key={`${planType}-${id}-${name}`}>
-              <Image src={logo} alt={name} quality={100} width="640px" height="360px" objectFit="contain" />
+              <Box position="relative" sx={{ aspectRatio: '16/9' }}>
+                <Image src={logo} alt={name} quality={100} fill style={{ objectFit: 'contain' }} />
+              </Box>
             </Grid>
           )
         })}

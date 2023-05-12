@@ -53,29 +53,27 @@ export const ModalHeaderMenu = ({ open, onClose, menuList }: ModalHeaderMenuProp
             {menuList.map((list, i) => {
               return (
                 <Link key={i} href={list.href || router.asPath}>
-                  <a>
-                    <Box
-                      sx={{
-                        cursor: 'pointer',
-                        boxSizing: 'border-box',
-                        color: Colors.text.white,
-                        textDecoration: 'none',
-                        borderBottom: router.pathname === list.href ? '3px solid' : ''
-                      }}
-                    >
-                      {list.onClick ? (
-                        <ButtonBase onClick={list.onClick}>
-                          <Typography variant="body1" color="inherit" sx={{ textAlign: 'left' }}>
-                            {list.label}
-                          </Typography>
-                        </ButtonBase>
-                      ) : (
+                  <Box
+                    sx={{
+                      cursor: 'pointer',
+                      boxSizing: 'border-box',
+                      color: Colors.text.white,
+                      textDecoration: 'none',
+                      borderBottom: router.pathname === list.href ? '3px solid' : ''
+                    }}
+                  >
+                    {list.onClick ? (
+                      <ButtonBase onClick={list.onClick}>
                         <Typography variant="body1" color="inherit" sx={{ textAlign: 'left' }}>
                           {list.label}
                         </Typography>
-                      )}
-                    </Box>
-                  </a>
+                      </ButtonBase>
+                    ) : (
+                      <Typography variant="body1" color="inherit" sx={{ textAlign: 'left' }}>
+                        {list.label}
+                      </Typography>
+                    )}
+                  </Box>
                 </Link>
               )
             })}

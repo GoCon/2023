@@ -49,7 +49,14 @@ export const TrackCard = ({
       </Box>
       <Box display="flex" alignItems="center">
         <Box width="20px" height="20px" borderRadius="50%" overflow="hidden" margin="0 4px 0 0">
-          <Image src={speakerIcon} width={20} height={20} objectFit="contain" alt={`${speaker}'s icon`} quality={100} />
+          <Image
+            src={speakerIcon}
+            width={20}
+            height={20}
+            style={{ objectFit: 'contain' }}
+            alt={`${speaker}'s icon`}
+            quality={100}
+          />
         </Box>
         <Typography variant="caption" fontWeight="bold">
           {speaker}
