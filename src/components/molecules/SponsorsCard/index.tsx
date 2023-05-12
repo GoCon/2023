@@ -6,7 +6,7 @@ import { Box, Typography } from '@mui/material'
 import { SponsorInfo } from 'src/modules/sponsors'
 
 type Props = {
-  planType: 'platinumGold' | 'gold' | 'silver' | 'bronze'
+  planType: 'platinum' | 'gold' | 'silver' | 'bronze'
   sponsors: SponsorInfo[]
 }
 
@@ -21,7 +21,7 @@ const getLayoutValuesByPlanType = (
   }
 } => {
   switch (planType) {
-    case 'platinumGold':
+    case 'platinum':
       return {
         heading: 'Platinum "Go"ld',
         columns: 12,
