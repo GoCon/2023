@@ -40,7 +40,7 @@ export const SponsorsSection: FC = () => {
         Sponsors
       </Typography>
       <Box gap={3} mb={5} display={'flex'} flexDirection={'column'} width={'100%'} alignItems={'center'}>
-        <SponsorsCard planType="platinumGold" sponsors={platinum} />
+        <SponsorsCard planType="platinum" sponsors={platinum} />
         <SponsorsCard planType="gold" sponsors={gold} />
         <SponsorsCard planType="silver" sponsors={silver} />
         <SponsorsCard planType="bronze" sponsors={bronze} />

@@ -16,7 +16,7 @@ PlatinumGold.parameters = {
   }
 }
 PlatinumGold.args = {
-  planType: 'platinumGold',
+  planType: 'platinum',
   sponsors: [
     { id: 1, name: 'sample', logo: 'sponsors/00_sample.png' },
     { id: 2, name: 'sample', logo: 'sponsors/00_sample.png' }

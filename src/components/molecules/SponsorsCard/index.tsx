@@ -4,9 +4,10 @@ import { FC } from 'react'
 import { Colors } from 'src/styles/color'
 import { Box, Typography } from '@mui/material'
 import { SponsorInfo } from 'src/modules/sponsors'
+import Link from 'next/link'
 
 type Props = {
-  planType: 'platinumGold' | 'gold' | 'silver' | 'bronze'
+  planType: 'platinum' | 'gold' | 'silver' | 'bronze'
   sponsors: SponsorInfo[]
 }
 
@@ -21,7 +22,7 @@ const getLayoutValuesByPlanType = (
   }
 } => {
   switch (planType) {
-    case 'platinumGold':
+    case 'platinum':
       return {
         heading: 'Platinum "Go"ld',
         columns: 12,
@@ -76,9 +77,17 @@ export const SponsorsCard: FC<Props> = ({ planType, sponsors }) => {
         {sponsors.map(({ id, name, logo }) => {
           return (
             <Grid xs={xs} md={md} key={`${planType}-${id}-${name}`}>
-              <Box position="relative" sx={{ aspectRatio: '16/9' }}>
-                <Image src={logo} alt={name} quality={100} fill style={{ objectFit: 'contain' }} />
-              </Box>
+              {planType === 'platinum' || planType === 'gold' ? (
+                <Link href={`/sponsors/${planType}/${id}`}>
+                  <Box position="relative" sx={{ aspectRatio: '16/9', ':hover': { opacity: '0.7' } }}>
+                    <Image src={logo} alt={name} quality={100} fill style={{ objectFit: 'contain' }} />
+                  </Box>
+                </Link>
+              ) : (
+                <Box position="relative" sx={{ aspectRatio: '16/9' }}>
+                  <Image src={logo} alt={name} quality={100} fill style={{ objectFit: 'contain' }} />
+                </Box>
+              )}
             </Grid>
           )
         })}
