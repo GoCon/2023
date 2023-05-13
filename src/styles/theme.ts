@@ -46,6 +46,11 @@ const defaultTheme = createTheme({
       [breakpoints.down('sm')]: {
         fontSize: '10px'
       }
+    },
+    label: {
+      fontSize: '10px',
+      fontWeight: 500,
+      fontFamily: 'Poppins'
     }
   }
 })

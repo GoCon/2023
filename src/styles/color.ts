@@ -6,6 +6,7 @@ export const Colors = {
     secondary_default: '#666666',
     white: '#FFFFFF',
     white_hover: '#CADFF8',
+    gray: '#728393',
     default: '#333333',
     link: '#0078F9',
     tertiary: '#BDC6D0',
