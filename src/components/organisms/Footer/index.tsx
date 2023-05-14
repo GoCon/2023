@@ -4,6 +4,7 @@ import { Trans, useTranslation } from 'react-i18next'
 import { useSize } from 'src/modules/hooks'
 import { FooterBottom } from 'src/components/organisms/Footer/FooterBottom'
 import { IconTwitter } from 'src/components/atoms'
+import { FooterGophers } from './FooterGophers'
 
 export const footerHeight = 60
 
@@ -20,6 +21,7 @@ export const Footer = () => {
         p: 0
       }}
     >
+      <FooterGophers />
       <Box
         sx={{
           display: 'flex',
