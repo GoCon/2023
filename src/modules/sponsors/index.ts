@@ -51,7 +51,7 @@ const silverSponsors: SponsorInfo[] = [
   { id: 10, name: '株式会社カウシェ', logo: 'sponsors/silver/10_kauche.jpg' },
   { id: 11, name: 'ウォンテッドリー株式会社', logo: 'sponsors/silver/11_wantedly.png' },
   { id: 12, name: '株式会社カミナシ', logo: 'sponsors/silver/12_kaminashi.png' },
-  // { id: 13, name: 'エムスリー株式会社', logo: 'sponsors/silver/13_m3.png' },
+  { id: 13, name: 'エムスリー株式会社', logo: 'sponsors/silver/13_m3.png' },
   { id: 14, name: '株式会社Voicy', logo: 'sponsors/silver/14_voicy.png' },
   { id: 15, name: '株式会社Kiva', logo: 'sponsors/silver/15_kiva_proteger.png' },
   { id: 16, name: '株式会社ナレッジワーク', logo: 'sponsors/silver/16_knowledge_work.png' },
