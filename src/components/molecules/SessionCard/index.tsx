@@ -7,7 +7,7 @@ import { useSize } from 'src/modules/hooks'
 
 type Props = {
   title: string
-  room: string
+  room: 'a' | 'b'
   sessionId: string
   description: string
   speaker: {
@@ -58,7 +58,7 @@ export const SessionCard: FC<Props> = ({ title, room, sessionId, description, sp
           gap: '8px'
         }}
       >
-        <SessionLabel text={`${room} : ${sessionId}`} color={Colors.background.primary_pink} />
+        <SessionLabel isRoomNameDisplayed room={room} sessionId={sessionId} />
         <Typography
           variant="body2"
           sx={{

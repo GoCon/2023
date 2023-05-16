@@ -10,7 +10,7 @@ export default meta
 export const Default: ComponentStoryObj<typeof SessionCard> = {
   args: {
     title: faker.lorem.sentence(),
-    room: 'room',
+    room: 'a',
     sessionId: 'sessionId',
     description: faker.lorem.paragraph(),
     speaker: {
