@@ -1,4 +1,4 @@
-import type { ComponentMeta, ComponentStory } from '@storybook/react'
+import type { ComponentMeta, ComponentStoryObj } from '@storybook/react'
 import { SpeakerBlock } from '.'
 import { faker } from '@faker-js/faker'
 
@@ -7,11 +7,10 @@ const meta: ComponentMeta<typeof SpeakerBlock> = {
 }
 export default meta
 
-const Template: ComponentStory<typeof SpeakerBlock> = args => <SpeakerBlock {...args} />
-
-export const Default = Template.bind({})
-Default.args = {
-  iconUrl: faker.image.avatar(),
-  name: faker.name.fullName(),
-  tagLine: faker.company.name()
+export const Default: ComponentStoryObj<typeof SpeakerBlock> = {
+  args: {
+    iconUrl: faker.image.avatar(),
+    name: faker.name.fullName(),
+    tagLine: faker.company.name()
+  }
 }

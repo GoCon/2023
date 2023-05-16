@@ -1,4 +1,4 @@
-import { ComponentMeta, ComponentStory } from '@storybook/react'
+import { ComponentMeta, ComponentStoryObj } from '@storybook/react'
 import { SessionLabel } from '.'
 import { Colors } from 'src/styles/color'
 
@@ -7,16 +7,16 @@ const meta: ComponentMeta<typeof SessionLabel> = {
 }
 export default meta
 
-const Template: ComponentStory<typeof SessionLabel> = args => <SessionLabel {...args} />
-
-export const Pink = Template.bind({})
-Pink.args = {
-  text: 'Room A : A1-1',
-  color: Colors.background.primary_pink
+export const Pink: ComponentStoryObj<typeof SessionLabel> = {
+  args: {
+    text: 'Room A : A1-1',
+    color: Colors.background.primary_pink
+  }
 }
 
-export const Green = Template.bind({})
-Green.args = {
-  text: 'Room B : B1-1',
-  color: Colors.background.primary_green
+export const Green: ComponentStoryObj<typeof SessionLabel> = {
+  args: {
+    text: 'Room B : B1-1',
+    color: Colors.background.primary_green
+  }
 }
