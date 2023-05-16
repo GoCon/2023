@@ -1,7 +1,6 @@
 import { Box, Typography } from '@mui/material'
 import { FC } from 'react'
-import { IconAvatar } from 'src/components/atoms/IconAvatar'
-import { useSize } from 'src/modules/hooks'
+import { SpeakerIcon } from 'src/components/atoms/SpeakerIcon'
 import { Colors } from 'src/styles/color'
 
 type Props = {
@@ -11,8 +10,6 @@ type Props = {
 }
 
 export const SpeakerBlock: FC<Props> = ({ iconUrl, name, tagLine }) => {
-  const { isPCOrOver } = useSize()
-
   return (
     <Box
       sx={{
@@ -22,7 +19,7 @@ export const SpeakerBlock: FC<Props> = ({ iconUrl, name, tagLine }) => {
         gap: '8px'
       }}
     >
-      <IconAvatar iconUrl={iconUrl} name={name} />
+      <SpeakerIcon iconUrl={iconUrl} name={name} size="40px" />
       <Box
         sx={{
           display: 'flex',
@@ -31,26 +28,10 @@ export const SpeakerBlock: FC<Props> = ({ iconUrl, name, tagLine }) => {
           gap: '4px'
         }}
       >
-        <Typography
-          sx={{
-            fontFamily: 'Helvetica',
-            fontWeight: 700,
-            fontSize: isPCOrOver ? '16px' : '14px',
-            lineHeight: '120%',
-            color: Colors.text.primary
-          }}
-        >
+        <Typography variant="h6" sx={{ color: Colors.text.primary }}>
           {name}
         </Typography>
-        <Typography
-          sx={{
-            fontFamily: 'Helvetica',
-            fontWeight: 400,
-            fontSize: isPCOrOver ? '12px' : '11px',
-            lineHeight: '120%',
-            color: Colors.text.gray
-          }}
-        >
+        <Typography variant="subtitle1" sx={{ color: Colors.text.secondary }}>
           {tagLine}
         </Typography>
       </Box>

@@ -29,6 +29,28 @@ const defaultTheme = createTheme({
         fontSize: '16px'
       }
     },
+    h5: {
+      fontSize: '24px',
+      fontHeight: '120%',
+      [breakpoints.down('sm')]: {
+        fontSize: '17px'
+      }
+    },
+    h6: {
+      fontSize: '16px',
+      fontWeight: 700,
+      lineHeight: '120%',
+      [breakpoints.down('sm')]: {
+        fontSize: '12px'
+      }
+    },
+    subtitle1: {
+      fontSize: '12px',
+      lineHeight: '120%',
+      [breakpoints.down('sm')]: {
+        fontSize: '11px'
+      }
+    },
     body1: {
       fontSize: '24px',
       [breakpoints.down('sm')]: {
@@ -37,6 +59,7 @@ const defaultTheme = createTheme({
     },
     body2: {
       fontSize: '18px',
+      lineHeight: '150%',
       [breakpoints.down('sm')]: {
         fontSize: '14px'
       }

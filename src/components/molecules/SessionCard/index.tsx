@@ -30,20 +30,15 @@ export const SessionCard: FC<Props> = ({ title, room, sessionId, description, sp
         alignItems: 'flex-start',
         padding: isPCOrOver ? '24px' : '16px',
         gap: isPCOrOver ? '12px' : '8px',
-        width: isPCOrOver ? '500px' : '343px',
         borderRadius: '18px',
         boxShadow: '0px 3px 8px rgba(144, 131,  147, 0.15)',
         backgroundColor: Colors.background.primary
       }}
     >
       <Typography
+        variant="h5"
         sx={{
           display: '-webkit-box',
-          width: '100%',
-          fontFamily: 'Helvetica',
-          fontWeight: 400,
-          fontSize: isPCOrOver ? '24px' : '17px',
-          lineHeight: '120%',
           alignItems: 'center',
           color: Colors.text.primary,
           wordWrap: 'break-word',
@@ -60,20 +55,15 @@ export const SessionCard: FC<Props> = ({ title, room, sessionId, description, sp
           flexDirection: 'column',
           alignItems: 'flex-start',
           padding: '0px',
-          gap: '8px',
-          width: '100%'
+          gap: '8px'
         }}
       >
         <SessionLabel text={`${room} : ${sessionId}`} color={Colors.background.primary_pink} />
         <Typography
+          variant="body2"
           sx={{
-            display: '-webkit-box',
-            width: '100%',
-            fontFamily: 'Helvetica',
-            fontWeight: 400,
-            fontSize: isPCOrOver ? '16px' : '14px',
-            lineHeight: '150%',
             color: Colors.text.primary,
+            display: '-webkit-box',
             WebkitBoxOrient: 'vertical',
             WebkitLineClamp: 5,
             overflow: 'hidden'
@@ -88,7 +78,6 @@ export const SessionCard: FC<Props> = ({ title, room, sessionId, description, sp
           display: 'flex',
           flexDirection: 'row',
           alignItems: 'flex-end',
-          width: '100%',
           alignSelf: 'stretch'
         }}
       >
@@ -99,30 +88,23 @@ export const SessionCard: FC<Props> = ({ title, room, sessionId, description, sp
             flexDirection: 'column',
             alignItems: 'flex-end',
             gap: '4px',
-            // width: '40%',
             marginLeft: 'auto'
           }}
         >
           <Typography
+            variant="subtitle1"
             sx={{
-              fontFamily: 'Helvetica',
-              fontWeight: 400,
-              fontSize: isPCOrOver ? '12px' : '11px',
-              lineHeight: '120%',
               textAlign: 'right',
-              color: Colors.text.gray
+              color: Colors.text.secondary
             }}
           >
             Level: {sessionLevel}
           </Typography>
           <Typography
+            variant="subtitle1"
             sx={{
-              fontFamily: 'Helvetica',
-              fontWeight: 400,
-              fontSize: isPCOrOver ? '12px' : '11px',
-              lineHeight: '120%',
               textAlign: 'right',
-              color: Colors.text.gray
+              color: Colors.text.secondary
             }}
           >
             {sessionType}

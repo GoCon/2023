@@ -15,11 +15,10 @@ export const SessionLabel = ({ text, color }: Props) => {
         alignItems: 'flex-start',
         backgroundColor: color,
         borderRadius: '2px',
-        paddingX: '4px',
-        paddingY: '2px'
+        padding: '2px 4px'
       }}
     >
-      <Typography variant="label" sx={{ lineHeight: '14px', color: Colors.text.white }}>
+      <Typography variant="caption" sx={{ lineHeight: '14px', color: Colors.text.white }}>
         {text}
       </Typography>
     </Box>
