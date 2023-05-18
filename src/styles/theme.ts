@@ -31,7 +31,7 @@ const defaultTheme = createTheme({
     },
     h5: {
       fontSize: '24px',
-      fontHeight: '120%',
+      lineHeight: '120%',
       [breakpoints.down('sm')]: {
         fontSize: '17px'
       }

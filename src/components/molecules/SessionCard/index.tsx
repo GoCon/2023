@@ -47,12 +47,10 @@ export const SessionCard: FC<Props> = ({
         variant="h5"
         sx={{
           display: '-webkit-box',
-          alignItems: 'center',
-          color: Colors.text.primary,
-          wordWrap: 'break-word',
           WebkitBoxOrient: 'vertical',
           WebkitLineClamp: 2,
-          overflow: 'hidden'
+          overflow: 'hidden',
+          wordBreak: 'break-word'
         }}
       >
         {title}
@@ -70,11 +68,11 @@ export const SessionCard: FC<Props> = ({
         <Typography
           variant="body2"
           sx={{
-            color: Colors.text.primary,
             display: '-webkit-box',
             WebkitBoxOrient: 'vertical',
             WebkitLineClamp: 5,
-            overflow: 'hidden'
+            overflow: 'hidden',
+            wordBreak: 'break-word'
           }}
         >
           {description}
@@ -84,7 +82,6 @@ export const SessionCard: FC<Props> = ({
         sx={{
           gap: '24px',
           display: 'flex',
-          flexDirection: 'row',
           alignItems: 'flex-end',
           alignSelf: 'stretch'
         }}

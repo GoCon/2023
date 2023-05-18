@@ -14,7 +14,6 @@ export const SpeakerBlock: FC<Props> = ({ profilePicture, name, tagLine }) => {
     <Box
       sx={{
         display: 'flex',
-        flexDirection: 'row',
         alignItems: 'center',
         gap: '8px'
       }}
@@ -24,13 +23,10 @@ export const SpeakerBlock: FC<Props> = ({ profilePicture, name, tagLine }) => {
         sx={{
           display: 'flex',
           flexDirection: 'column',
-          alignItems: 'flex-start',
           gap: '4px'
         }}
       >
-        <Typography variant="h6" sx={{ color: Colors.text.primary }}>
-          {name}
-        </Typography>
+        <Typography variant="h6">{name}</Typography>
         <Typography variant="subtitle1" sx={{ color: Colors.text.secondary }}>
           {tagLine}
         </Typography>
