@@ -6,7 +6,7 @@ on:
       - develop
 
 jobs:
-  r2m-pr:
+  create-pr-develop-to-main:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
