@@ -1,5 +1,12 @@
 import { createTheme, ThemeOptions } from '@mui/material/styles'
 import { Colors } from './color'
+import { Poppins } from 'next/font/google'
+
+const poppins = Poppins({
+  weight: ['400', '500', '600', '700'],
+  subsets: ['latin'],
+  fallback: ['Helvetica Neue', 'Arial', 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', 'Meiryo', 'sans-serif']
+})
 
 const { breakpoints } = createTheme()
 const defaultTheme = createTheme({
@@ -79,21 +86,7 @@ export const theme: ThemeOptions = {
     MuiTypography: {
       defaultProps: {
         color: Colors.text.primary,
-        fontFamily: [
-          'Poppins',
-          'Montserrat',
-          '-apple-system',
-          'BlinkMacSystemFont',
-          'Segoe UI',
-          'Roboto',
-          'Oxygen',
-          'Ubuntu',
-          'Cantarell',
-          'Fira Sans',
-          'Droid Sans',
-          'Helvetica Neue',
-          'sans-serif'
-        ].join(',')
+        fontFamily: poppins.style.fontFamily
       }
     }
   }
