@@ -89,7 +89,7 @@ export const SessionCard: FC<Props> = ({
           alignSelf: 'stretch'
         }}
       >
-        <SpeakerBlock name={speaker.fullName} tagLine={speaker.tagLine} iconUrl={speaker.profilePicture} />
+        <SpeakerBlock name={speaker.fullName} tagLine={speaker.tagLine} profilePicture={speaker.profilePicture} />
         <Box
           sx={{
             display: 'flex',

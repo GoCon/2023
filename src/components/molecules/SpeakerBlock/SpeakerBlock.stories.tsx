@@ -9,7 +9,7 @@ export default meta
 
 export const Default: ComponentStoryObj<typeof SpeakerBlock> = {
   args: {
-    iconUrl: faker.image.avatar(),
+    profilePicture: faker.image.avatar(),
     name: faker.name.fullName(),
     tagLine: faker.company.name()
   }

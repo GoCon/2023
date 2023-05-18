@@ -4,12 +4,12 @@ import { SpeakerIcon } from 'src/components/atoms/SpeakerIcon'
 import { Colors } from 'src/styles/color'
 
 type Props = {
-  iconUrl: string
+  profilePicture: string
   name: string
   tagLine: string
 }
 
-export const SpeakerBlock: FC<Props> = ({ iconUrl, name, tagLine }) => {
+export const SpeakerBlock: FC<Props> = ({ profilePicture, name, tagLine }) => {
   return (
     <Box
       sx={{
@@ -19,7 +19,7 @@ export const SpeakerBlock: FC<Props> = ({ iconUrl, name, tagLine }) => {
         gap: '8px'
       }}
     >
-      <SpeakerIcon iconUrl={iconUrl} name={name} size="40px" />
+      <SpeakerIcon iconUrl={profilePicture} name={name} size="40px" />
       <Box
         sx={{
           display: 'flex',
