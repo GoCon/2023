@@ -85,6 +85,7 @@ export const MainVisual = () => {
               alt="Go Conference 2023 Online at Friday, June Second"
               style={{
                 width: '100%',
+                height: 'auto',
                 verticalAlign: 'middle',
                 objectFit: 'contain'
               }}
