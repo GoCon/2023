@@ -10,13 +10,13 @@ export const MainVisual = () => {
   const { isTabletOrOver } = useSize()
   const keyVisualWithText = isTabletOrOver ? KeyVisualWithTextPc : KeyVisualWithTextMobile
   const confettiLeftConfig = {
-    angle: isTabletOrOver ? 45 : 90,
+    angle: 45,
     colors: confettiColors,
     elementSize: 12,
     position: 'absolute'
   }
   const confettiRightConfig = {
-    angle: isTabletOrOver ? 135 : 90,
+    angle: 135,
     colors: confettiColors,
     elementSize: 12,
     position: 'absolute'
