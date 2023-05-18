@@ -1,0 +1,13 @@
+Release <%= Time.now.strftime("%Y-%m-%d %H:%M:%S") %>
+
+## 概要
+
+`develop` ブランチの変更内容を `main` ブランチへマージします。
+
+**この PR はコンフリクト解消のため Squash and merge ではなく Create a merge commit の手法でマージします。**
+
+## 変更内容
+
+<% pull_requests.each do |pr| -%>
+  <%=  pr.to_checklist_item %>
+<% end -%>

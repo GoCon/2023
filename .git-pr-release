@@ -1,0 +1,5 @@
+[pr-release "branch"]
+    staging = develop
+    production = main
+[pr-release]
+    template = .github/git-pr-release.erb

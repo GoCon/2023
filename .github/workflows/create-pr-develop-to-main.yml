@@ -1,0 +1,26 @@
+name: Create a pull request from develop to main
+
+on:
+  push:
+    branches:
+      - develop
+
+jobs:
+  r2m-pr:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+      - name: Set up Ruby 3.0.1
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: 3.0.1
+      - name: Execute git-pr-release (develop -> main)
+        env:
+          GIT_PR_RELEASE_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          TZ: Asia/Tokyo
+        run: |
+          gem install git-pr-release
+          git remote set-url origin "https://${GITHUB_ACTOR}:${GIT_PR_RELEASE_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
+          git-pr-release --squashed || echo "Done."
