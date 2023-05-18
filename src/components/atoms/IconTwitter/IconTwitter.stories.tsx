@@ -1,11 +1,9 @@
-import type { ComponentMeta, ComponentStory } from '@storybook/react'
+import type { Meta, StoryObj } from '@storybook/react'
 import { IconTwitter } from '.'
 
-const meta: ComponentMeta<typeof IconTwitter> = {
+const meta: Meta<typeof IconTwitter> = {
   component: IconTwitter
 }
 export default meta
 
-const Template: ComponentStory<typeof IconTwitter> = () => <IconTwitter />
-
-export const Default = Template.bind({})
+export const Default: StoryObj<typeof IconTwitter> = {}
