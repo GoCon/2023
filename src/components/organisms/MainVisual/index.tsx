@@ -4,6 +4,7 @@ import { useReward } from 'react-rewards'
 import { confettiColors } from 'src/styles/color'
 import Image from 'next/image'
 import { KeyVisualWithTextPc, KeyVisualWithTextMobile } from './images'
+import { useEffect, useState } from 'react'
 
 export const MainVisual = () => {
   const { isTabletOrOver } = useSize()
@@ -54,6 +55,11 @@ export const MainVisual = () => {
     true // call the function immediately after rendered
   )
 
+  const [mounted, setMounted] = useState(false)
+  useEffect(() => {
+    setMounted(true)
+  }, [])
+
   return (
     <Box sx={{ width: '100%', overflow: 'hidden' }}>
       <Box
@@ -65,18 +71,27 @@ export const MainVisual = () => {
         }}
       >
         <Box id="confettiTopLeft" sx={{ position: 'absolute', left: '32px' }} />
-        <Box sx={{ maxWidth: '1440px', margin: '0 auto' }}>
-          <Image
-            src={keyVisualWithText}
-            alt="Go Conference 2023 Online at Friday, June Second"
-            style={{
-              width: '100%',
-              height: 'auto',
-              objectFit: 'contain'
-            }}
-            quality={100}
-            priority
-          />
+        <Box
+          sx={{
+            width: '100%',
+            maxWidth: '1440px',
+            aspectRatio: { xs: '748/1114', sm: '1440/845' },
+            margin: '0 auto'
+          }}
+        >
+          {mounted && (
+            <Image
+              src={keyVisualWithText}
+              alt="Go Conference 2023 Online at Friday, June Second"
+              style={{
+                width: '100%',
+                verticalAlign: 'middle',
+                objectFit: 'contain'
+              }}
+              quality={100}
+              priority
+            />
+          )}
         </Box>
         <Box id="confettiTopRight" sx={{ position: 'absolute', right: '32px' }} />
       </Box>
