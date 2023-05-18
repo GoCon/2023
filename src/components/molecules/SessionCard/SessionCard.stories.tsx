@@ -10,15 +10,31 @@ export default meta
 export const Default: ComponentStoryObj<typeof SessionCard> = {
   args: {
     title: faker.lorem.sentence(),
-    sessionId: 'sessionId',
     roomName: 'Room A',
+    sessionId: 'A3-L',
     description: faker.lorem.paragraph(),
     speaker: {
       fullName: faker.name.fullName(),
       tagLine: faker.company.name(),
       profilePicture: faker.image.avatar()
     },
-    sessionLevel: 'sessionLevel',
-    sessionType: 'sessionType'
+    sessionLevel: 'Intermediate',
+    sessionType: 'Challenge Session(20min)'
+  }
+}
+
+export const LongTitleAndDescription: ComponentStoryObj<typeof SessionCard> = {
+  args: {
+    title: faker.lorem.sentences(2),
+    roomName: 'Room A',
+    sessionId: 'A3-L',
+    description: faker.lorem.paragraphs(10),
+    speaker: {
+      fullName: faker.name.fullName(),
+      tagLine: faker.company.name(),
+      profilePicture: faker.image.avatar()
+    },
+    sessionLevel: 'Intermediate',
+    sessionType: 'Challenge Session(20min)'
   }
 }
