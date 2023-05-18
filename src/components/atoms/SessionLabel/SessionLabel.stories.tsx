@@ -6,17 +6,17 @@ const meta: ComponentMeta<typeof SessionLabel> = {
 }
 export default meta
 
-export const Pink: ComponentStoryObj<typeof SessionLabel> = {
+export const RoomA: ComponentStoryObj<typeof SessionLabel> = {
   args: {
-    room: 'a',
+    roomName: 'Room A',
     sessionId: 'A1-1',
     isRoomNameDisplayed: true
   }
 }
 
-export const Green: ComponentStoryObj<typeof SessionLabel> = {
+export const RoomB: ComponentStoryObj<typeof SessionLabel> = {
   args: {
-    room: 'b',
+    roomName: 'Room B',
     sessionId: 'B1-1',
     isRoomNameDisplayed: true
   }

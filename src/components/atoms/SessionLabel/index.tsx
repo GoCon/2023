@@ -1,31 +1,30 @@
 import { Box, Typography } from '@mui/material'
+import { FC } from 'react'
 import { Colors } from 'src/styles/color'
 
 type Props = {
   sessionId: string
-  room: 'a' | 'b'
+  roomName: 'Room A' | 'Room B'
   isRoomNameDisplayed: boolean
 }
 
-const getLabelStyle = (room: Props['room']) => {
-  switch (room) {
-    case 'a':
-      return { backgroundColor: Colors.background.primary_pink, roomName: 'Room A' } as const
-    case 'b':
-      return { backgroundColor: Colors.background.primary_green, roomName: 'Room B' } as const
+const getLabelStyle = (roomName: Props['roomName']) => {
+  switch (roomName) {
+    case 'Room A':
+      return { backgroundColor: Colors.background.primary_pink } as const
+    case 'Room B':
+      return { backgroundColor: Colors.background.primary_green } as const
     default:
-      throw new Error(`Invalid room ${room}`)
+      throw new Error(`Invalid room ${roomName}`)
   }
 }
 
-export const SessionLabel = ({ sessionId, room, isRoomNameDisplayed }: Props) => {
-  const { backgroundColor, roomName } = getLabelStyle(room)
+export const SessionLabel: FC<Props> = ({ sessionId, roomName: roomName, isRoomNameDisplayed }) => {
+  const { backgroundColor } = getLabelStyle(roomName)
   return (
     <Box
       sx={{
         display: 'inline-flex',
-        flexDirection: 'row',
-        alignItems: 'flex-start',
         backgroundColor,
         borderRadius: '2px',
         padding: '2px 4px'

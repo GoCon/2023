@@ -7,7 +7,7 @@ import { useSize } from 'src/modules/hooks'
 
 type Props = {
   title: string
-  room: 'a' | 'b'
+  roomName: 'Room A' | 'Room B'
   sessionId: string
   description: string
   speaker: {
@@ -19,7 +19,15 @@ type Props = {
   sessionType: string
 }
 
-export const SessionCard: FC<Props> = ({ title, room, sessionId, description, speaker, sessionLevel, sessionType }) => {
+export const SessionCard: FC<Props> = ({
+  title,
+  roomName,
+  sessionId,
+  description,
+  speaker,
+  sessionLevel,
+  sessionType
+}) => {
   const { isPCOrOver } = useSize()
 
   return (
@@ -58,7 +66,7 @@ export const SessionCard: FC<Props> = ({ title, room, sessionId, description, sp
           gap: '8px'
         }}
       >
-        <SessionLabel isRoomNameDisplayed room={room} sessionId={sessionId} />
+        <SessionLabel isRoomNameDisplayed roomName={roomName} sessionId={sessionId} />
         <Typography
           variant="body2"
           sx={{
