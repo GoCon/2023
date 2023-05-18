@@ -9,8 +9,8 @@
     "lint": "next lint",
     "format": "prettier --ignore-path .gitignore --write \"**/*.{ts,tsx}\"",
     "prepare": "husky install",
-    "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build"
   },
   "dependencies": {
     "@emotion/react": "11.10.0",
