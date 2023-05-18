@@ -1,17 +1,15 @@
 import { Box, Typography } from '@mui/material'
 import { Colors } from 'src/styles/color'
-import { useSize } from 'src/modules/hooks'
 import { Trans, useTranslation } from 'react-i18next'
 
 export const TopDescription = () => {
   const { t } = useTranslation()
-  const { isTabletOrOver } = useSize()
   return (
     <Box
       sx={{
         width: '100%',
         backgroundColor: Colors.background.brand_color,
-        p: isTabletOrOver ? '40px' : '24px 16px'
+        p: { xs: '24px 16px', sm: '40px' }
       }}
     >
       <Box maxWidth={'680px'} margin={'auto'}>
@@ -20,7 +18,7 @@ export const TopDescription = () => {
             What is Go Conference?
           </Typography>
         </Box>
-        <Box sx={{ textAlign: 'center', mb: isTabletOrOver ? '40px' : '16px' }}>
+        <Box sx={{ textAlign: 'center', mb: { xs: '16px', sm: '40px' } }}>
           <Typography
             variant="body1"
             sx={{ color: Colors.text.white, wordBreak: 'keep-all', overflowWrap: 'break-word' }}
@@ -40,8 +38,8 @@ export const TopDescription = () => {
               sx={{
                 color: Colors.text.white,
                 textAlign: 'right',
-                minWidth: isTabletOrOver ? '120px' : '100px',
-                marginLeft: isTabletOrOver ? '32px' : '0'
+                minWidth: { xs: '100px', sm: '120px' },
+                marginLeft: { xs: '0', sm: '32px' }
               }}
             >
               {t('session')}:
@@ -67,8 +65,8 @@ export const TopDescription = () => {
               sx={{
                 color: Colors.text.white,
                 textAlign: 'right',
-                minWidth: isTabletOrOver ? '120px' : '100px',
-                marginLeft: isTabletOrOver ? '32px' : '0'
+                minWidth: { xs: '100px', sm: '120px' },
+                marginLeft: { xs: '0', sm: '32px' }
               }}
             >
               {t('target')}:
@@ -94,8 +92,8 @@ export const TopDescription = () => {
               sx={{
                 color: Colors.text.white,
                 textAlign: 'right',
-                minWidth: isTabletOrOver ? '120px' : '100px',
-                marginLeft: isTabletOrOver ? '32px' : '0'
+                minWidth: { xs: '100px', sm: '120px' },
+                marginLeft: { xs: '0', sm: '32px' }
               }}
             >
               {t('host')}:
