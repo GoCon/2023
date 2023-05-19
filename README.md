@@ -1,25 +1,64 @@
-# 2023
-Go Conference 2023
+# Go Conference 2023
 
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+Static generated site for [Go Conference 2023](https://gocon.jp/2023).
 
 ## Getting Started
 
-First, run the development server:
+### 0. Clone this repository
 
-```bash
+```zsh
+git clone git@github.com:GoCon/2023.git
+```
+
+```zsh
+cd 2023
+```
+
+### 1. Install Node.js
+
+Install Node.js specified version with [`.node-version`](./.node-version).
+
+### 2. Enable to use yarn v1
+
+```zsh
+corepack enable yarn
+```
+
+or
+
+```zsh
+npm install -g yarn
+```
+
+### 3. Install dependencies
+
+```zsh
+yarn install
+```
+
+### 4. Run the development server
+
+#### 4.1 Next.js
+
+Run the script to check entire of the application.
+
+```zsh
 yarn dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000/2023](http://localhost:3000/2023) with your browser to see the application.
 
-## storybook
+#### 4.2 Storybook
+
+Run the script to check each component.
 
 ```bash
 yarn storybook
 ```
 
-## deploy
+Open [http://localhost:6006](http://localhost:6006) with your browser to see the components catalog.
+
+## Deploy
 
 Auto-deploy runs when merged into main.
 
