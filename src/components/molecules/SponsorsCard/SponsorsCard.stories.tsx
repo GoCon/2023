@@ -1,57 +1,65 @@
-import type { ComponentMeta, ComponentStory } from '@storybook/react'
+import type { Meta, StoryObj } from '@storybook/react'
 import { SponsorsCard } from '.'
 import { sponsors } from 'src/modules/sponsors'
 
-const meta: ComponentMeta<typeof SponsorsCard> = {
+const meta: Meta<typeof SponsorsCard> = {
   component: SponsorsCard
 }
 export default meta
 
-const Template: ComponentStory<typeof SponsorsCard> = args => <SponsorsCard {...args} />
+type Story = StoryObj<typeof SponsorsCard>
 
-export const PlatinumGold = Template.bind({})
-PlatinumGold.parameters = {
-  backgrounds: {
-    default: 'secondary'
+export const PlatinumGold: Story = {
+  parameters: {
+    backgrounds: {
+      default: 'secondary'
+    }
+  },
+
+  args: {
+    planType: 'platinum',
+    sponsors: [
+      { id: 1, name: 'sample', logo: 'sponsors/00_sample.png' },
+      { id: 2, name: 'sample', logo: 'sponsors/00_sample.png' }
+    ]
   }
 }
-PlatinumGold.args = {
-  planType: 'platinum',
-  sponsors: [
-    { id: 1, name: 'sample', logo: 'sponsors/00_sample.png' },
-    { id: 2, name: 'sample', logo: 'sponsors/00_sample.png' }
-  ]
-}
 
-export const Gold = Template.bind({})
-Gold.parameters = {
-  backgrounds: {
-    default: 'secondary'
+export const Gold: Story = {
+  parameters: {
+    backgrounds: {
+      default: 'secondary'
+    }
+  },
+
+  args: {
+    planType: 'gold',
+    sponsors: sponsors.gold
   }
 }
-Gold.args = {
-  planType: 'gold',
-  sponsors: sponsors.gold
-}
 
-export const Silver = Template.bind({})
-Silver.parameters = {
-  backgrounds: {
-    default: 'secondary'
+export const Silver: Story = {
+  parameters: {
+    backgrounds: {
+      default: 'secondary'
+    }
+  },
+
+  args: {
+    planType: 'silver',
+    sponsors: sponsors.silver
   }
 }
-Silver.args = {
-  planType: 'silver',
-  sponsors: sponsors.silver
-}
 
-export const Bronze = Template.bind({})
-Bronze.parameters = {
-  backgrounds: {
-    default: 'secondary'
+export const Bronze: Story = {
+  parameters: {
+    backgrounds: {
+      default: 'secondary'
+    }
+  },
+
+  args: {
+    planType: 'bronze',
+    sponsors: sponsors.bronze
   }
-}
-Bronze.args = {
-  planType: 'bronze',
-  sponsors: sponsors.bronze
 }

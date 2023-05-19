@@ -1,10 +1,9 @@
-import type { ComponentMeta, ComponentStory } from '@storybook/react'
+import type { Meta, StoryObj } from '@storybook/react'
 import { CommunityBoothSection } from '.'
 
-const meta: ComponentMeta<typeof CommunityBoothSection> = {
+const meta: Meta<typeof CommunityBoothSection> = {
   component: CommunityBoothSection
 }
 export default meta
 
-const Template: ComponentStory<typeof CommunityBoothSection> = args => <CommunityBoothSection {...args} />
-export const Default = Template.bind({})
+export const Default: StoryObj<typeof CommunityBoothSection> = {}

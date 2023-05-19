@@ -1,11 +1,9 @@
-import type { ComponentMeta, ComponentStory } from '@storybook/react'
+import type { Meta, StoryObj } from '@storybook/react'
 import { TopDescription } from '.'
 
-const meta: ComponentMeta<typeof TopDescription> = {
+const meta: Meta<typeof TopDescription> = {
   component: TopDescription
 }
 export default meta
 
-const Template: ComponentStory<typeof TopDescription> = () => <TopDescription />
-
-export const Default = Template.bind({})
+export const Default: StoryObj<typeof TopDescription> = {}

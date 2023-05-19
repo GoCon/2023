@@ -1,13 +1,13 @@
-import type { ComponentMeta, ComponentStoryObj } from '@storybook/react'
+import type { Meta, StoryObj } from '@storybook/react'
 import { faker } from '@faker-js/faker'
 import { SessionCard } from '.'
 
-const meta: ComponentMeta<typeof SessionCard> = {
+const meta: Meta<typeof SessionCard> = {
   component: SessionCard
 }
 export default meta
 
-export const Default: ComponentStoryObj<typeof SessionCard> = {
+export const Default: StoryObj<typeof SessionCard> = {
   args: {
     title: faker.lorem.sentence(),
     roomName: 'Room A',
@@ -23,7 +23,7 @@ export const Default: ComponentStoryObj<typeof SessionCard> = {
   }
 }
 
-export const LongTitleAndDescription: ComponentStoryObj<typeof SessionCard> = {
+export const LongTitleAndDescription: StoryObj<typeof SessionCard> = {
   args: {
     title: faker.lorem.sentences(2),
     roomName: 'Room A',

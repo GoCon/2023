@@ -1,12 +1,12 @@
-import { ComponentMeta, ComponentStoryObj } from '@storybook/react'
+import { Meta, StoryObj } from '@storybook/react'
 import { SessionLabel } from '.'
 
-const meta: ComponentMeta<typeof SessionLabel> = {
+const meta: Meta<typeof SessionLabel> = {
   component: SessionLabel
 }
 export default meta
 
-export const RoomA: ComponentStoryObj<typeof SessionLabel> = {
+export const RoomA: StoryObj<typeof SessionLabel> = {
   args: {
     roomName: 'Room A',
     sessionId: 'A1-1',
@@ -14,7 +14,7 @@ export const RoomA: ComponentStoryObj<typeof SessionLabel> = {
   }
 }
 
-export const RoomB: ComponentStoryObj<typeof SessionLabel> = {
+export const RoomB: StoryObj<typeof SessionLabel> = {
   args: {
     roomName: 'Room B',
     sessionId: 'B1-1',
