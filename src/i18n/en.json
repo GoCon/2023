@@ -18,5 +18,9 @@
   "gophers_japan": "Institute Gophers Japan",
   "act_on_specified_commercial_transactions": "Act on Specified Commercial Transactions",
   "sponsors_description": "We are looking for sponsors!",
-  "sponsors_application_closed": "Sponsors application has been closed. We will reflect the information on our website in due course."
+  "sponsors_application_closed": "Sponsors application has been closed. We will reflect the information on our website in due course.",
+  "enter_venue": "enter to venue",
+  "booth_information_title": "event booth information",
+  "floor_guide_title": "reBako(online venue) information",
+  "floor_guide": "An online venue is available at reBako on the day of the event. \nSessions and Ask the Speaker will broadcast YouTube Live at the Remo venue for public viewing. \nTo move between venues, click the banner in the venue guide, or click the venue you want to go to from the top bar. \nThe placement at the entrance to each venue will be done randomly. \nYou can move the table by double-clicking the table you want to move. \nThe office hour venue and hands-on venue offer content only on the 1st floor. \nFloors can be moved from the floor selection panel on the left side of the venue."
 }

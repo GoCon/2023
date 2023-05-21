@@ -20,6 +20,7 @@ export type HeaderMenuItem = {
   href?: string
   label: string
   onClick?: () => void
+  openNewTab?: boolean
 }
 
 export type HeaderItemBehaviorStyles = {
@@ -55,14 +56,12 @@ export const Header = () => {
 
   const menuList: HeaderMenuItem[] = useMemo(() => {
     return [
-      // TODO(maito1201): Display Home label when screen transition is implemented
-      // { href: '/', label: 'Home' },
+      { href: '/', label: 'Home' },
       // TODO(taigakiyokawa): Revert to `/sessions` when the page has implemented.
-      { href: 'https://sessionize.com/api/v2/jmtn42ls/view/Sessions', label: 'Sessions' },
+      { href: 'https://sessionize.com/api/v2/jmtn42ls/view/Sessions', label: 'Sessions', openNewTab: true },
       // TODO(taigakiyokawa): Revert to `/timetable` when the page has implemented.
-      { href: 'https://sessionize.com/api/v2/jmtn42ls/view/GridSmart', label: 'Timetable' },
-      // TODO(taigakiyokawa): Revert comment out when the page has implemented.
-      // { href: '/floor_guide', label: 'Floor Guide' },
+      { href: 'https://sessionize.com/api/v2/jmtn42ls/view/GridSmart', label: 'Timetable', openNewTab: true },
+      { href: '/floor_guide', label: 'Floor Guide' },
       {
         label: t('change_language'),
         onClick: handleChangeLanguage
