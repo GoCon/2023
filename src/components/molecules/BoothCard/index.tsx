@@ -12,7 +12,7 @@ export const BoothCard = ({ title, description }: BoothCardProps) => {
         <Typography variant="h3">{title}</Typography>
       </Box>
       <Box mb="24px" maxWidth="680px">
-        <Typography variant="body2" sx={{ wordBreak: 'break-word' }}>
+        <Typography variant="body2" sx={{ wordBreak: 'break-word', whiteSpace: 'pre-wrap' }}>
           {description}
         </Typography>
       </Box>
