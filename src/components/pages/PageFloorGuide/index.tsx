@@ -34,9 +34,7 @@ export const PageFloorGuide: NextPage = () => {
   return (
     <Layout>
       <Box display={'flex'} flexDirection={'column'} alignItems={'center'} py={{ md: 10, xs: 4 }} px="24px" mt="100px">
-        <Box>
-          <Typography variant="h2">{t('floor_guide_title')}</Typography>
-        </Box>
+        <Typography variant="h2">{t('floor_guide_title')}</Typography>
         <VenueInfoSection />
         <Box
           width="80%"
