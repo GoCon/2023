@@ -43,9 +43,7 @@ export const PageFloorGuide: NextPage = () => {
           height="8px"
           sx={{ margin: '40px', borderRadius: '4px', backgroundColor: Colors.background.secondary }}
         />
-        <Box>
-          <Typography variant="h2">{t('booth_information_title')}</Typography>
-        </Box>
+        <Typography variant="h2">{t('booth_information_title')}</Typography>
         {boothItems.map((item, i) => (
           <BoothCard key={i} title={item.title} description={item.description} />
         ))}
