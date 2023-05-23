@@ -1,8 +1,7 @@
-import { PageTop } from 'src/components/pages'
+import { PageFloorGuide } from 'src/components/pages'
 
 const Index = () => {
-  /* TODO: 各ページの実装 */
-  return <PageTop />
+  return <PageFloorGuide />
 }
 
 export default Index
