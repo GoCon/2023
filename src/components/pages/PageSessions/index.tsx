@@ -11,15 +11,19 @@ export const PageSessions: FC = () => {
 
   return (
     <Layout>
-      <Box sx={{ height: { xs: '128px', md: '284px' } }}>
+      <Box
+        sx={{
+          display: 'flex',
+          flexDirection: 'column',
+          justifyContent: 'center',
+          height: { xs: '128px', md: '284px' },
+          paddingTop: { xs: '56px', md: '100px' }
+        }}
+      >
         <Typography
           variant="h2"
           align="center"
           sx={{
-            position: 'relative',
-            width: '606px',
-            height: '60px',
-            left: 'calc(50% - 606px/2)',
             top: { xs: '50px', md: '150px' }
           }}
         >
