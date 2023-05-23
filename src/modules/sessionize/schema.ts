@@ -10,7 +10,12 @@ const sessionizeSessionSchema = z.object({
   isPlenumSession: z.boolean(),
   speakers: z.array(z.string()),
   categoryItems: z.array(z.number()),
-  questionAnswers: z.array(z.string()),
+  questionAnswers: z.array(
+    z.object({
+      questionId: z.number(),
+      answerValue: z.string()
+    })
+  ),
   roomId: z.number(),
   liveUrl: z.null(),
   recordingUrl: z.null(),
@@ -54,7 +59,7 @@ const sessionizeCategorySchema = z.object({
 
 const sessionizeRoomSchema = z.object({
   id: z.number(),
-  name: z.string(),
+  name: z.union([z.literal('Room A'), z.literal('Room B')]),
   sort: z.number()
 })
 
@@ -73,3 +78,10 @@ export const sessionizeViewAllSchema = z.object({
  * Type definition for the parsed response from Sessionize's "View All" API.
  */
 export type SessionizeViewAllSchemaType = z.infer<typeof sessionizeViewAllSchema>
+
+/**
+ * ID of the question and categories
+ */
+export const questionSessionNumber = 52153
+export const categorySessionType = 46584
+export const categorySessionLevel = 53862
