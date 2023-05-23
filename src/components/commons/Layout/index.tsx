@@ -1,3 +1,4 @@
+import config from '../../../../next.config'
 import type { NextPage } from 'next'
 import { ReactNode, ChangeEvent } from 'react'
 import Head from 'next/head'
@@ -14,7 +15,6 @@ export interface LayoutProps {
 }
 
 export const Layout: NextPage<LayoutProps> = ({ children }) => {
-  const config = require('../../../../next.config')
   const [authorized, setAuthorized] = useLocalStorageState('authorized', { defaultValue: false })
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
