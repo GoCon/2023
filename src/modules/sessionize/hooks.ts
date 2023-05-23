@@ -14,7 +14,7 @@ export type RoomName = SessionizeViewAllSchemaType['rooms'][0]['name']
 export type SpeakerInfo = SessionizeViewAllSchemaType['speakers'][0]
 export type SessionInfo = SessionizeViewAllSchemaType['sessions'][0]
 
-type UseSessionizeReturnType = {
+type ReturnType = {
   data: SessionizeViewAllSchemaType | undefined
   isError: boolean
   isLoading: boolean
@@ -25,8 +25,7 @@ type UseSessionizeReturnType = {
   getSessionType: (session: SessionInfo) => string
 }
 
-export const useSessionize = (): UseSessionizeReturnType => {
-  // const [isError, setIsError] = useState(false)
+export const useSessionize = (): ReturnType => {
   const [parsedResult, setParsedResult] = useState<SessionizeViewAllSchemaType | undefined>(undefined)
   const { data, error, isLoading } = useSWR(
     `https://sessionize.com/api/v2/${process.env.NEXT_PUBLIC_SESSIONIZE_ID}/view/All`,
@@ -57,7 +56,7 @@ export const useSessionize = (): UseSessionizeReturnType => {
   /**
    * Get the name of the room with the given ID.
    */
-  const getRoomName: UseSessionizeReturnType['getRoomName'] = useCallback(
+  const getRoomName: ReturnType['getRoomName'] = useCallback(
     roomId => {
       const roomName = parsedResult?.rooms.find(room => room.id === roomId)?.name
       if (!roomName) {
@@ -71,7 +70,7 @@ export const useSessionize = (): UseSessionizeReturnType => {
   /**
    * Get the session ID from the given session.
    */
-  const getSessionNumber: UseSessionizeReturnType['getSessionNumber'] = useCallback(session => {
+  const getSessionNumber: ReturnType['getSessionNumber'] = useCallback(session => {
     const sessionNum = session.questionAnswers.find(q => q.questionId === questionSessionNumber)
     if (!sessionNum) {
       throw new Error(`Invalid session: ${session}`)
@@ -82,7 +81,7 @@ export const useSessionize = (): UseSessionizeReturnType => {
   /**
    * Get the speaker info from the given session.
    */
-  const getSpeaker: UseSessionizeReturnType['getSpeaker'] = useCallback(
+  const getSpeaker: ReturnType['getSpeaker'] = useCallback(
     speakerId => {
       const speaker = parsedResult?.speakers.find(s => s.id === speakerId)
       if (!speaker) {
@@ -96,7 +95,7 @@ export const useSessionize = (): UseSessionizeReturnType => {
   /**
    * Get the session type from the given session.
    */
-  const getSessionType: UseSessionizeReturnType['getSessionType'] = useCallback(
+  const getSessionType: ReturnType['getSessionType'] = useCallback(
     session => {
       const sessionTypeId = session.categoryItems[0]
       const sessionType = sessionTypes.find(c => c.id === sessionTypeId)
@@ -108,7 +107,7 @@ export const useSessionize = (): UseSessionizeReturnType => {
   /**
    * Get the session level from the given session.
    */
-  const getSessionLevel: UseSessionizeReturnType['getSessionLevel'] = useCallback(
+  const getSessionLevel: ReturnType['getSessionLevel'] = useCallback(
     session => {
       const sessionLevelId = session.categoryItems[1]
       const level = sessionLevels.find(c => c.id === sessionLevelId)
