@@ -62,6 +62,7 @@ export const Header = () => {
       // TODO(taigakiyokawa): Revert to `/timetable` when the page has implemented.
       { href: 'https://sessionize.com/api/v2/jmtn42ls/view/GridSmart', label: 'Timetable', openNewTab: true },
       { href: '/floor_guide', label: 'Floor Guide' },
+      { href: '/staff', label: 'Staff' },
       {
         label: t('change_language'),
         onClick: handleChangeLanguage
