@@ -1,5 +1,5 @@
 import { Box, Typography } from '@mui/material'
-import type { NextPage } from 'next'
+import type { GetStaticProps, NextPage } from 'next'
 import { Layout } from 'src/components/commons'
 import { StaffCardList } from 'src/components/organisms/StaffCardList'
 import { staff } from 'src/modules/staff'
@@ -16,6 +16,11 @@ export const Page: NextPage = () => {
       </Box>
     </Layout>
   )
+}
+
+// NOTE: next exportで静的ファイルとして生成するため空のpropsを宣言する
+export const getStaticProps: GetStaticProps = async () => {
+  return { props: {} }
 }
 
 export default Page
