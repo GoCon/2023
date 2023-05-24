@@ -11,25 +11,16 @@ export const PageSessions: FC = () => {
 
   return (
     <Layout>
-      <Box
+      <Typography
+        variant="h2"
+        align="center"
         sx={{
-          display: 'flex',
-          flexDirection: 'column',
-          justifyContent: 'center',
-          height: { xs: '128px', md: '284px' },
-          paddingTop: { xs: '56px', md: '100px' }
+          marginTop: { xs: '80px', sm: '160px' },
+          marginBottom: { xs: '32px', sm: '72px' }
         }}
       >
-        <Typography
-          variant="h2"
-          align="center"
-          sx={{
-            top: { xs: '50px', md: '150px' }
-          }}
-        >
-          Sessions & Speakers
-        </Typography>
-      </Box>
+        Sessions & Speakers
+      </Typography>
       <Box
         sx={{
           display: 'flex',
