@@ -10,7 +10,9 @@ import {
   sessionizeViewAllSchema
 } from 'src/modules/sessionize/schema'
 import { Colors } from 'src/styles/color'
-import { Twitter as TwitterIcon } from '@mui/icons-material'
+import { Event as EventIcon, Twitter as TwitterIcon } from '@mui/icons-material'
+import dayjs from 'dayjs'
+import { useTranslation } from 'react-i18next'
 
 type Props = {
   title: string
@@ -19,6 +21,7 @@ type Props = {
   description: string
   sessionType: string | null
   sessionLevel: string | null
+  addEventToCalendarLink: string
   speaker: {
     fullName: string
     profilePicture: string
@@ -87,7 +90,7 @@ export const getStaticProps: GetStaticProps<Props> = async ({ params }) => {
     throw new Error(`No sessions found.`)
   }
 
-  const { title, description, roomId, categoryItems, speakers: speakerIds } = matchedSession
+  const { title, description, roomId, categoryItems, speakers: speakerIds, startsAt, endsAt } = matchedSession
 
   const sessionId = params?.id
   if (!sessionId || typeof sessionId !== 'string') {
@@ -108,6 +111,11 @@ export const getStaticProps: GetStaticProps<Props> = async ({ params }) => {
   const sessionTypes = categories.find(({ id }) => id === CATEGORY_SESSION_TYPE)?.items
   const sessionType = sessionTypes?.find(({ id }) => id === categoryItems[0])?.name ?? null
 
+  const calendarDatesParam = `${dayjs(startsAt).format('YYYYMMDD[T]hhmmss')}/${dayjs(endsAt).format(
+    'YYYYMMDD[T]hhmmss'
+  )}`
+  const addEventToCalendarLink = `http://www.google.com/calendar/event?action=TEMPLATE&text=${title}&details=${description}&dates=${calendarDatesParam}`
+
   const speaker = speakers.find(({ id }) => id === speakerIds[0])
 
   if (!speaker) {
@@ -125,6 +133,7 @@ export const getStaticProps: GetStaticProps<Props> = async ({ params }) => {
       description,
       sessionLevel,
       sessionType,
+      addEventToCalendarLink,
       speaker: { fullName, profilePicture, bio, tagLine, twitterLink }
     }
   }
@@ -137,8 +146,10 @@ const Page: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({
   description,
   sessionLevel,
   sessionType,
+  addEventToCalendarLink,
   speaker: { fullName, profilePicture, bio, tagLine, twitterLink }
 }) => {
+  const { t } = useTranslation()
   return (
     <Layout>
       <Box
@@ -157,16 +168,33 @@ const Page: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({
         <Box sx={{ display: 'flex', flexDirection: 'column', gap: '8px', mb: '24px' }}>
           <SessionLabel roomName={roomName} sessionId={sessionId} isRoomNameDisplayed />
           <Typography variant="body2">{description}</Typography>
-          <Box sx={{ display: 'flex', gap: '4px' }}>
-            {sessionLevel && (
-              <Typography
-                variant="subtitle1"
-                sx={{ color: Colors.text.secondary }}
-              >{`Level: ${sessionLevel} / `}</Typography>
-            )}
-            <Typography variant="subtitle1" sx={{ color: Colors.text.secondary }}>
-              {sessionType}
-            </Typography>
+          <Box sx={{ display: 'flex' }}>
+            <Box sx={{ display: 'flex', gap: '4px' }}>
+              {sessionLevel && (
+                <Typography
+                  variant="subtitle1"
+                  sx={{ color: Colors.text.secondary }}
+                >{`Level: ${sessionLevel} / `}</Typography>
+              )}
+              <Typography variant="subtitle1" sx={{ color: Colors.text.secondary }}>
+                {sessionType}
+              </Typography>
+            </Box>
+            <MuiLink
+              href={addEventToCalendarLink}
+              target="_blank"
+              sx={{
+                display: 'flex',
+                gap: '4px',
+                ml: 'auto',
+                color: Colors.text.primary,
+                textDecoration: 'none',
+                ':hover': { color: Colors.text.secondary, textDecoration: 'underline' }
+              }}
+            >
+              <EventIcon />
+              {t('add_to_calendar')}
+            </MuiLink>
           </Box>
         </Box>
 
