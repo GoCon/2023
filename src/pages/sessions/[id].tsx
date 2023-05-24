@@ -167,7 +167,9 @@ const Page: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({
         {/* Session's info */}
         <Box sx={{ display: 'flex', flexDirection: 'column', gap: '8px', mb: '24px' }}>
           <SessionLabel roomName={roomName} sessionId={sessionId} isRoomNameDisplayed />
-          <Typography variant="body2">{description}</Typography>
+          <Typography variant="body2" sx={{ whiteSpace: 'pre-wrap' }}>
+            {description}
+          </Typography>
           <Box sx={{ display: 'flex' }}>
             <Box sx={{ display: 'flex', gap: '4px' }}>
               {sessionLevel && (
