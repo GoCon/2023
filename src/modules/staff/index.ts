@@ -117,5 +117,12 @@ export const staff: StaffInfo[] = [
     icon: 'https://avatars.githubusercontent.com/u/55640271?v=4',
     twitterLink: 'https://twitter.com/linjiansi_dev',
     githubLink: 'https://github.com/linjiansi'
+  },
+  {
+    name: 'tottie',
+    organizationName: 'Mercari, Inc.',
+    icon: 'https://pbs.twimg.com/profile_images/1124153474961199106/V7E2OuyH_400x400.jpg',
+    twitterLink: 'https://twitter.com/tottie_designer',
+    githubLink: 'https://github.com/tottie000'
   }
 ]
