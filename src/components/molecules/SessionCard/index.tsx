@@ -96,15 +96,17 @@ export const SessionCard: FC<Props> = ({
             marginLeft: 'auto'
           }}
         >
-          <Typography
-            variant="subtitle1"
-            sx={{
-              textAlign: 'right',
-              color: Colors.text.secondary
-            }}
-          >
-            Level: {sessionLevel}
-          </Typography>
+          {sessionLevel && (
+            <Typography
+              variant="subtitle1"
+              sx={{
+                textAlign: 'right',
+                color: Colors.text.secondary
+              }}
+            >
+              Level: {sessionLevel}
+            </Typography>
+          )}
           <Typography
             variant="subtitle1"
             sx={{
