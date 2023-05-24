@@ -57,8 +57,7 @@ export const Header = () => {
   const menuList: HeaderMenuItem[] = useMemo(() => {
     return [
       { href: '/', label: 'Home' },
-      // TODO(taigakiyokawa): Revert to `/sessions` when the page has implemented.
-      { href: 'https://sessionize.com/api/v2/jmtn42ls/view/Sessions', label: 'Sessions', openNewTab: true },
+      { href: '/sessions', label: 'Sessions' },
       // TODO(taigakiyokawa): Revert to `/timetable` when the page has implemented.
       { href: 'https://sessionize.com/api/v2/jmtn42ls/view/GridSmart', label: 'Timetable', openNewTab: true },
       { href: '/floor_guide', label: 'Floor Guide' },
