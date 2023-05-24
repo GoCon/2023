@@ -27,10 +27,7 @@ type ReturnType = {
 
 export const useSessionize = (): ReturnType => {
   const [parsedResult, setParsedResult] = useState<SessionizeViewAllSchemaType | undefined>(undefined)
-  const { data, error, isLoading } = useSWR(
-    `https://sessionize.com/api/v2/${process.env.NEXT_PUBLIC_SESSIONIZE_ID}/view/All`,
-    fetcher
-  )
+  const { data, error, isLoading } = useSWR(`https://sessionize.com/api/v2/3qcdixg4/view/All`, fetcher)
 
   useEffect(() => {
     if (!data) return
