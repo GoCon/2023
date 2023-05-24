@@ -82,6 +82,6 @@ export type SessionizeViewAllSchemaType = z.infer<typeof sessionizeViewAllSchema
 /**
  * ID of the question and categories
  */
-export const questionSessionNumber = 52153
-export const categorySessionType = 46584
-export const categorySessionLevel = 53862
+export const QUESTION_SESSION_NUMBER = 52153
+export const CATEGORY_SESSION_TYPE = 46584
+export const CATEGORY_SESSION_LEVEL = 53862
