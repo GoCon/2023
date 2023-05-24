@@ -1,0 +1,1 @@
+(self.webpackChunk_N_E=self.webpackChunk_N_E||[]).push([[515],{383:function(n,t,u){(window.__NEXT_P=window.__NEXT_P||[]).push(["/timetable",function(){return u(3577)}])},3577:function(n,t,u){"use strict";u.r(t);var _=u(5893),e=u(2757);let f=()=>(0,_.jsx)(e.zf,{});t.default=f}},function(n){n.O(0,[714,113,350,504,757,774,888,179],function(){return n(n.s=383)}),_N_E=n.O()}]);
