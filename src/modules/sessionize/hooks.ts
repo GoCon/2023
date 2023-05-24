@@ -1,8 +1,8 @@
 import useSWR from 'swr'
 import {
-  categorySessionLevel,
-  categorySessionType,
-  questionSessionNumber,
+  CATEGORY_SESSION_LEVEL,
+  CATEGORY_SESSION_TYPE,
+  QUESTION_SESSION_NUMBER,
   sessionizeViewAllSchema,
   type SessionizeViewAllSchemaType
 } from './schema'
@@ -44,12 +44,12 @@ export const useSessionize = (): ReturnType => {
   }, [data])
 
   const sessionTypes = useMemo(() => {
-    const category = parsedResult?.categories.find(c => c.id === categorySessionType)
+    const category = parsedResult?.categories.find(c => c.id === CATEGORY_SESSION_TYPE)
     return category?.items ?? []
   }, [parsedResult?.categories])
 
   const sessionLevels = useMemo(() => {
-    const category = parsedResult?.categories.find(c => c.id === categorySessionLevel)
+    const category = parsedResult?.categories.find(c => c.id === CATEGORY_SESSION_LEVEL)
     return category?.items ?? []
   }, [parsedResult?.categories])
 
@@ -71,7 +71,7 @@ export const useSessionize = (): ReturnType => {
    * Get the session ID from the given session.
    */
   const getSessionNumber: ReturnType['getSessionNumber'] = useCallback(session => {
-    const sessionNum = session.questionAnswers.find(q => q.questionId === questionSessionNumber)
+    const sessionNum = session.questionAnswers.find(q => q.questionId === QUESTION_SESSION_NUMBER)
     if (!sessionNum) {
       throw new Error(`Invalid session: ${session}`)
     }
