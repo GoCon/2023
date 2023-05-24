@@ -1,8 +1,7 @@
-import { PageTop } from 'src/components/pages'
+import { PageSessions } from 'src/components/pages'
 
 const Index = () => {
-  /* TODO: 各ページの実装 */
-  return <PageTop />
+  return <PageSessions />
 }
 
 export default Index

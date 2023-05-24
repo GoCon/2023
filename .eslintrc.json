@@ -4,9 +4,17 @@
     "prettier",
     "plugin:storybook/recommended",
     "eslint:recommended",
-    "plugin:react/jsx-runtime"
+    "plugin:react/jsx-runtime",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:prettier/recommended"
   ],
-   "rules": {
-    "@next/next/no-img-element": "off"
-  }
+  "plugins": ["@typescript-eslint"],
+  "rules": {
+    "@next/next/no-img-element": "off",
+    "no-empty-character-class": "off",
+    "@typescript-eslint/no-empty-function": "off",
+    "@typescript-eslint/no-inferrable-types": "off"
+  },
+  "parser": "@typescript-eslint/parser",
+  "root": true
 }
