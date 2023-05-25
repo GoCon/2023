@@ -10,9 +10,10 @@ import {
   sessionizeViewAllSchema
 } from 'src/modules/sessionize/schema'
 import { Colors } from 'src/styles/color'
-import { Event as EventIcon, Twitter as TwitterIcon } from '@mui/icons-material'
+import { ArrowBackIosNew as ArrowBackIosNewIcon, Event as EventIcon, Twitter as TwitterIcon } from '@mui/icons-material'
 import dayjs from 'dayjs'
 import { useTranslation } from 'react-i18next'
+import NextLink from 'next/link'
 
 type Props = {
   title: string
@@ -161,6 +162,22 @@ const Page: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({
           p: { xs: '16px', sm: '24px 32px' }
         }}
       >
+        <NextLink href="/sessions">
+          <Box
+            sx={{
+              display: 'flex',
+              alignItems: 'center',
+              mb: '40px',
+              color: Colors.text.secondary,
+              ':hover': { color: Colors.text.primary, textDecoration: 'underline' }
+            }}
+          >
+            <ArrowBackIosNewIcon />
+            <Typography variant="body2" sx={{ color: Colors.text.secondary, ':hover': { color: Colors.text.primary } }}>
+              {t('back_to_sessions')}
+            </Typography>
+          </Box>
+        </NextLink>
         <Typography variant="h2">{title}</Typography>
 
         {/* Session's info */}
