@@ -111,9 +111,8 @@ export const getStaticProps: GetStaticProps<Props> = async ({ params }) => {
   const sessionTypes = categories.find(({ id }) => id === CATEGORY_SESSION_TYPE)?.items
   const sessionType = sessionTypes?.find(({ id }) => id === categoryItems[0])?.name ?? null
 
-  const calendarDatesParam = `${dayjs(startsAt).format('YYYYMMDD[T]hhmmss')}/${dayjs(endsAt).format(
-    'YYYYMMDD[T]hhmmss'
-  )}`
+  const calendarDateFormat = 'YYYYMMDD[T]HHmmss'
+  const calendarDatesParam = `${dayjs(startsAt).format(calendarDateFormat)}/${dayjs(endsAt).format(calendarDateFormat)}`
   const addEventToCalendarLink = `http://www.google.com/calendar/event?action=TEMPLATE&text=${title}&details=${description}&dates=${calendarDatesParam}`
 
   const speaker = speakers.find(({ id }) => id === speakerIds[0])
@@ -185,10 +184,12 @@ const Page: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({
             <MuiLink
               href={addEventToCalendarLink}
               target="_blank"
+              variant="body2"
               sx={{
                 display: 'flex',
                 gap: '4px',
                 ml: 'auto',
+                alignItems: 'center',
                 color: Colors.text.primary,
                 textDecoration: 'none',
                 ':hover': { color: Colors.text.secondary, textDecoration: 'underline' }
