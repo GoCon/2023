@@ -63,5 +63,12 @@
     "*.{ts,tsx}": [
       "prettier --ignore-path .gitignore --write \"**/*.{ts,tsx}\""
     ]
+  },
+  "browser": {
+    "fs": false,
+    "net": false,
+    "tls": false,
+    "child_process": false,
+    "canvas": false
   }
 }
