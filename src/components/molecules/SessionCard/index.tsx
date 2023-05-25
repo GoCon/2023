@@ -4,6 +4,7 @@ import { Colors } from 'src/styles/color'
 import { FC } from 'react'
 import { SpeakerBlock } from 'src/components/molecules'
 import { useSize } from 'src/modules/hooks'
+import Link from 'next/link'
 
 type Props = {
   title: string
@@ -31,72 +32,86 @@ export const SessionCard: FC<Props> = ({
   const { isPCOrOver } = useSize()
 
   return (
-    <Box
-      sx={{
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'flex-start',
-        padding: isPCOrOver ? '24px' : '16px',
-        gap: isPCOrOver ? '12px' : '8px',
-        borderRadius: '18px',
-        boxShadow: '0px 3px 8px rgba(144, 131,  147, 0.15)',
-        backgroundColor: Colors.background.primary
-      }}
-    >
-      <Typography
-        variant="h5"
-        sx={{
-          display: '-webkit-box',
-          WebkitBoxOrient: 'vertical',
-          WebkitLineClamp: 2,
-          overflow: 'hidden',
-          wordBreak: 'break-word'
-        }}
-      >
-        {title}
-      </Typography>
+    <Link href={`/sessions/${sessionId}`}>
       <Box
         sx={{
           display: 'flex',
           flexDirection: 'column',
           alignItems: 'flex-start',
-          padding: '0px',
-          gap: '8px'
+          padding: isPCOrOver ? '24px' : '16px',
+          gap: isPCOrOver ? '12px' : '8px',
+          borderRadius: '18px',
+          boxShadow: '0px 3px 8px rgba(144, 131,  147, 0.15)',
+          backgroundColor: Colors.background.primary,
+          ':hover': {
+            opacity: '0.6'
+          }
         }}
       >
-        <SessionLabel isRoomNameDisplayed roomName={roomName} sessionId={sessionId} />
         <Typography
-          variant="body2"
+          variant="h5"
           sx={{
             display: '-webkit-box',
             WebkitBoxOrient: 'vertical',
-            WebkitLineClamp: 5,
+            WebkitLineClamp: 2,
             overflow: 'hidden',
             wordBreak: 'break-word'
           }}
         >
-          {description}
+          {title}
         </Typography>
-      </Box>
-      <Box
-        sx={{
-          gap: '24px',
-          display: 'flex',
-          alignItems: 'flex-end',
-          alignSelf: 'stretch'
-        }}
-      >
-        <SpeakerBlock name={speaker.fullName} tagLine={speaker.tagLine} profilePicture={speaker.profilePicture} />
         <Box
           sx={{
             display: 'flex',
             flexDirection: 'column',
-            alignItems: 'flex-end',
-            gap: '4px',
-            marginLeft: 'auto'
+            alignItems: 'flex-start',
+            padding: '0px',
+            gap: '8px'
           }}
         >
-          {sessionLevel && (
+          <SessionLabel isRoomNameDisplayed roomName={roomName} sessionId={sessionId} />
+          <Typography
+            variant="body2"
+            sx={{
+              display: '-webkit-box',
+              WebkitBoxOrient: 'vertical',
+              WebkitLineClamp: 5,
+              overflow: 'hidden',
+              wordBreak: 'break-word'
+            }}
+          >
+            {description}
+          </Typography>
+        </Box>
+        <Box
+          sx={{
+            gap: '24px',
+            display: 'flex',
+            alignItems: 'flex-end',
+            alignSelf: 'stretch'
+          }}
+        >
+          <SpeakerBlock name={speaker.fullName} tagLine={speaker.tagLine} profilePicture={speaker.profilePicture} />
+          <Box
+            sx={{
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'flex-end',
+              gap: '4px',
+              marginLeft: 'auto'
+            }}
+          >
+            {sessionLevel && (
+              <Typography
+                variant="subtitle1"
+                sx={{
+                  textAlign: 'right',
+                  color: Colors.text.secondary
+                }}
+              >
+                Level: {sessionLevel}
+              </Typography>
+            )}
             <Typography
               variant="subtitle1"
               sx={{
@@ -104,20 +119,11 @@ export const SessionCard: FC<Props> = ({
                 color: Colors.text.secondary
               }}
             >
-              Level: {sessionLevel}
+              {sessionType}
             </Typography>
-          )}
-          <Typography
-            variant="subtitle1"
-            sx={{
-              textAlign: 'right',
-              color: Colors.text.secondary
-            }}
-          >
-            {sessionType}
-          </Typography>
+          </Box>
         </Box>
       </Box>
-    </Box>
+    </Link>
   )
 }
