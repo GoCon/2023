@@ -33,6 +33,8 @@ type Props = {
 }
 
 const allSessionPaths = [
+  { params: { id: 'A1-SP' } },
+  { params: { id: 'A2-SP' } },
   { params: { id: 'A3-L' } },
   { params: { id: 'B3-L' } },
   { params: { id: 'A4-S' } },
