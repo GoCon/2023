@@ -124,5 +124,13 @@ export const staff: StaffInfo[] = [
     icon: 'https://pbs.twimg.com/profile_images/1124153474961199106/V7E2OuyH_400x400.jpg',
     twitterLink: 'https://twitter.com/tottie_designer',
     githubLink: 'https://github.com/tottie000'
+  },
+  {
+    name: 'tenntenn',
+    organizationName: '株式会社ナレッジワーク',
+    icon: 'https://tenntenn.dev/images/tenntenn.png',
+    twitterLink: 'https://twitter.com/tenntenn',
+    githubLink: 'https://github.com/tenntenn',
+    otherLink: 'https://tenntenn.dev'
   }
 ]
