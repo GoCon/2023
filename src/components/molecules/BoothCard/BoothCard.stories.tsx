@@ -10,6 +10,10 @@ export default meta
 export const Default: StoryObj<typeof BoothCard> = {
   args: {
     title: faker.lorem.lines(),
-    description: faker.lorem.paragraph()
+    description: `
+      ${faker.lorem.paragraph()}
+
+      URL: https://example.com/?hoge=fuga
+      `
   }
 }
