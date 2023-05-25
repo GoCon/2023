@@ -27,7 +27,8 @@ export const SessionLabel: FC<Props> = ({ sessionId, roomName: roomName, isRoomN
         display: 'inline-flex',
         backgroundColor,
         borderRadius: '2px',
-        padding: '2px 4px'
+        padding: '2px 4px',
+        width: 'fit-content'
       }}
     >
       <Typography variant="caption" sx={{ color: Colors.text.white }}>
