@@ -10,7 +10,9 @@ import {
   sessionizeViewAllSchema
 } from 'src/modules/sessionize/schema'
 import { Colors } from 'src/styles/color'
-import { ArrowBackIosNew as ArrowBackIosNewIcon, Event as EventIcon, Twitter as TwitterIcon } from '@mui/icons-material'
+import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew'
+import EventIcon from '@mui/icons-material/Event'
+import TwitterIcon from '@mui/icons-material/Twitter'
 import dayjs from 'dayjs'
 import { useTranslation } from 'react-i18next'
 import NextLink from 'next/link'

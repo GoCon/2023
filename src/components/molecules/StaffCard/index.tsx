@@ -3,7 +3,9 @@ import Grid from '@mui/material/Unstable_Grid2'
 import { type FC } from 'react'
 import Image from 'next/image'
 import { Colors } from 'src/styles/color'
-import { Twitter as TwitterIcon, GitHub as GitHubIcon, Link as LinkIcon } from '@mui/icons-material'
+import TwitterIcon from '@mui/icons-material/Twitter'
+import GitHubIcon from '@mui/icons-material/GitHub'
+import LinkIcon from '@mui/icons-material/Link'
 import { type StaffInfo } from 'src/modules/staff'
 
 type Props = StaffInfo
