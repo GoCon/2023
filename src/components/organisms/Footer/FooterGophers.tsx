@@ -24,7 +24,17 @@ export const FooterGophers: FC = () => {
   })
 
   return (
-    <Box display="flex" alignItems="flex-end" justifyContent="center" gap={0.5} width="100%" padding="24px 16px">
+    <Box
+      sx={{
+        display: 'flex',
+        alignItems: 'flex-end',
+        justifyContent: 'center',
+        gap: 0.5,
+        width: '100%',
+        padding: '64px 16px 16px',
+        mt: 'auto'
+      }}
+    >
       <Image src={GopherConductor} alt="gopher conductor" style={{ minWidth: 0, objectFit: 'contain' }} />
       <Image src={GopherDrummer} alt="gopher drummer" style={{ minWidth: 0, objectFit: 'contain' }} />
       <Image src={GopherTrumpeter} alt="gopher trumpeter" style={{ minWidth: 0, objectFit: 'contain' }} />
