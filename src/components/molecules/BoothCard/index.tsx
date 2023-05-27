@@ -1,5 +1,5 @@
 import { Typography, Box } from '@mui/material'
-import { ReactNode } from 'react'
+import { Fragment, ReactNode } from 'react'
 import { Colors } from 'src/styles/color'
 
 /** Regular expression for parsing URLs (excluding closing parentheses at the end) */
@@ -42,7 +42,7 @@ const replaceUrlWithLink: (text: string) => ReactNode = text => {
         </a>
       )
     } else {
-      return <>{part}</>
+      return <Fragment key={i}>{part}</Fragment>
     }
   })
 }
