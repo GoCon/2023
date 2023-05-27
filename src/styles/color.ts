@@ -3,11 +3,11 @@ export const Colors = {
     primary: '#2E353B',
     primary_hover: '#82919D',
     secondary: '#728393',
-    secondary_default: '#666666',
+    secondary_hover: '#A3AEB9',
     white: '#FFFFFF',
     white_hover: '#CADFF8',
-    default: '#333333',
     link: '#0078F9',
+    link_hover: '#6199DA',
     tertiary: '#BDC6D0',
     error: '#FB5151',
     icon: '#7989A2'
@@ -30,7 +30,8 @@ export const Colors = {
     primary_green: '#61B236',
     secondary_pink: '#F8D9E8',
     secondary_green: '#D9EBD4',
-    secondary_blue: '#D5E5F7'
+    secondary_blue: '#D5E5F7',
+    footer: '#F5F5F5'
   },
   border: {
     primary: {
