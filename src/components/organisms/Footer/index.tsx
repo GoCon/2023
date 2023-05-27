@@ -1,209 +1,116 @@
-import { Box, Typography } from '@mui/material'
+import { Box, List, ListItem, Typography } from '@mui/material'
 import { Colors } from 'src/styles/color'
-import { Trans, useTranslation } from 'react-i18next'
-import { useSize } from 'src/modules/hooks'
-import { FooterBottom } from 'src/components/organisms/Footer/FooterBottom'
-import { IconTwitter } from 'src/components/atoms'
+import { useTranslation } from 'react-i18next'
 import { FooterGophers } from './FooterGophers'
+import TwitterIcon from '@mui/icons-material/Twitter'
+import { FC } from 'react'
+import { ExternalLink } from 'src/components/atoms'
 
-export const footerHeight = 60
-
-export const Footer = () => {
+export const Footer: FC = () => {
   const { t } = useTranslation()
-  const { isTabletOrOver } = useSize()
 
   return (
-    <Box
-      sx={{
-        display: 'flex',
-        flexDirection: 'column',
-        backgroundColor: Colors.background.secondary,
-        p: 0
-      }}
-    >
+    <>
       <FooterGophers />
-      <Box
-        sx={{
-          display: 'flex',
-          flexDirection: 'column',
-          px: isTabletOrOver ? '32px' : '16px'
-        }}
-      >
+      <Box component="footer" sx={{ backgroundColor: Colors.background.footer }}>
         <Box
           sx={{
+            maxWidth: '1024px',
+            mx: 'auto',
+            px: { xs: '16px', sm: '36px' },
+            py: '32px',
+            borderBottom: `solid 1px ${Colors.border.primary.highlight}`,
             display: 'flex',
-            flexDirection: 'row',
-            py: isTabletOrOver ? '36px' : '16px',
-            gap: isTabletOrOver ? '24px' : '16px'
+            flexDirection: { xs: 'column', sm: 'row' },
+            justifyContent: 'center',
+            gap: '24px'
           }}
         >
-          <Box
-            sx={{
-              display: 'flex',
-              flexDirection: 'column',
-              width: isTabletOrOver ? '440px' : '150px',
-              flexGrow: 1,
-              gap: '16px'
-            }}
-          >
-            <Typography variant="h4" sx={{ color: Colors.text.default }}>
+          <Box sx={{ flexGrow: 1 }}>
+            <Typography variant="h4" sx={{ mb: '8px' }}>
               About
             </Typography>
-            <Box
-              sx={{
-                display: 'flex',
-                flexDirection: 'column',
-                gap: '8px'
-              }}
-            >
-              <a href="https://go.dev/conduct" target="_blank">
-                <Typography variant="body2" sx={{ color: Colors.text.default }}>
+            <List>
+              <ListItem>
+                <ExternalLink href="https://go.dev/conduct" color="primary">
                   Code of Conduct
-                </Typography>
-              </a>
-              <a href="mailto:info@gocon.jp" target="_blank">
-                <Typography variant="body2" sx={{ color: Colors.text.default }}>
+                </ExternalLink>
+              </ListItem>
+              <ListItem>
+                <ExternalLink href="mailto:info@gocon.jp" color="primary">
                   INFO@GOCON.JP
-                </Typography>
-              </a>
-              <a
-                href="https://drive.google.com/file/d/1Xon1uyLT-810sxnkLMngmL67z68K3XJG/view?usp=share_a"
-                target="_blank"
-              >
-                <Typography variant="body2" sx={{ color: Colors.text.default }}>
+                </ExternalLink>
+              </ListItem>
+              <ListItem>
+                <ExternalLink
+                  href="https://drive.google.com/file/d/1Xon1uyLT-810sxnkLMngmL67z68K3XJG/view"
+                  color="primary"
+                >
                   {t('act_on_specified_commercial_transactions')}
-                </Typography>
-              </a>
-            </Box>
+                </ExternalLink>
+              </ListItem>
+            </List>
           </Box>
-          <Box
-            sx={{
-              display: 'flex',
-              flexDirection: 'column',
-              width: isTabletOrOver ? '440px' : '150px',
-              flexGlow: 1,
-              gap: '16px'
-            }}
-          >
-            <Typography
-              variant="h4"
-              sx={{
-                color: Colors.text.default
-              }}
-            >
+          <Box sx={{ flexGrow: 1 }}>
+            <Typography variant="h4" sx={{ mb: '8px' }}>
               Past Conferences
             </Typography>
-            <Box
-              sx={{
-                display: 'flex',
-                flexDirection: 'column',
-                gap: '8px'
-              }}
-            >
-              {[
-                ['2022 Spring', 'https://gocon.jp/2022spring/'],
-                ['2021 Autumn', 'https://gocon.jp/2021autumn/'],
-                ['2021 Spring', 'https://gocon.jp/2021spring/']
-              ].map(([label, href]) => (
-                <a href={href} key={label} target="_blank">
-                  <Typography
-                    variant="body2"
-                    key={label}
-                    sx={{
-                      color: Colors.text.default
-                    }}
-                  >
-                    {label}
-                  </Typography>
-                </a>
-              ))}
-            </Box>
+            <List>
+              <ListItem>
+                <ExternalLink href="https://gocon.jp/2022spring" color="primary">
+                  2022 Spring
+                </ExternalLink>
+              </ListItem>
+              <ListItem>
+                <ExternalLink href="https://gocon.jp/2021autumn" color="primary">
+                  2021 Autumn
+                </ExternalLink>
+              </ListItem>
+              <ListItem>
+                <ExternalLink href="https://gocon.jp/2021spring" color="primary">
+                  2021 Spring
+                </ExternalLink>
+              </ListItem>
+            </List>
           </Box>
-          {isTabletOrOver && (
-            <Box
-              sx={{
-                width: '440px',
-                flexGrow: 1
-              }}
-            ></Box>
-          )}
         </Box>
-      </Box>
-      <Box
-        sx={{
-          height: '1px',
-          backgroundColor: Colors.border.primary.highlight
-        }}
-      ></Box>
-      <FooterBottom>
         <Box
           sx={{
+            maxWidth: '1024px',
+            mx: 'auto',
+            px: { xs: '16px', sm: '36px' },
+            py: '24px',
             display: 'flex',
-            flexDirection: 'row',
-            aliginItems: 'end',
-            width: '150px',
-            p: '0px',
+            flexDirection: { xs: 'column', sm: 'row' },
+            alignItems: { xs: 'flex-start', sm: 'center' },
+            justifyContent: 'space-between',
             gap: '16px'
           }}
         >
-          <Box
-            sx={{
-              width: '32px',
-              height: '32px'
-            }}
-          >
-            <IconTwitter />
-          </Box>
-          <a href="https://twitter.com/hashtag/gocon" target="_blank">
-            <Typography
-              variant="body2"
-              sx={{
-                color: Colors.text.secondary_default
-              }}
-            >
-              #GOCON
+          <ExternalLink href="https://twitter.com/hashtag/gocon" color="primary">
+            <Box sx={{ display: 'flex', gap: '8px' }}>
+              <TwitterIcon />
+              <span>#GOCON</span>
+            </Box>
+          </ExternalLink>
+          <Box sx={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
+            <Typography variant="body2" sx={{ color: Colors.text.secondary, textAlign: { xs: 'left', sm: 'right' } }}>
+              Go Conference
             </Typography>
-          </a>
-        </Box>
-        <Box
-          sx={
-            isTabletOrOver
-              ? {
-                  position: 'absolute',
-                  right: '0px',
-                  fontSize: '12px'
-                }
-              : {
-                  fontSize: '10px'
-                }
-          }
-        >
-          <Typography
-            sx={{
-              fontWeight: 400,
-              fontSize: isTabletOrOver ? '12px' : '10px',
-              lineHeight: '140%',
-              color: Colors.text.secondary_default,
-              textAlign: isTabletOrOver ? 'right' : 'left'
-            }}
-          >
-            Go Conference
-          </Typography>
-          <Typography variant="caption">
-            <Trans t={t} i18nKey="gopher_copyright">
-              the_gopher_was_desigined_by
-              <a href="http://reneefrench.blogspot.com/" target="_blank">
-                author
-              </a>
-              illustrations_by
-              <a href="https://twitter.com/tottie_designer" target="_blank">
-                author
-              </a>
+            <Typography variant="caption" sx={{ color: Colors.text.secondary, textAlign: { xs: 'left', sm: 'right' } }}>
+              The Go gopher was designed by{' '}
+              <ExternalLink href="http://reneefrench.blogspot.com/" color="secondary">
+                Renée French
+              </ExternalLink>
+              . Illustrations by{' '}
+              <ExternalLink href="https://twitter.com/tottie_designer" color="secondary">
+                tottie
+              </ExternalLink>
               .
-            </Trans>
-          </Typography>
+            </Typography>
+          </Box>
         </Box>
-      </FooterBottom>
-    </Box>
+      </Box>
+    </>
   )
 }
