@@ -53,15 +53,9 @@ export const Layout: NextPage<LayoutProps> = ({ children }) => {
         <meta property="og:image" content="https://gocon.jp/2023/ogp-thumbnail.png" />
         <meta name="twitter:card" content="summary_large_image" />
       </Head>
-      <Box>
-        <Header />
-      </Box>
-      <Box component="main" sx={{ minHeight: 'calc(100vh - 300px)' }}>
-        {children}
-      </Box>
-      <Box>
-        <Footer />
-      </Box>
+      <Header />
+      <Box component="main">{children}</Box>
+      <Footer />
     </>
   )
 }
