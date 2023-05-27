@@ -265,7 +265,7 @@ const Page: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({
               </MuiLink>
             )}
           </Box>
-          <Typography variant="body2">{bio}</Typography>
+          <Typography variant="body2">{replaceUrlWithLink(bio, { keepFullLength: true })}</Typography>
         </Box>
       </Box>
 
