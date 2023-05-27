@@ -17,6 +17,7 @@ import dayjs from 'dayjs'
 import { useTranslation } from 'react-i18next'
 import NextLink from 'next/link'
 import { SessionizeViewAllSchemaType } from 'src/modules/sessionize/schema'
+import { replaceUrlWithLink } from 'src/modules/util/text'
 
 type Props = {
   title: string
@@ -205,7 +206,7 @@ const Page: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({
         <Box sx={{ display: 'flex', flexDirection: 'column', gap: '8px', mb: '24px' }}>
           <SessionLabel roomName={roomName} sessionId={sessionId} isRoomNameDisplayed />
           <Typography variant="body2" sx={{ whiteSpace: 'pre-wrap' }}>
-            {description}
+            {replaceUrlWithLink(description, { keepFullLength: true })}
           </Typography>
           <Box sx={{ display: 'flex' }}>
             <Box sx={{ display: 'flex', gap: '4px' }}>
