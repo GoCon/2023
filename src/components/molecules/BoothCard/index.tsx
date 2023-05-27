@@ -15,7 +15,13 @@ const replaceUrlWithLink: (text: string) => ReactNode = text => {
   return parts.map((part, i) => {
     if (part.match(URL_REGEX)) {
       return (
-        <a key={i} href={part} target="_blank" rel="noopener noreferrer" style={{ color: Colors.text.link }}>
+        <a
+          key={i}
+          href={part}
+          target="_blank"
+          rel="noopener noreferrer"
+          style={{ color: Colors.text.link, textDecoration: 'underline' }}
+        >
           {shortenUrl(part)}
         </a>
       )
