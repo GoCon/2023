@@ -1,4 +1,5 @@
 import { Typography, Box } from '@mui/material'
+import { replaceUrlWithLink } from 'src/modules/util/text'
 
 export interface BoothCardProps {
   title: string
@@ -13,7 +14,7 @@ export const BoothCard = ({ title, description }: BoothCardProps) => {
         variant="body2"
         sx={{ mb: '24px', maxWidth: '680px', wordBreak: 'break-word', whiteSpace: 'pre-wrap' }}
       >
-        {description}
+        {replaceUrlWithLink(description)}
       </Typography>
     </Box>
   )
