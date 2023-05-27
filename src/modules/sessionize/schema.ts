@@ -78,10 +78,32 @@ export const sessionizeViewAllSchema = z.object({
  * Type definition for the parsed response from Sessionize's "View All" API.
  */
 export type SessionizeViewAllSchemaType = z.infer<typeof sessionizeViewAllSchema>
+/**
+ * Type definition for each session.
+ */
+export type SessionizeSessionSchemaType = z.infer<typeof sessionizeSessionSchema>
+/**
+ * Type definition for each speaker.
+ */
+export type SessionizeSpeakerSchemaType = z.infer<typeof sessionizeSpeakerSchema>
+/**
+ * Type definition for each category.
+ */
+export type SessionizeCategorySchemaType = z.infer<typeof sessionizeCategorySchema>
+/**
+ * Type definition for each room.
+ */
+export type SessionizeRoomSchemaType = z.infer<typeof sessionizeRoomSchema>
 
 /**
- * ID of the question and categories
+ * ID of the question for the session number.
  */
 export const QUESTION_SESSION_NUMBER = 52153
+/**
+ * ID of the category for the session type.
+ */
 export const CATEGORY_SESSION_TYPE = 46584
+/**
+ * ID of the category for the session level.
+ */
 export const CATEGORY_SESSION_LEVEL = 53862
