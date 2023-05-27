@@ -48,7 +48,6 @@ jobs:
         run: yarn lint
 
       - name: Build
-        if: ${{ steps.cache_build.outputs.cache-hit != 'true' }}
         run: yarn build
 
       - name: Deploy
