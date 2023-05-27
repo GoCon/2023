@@ -3,12 +3,7 @@ import { type NextPage, type GetStaticProps, type GetStaticPaths, InferGetStatic
 import { SessionLabel } from 'src/components/atoms/SessionLabel'
 import { SpeakerIcon } from 'src/components/atoms/SpeakerIcon'
 import { Layout } from 'src/components/commons'
-import {
-  CATEGORY_SESSION_LEVEL,
-  CATEGORY_SESSION_TYPE,
-  QUESTION_SESSION_NUMBER,
-  sessionizeViewAllSchema
-} from 'src/modules/sessionize/schema'
+import { CATEGORY_SESSION_LEVEL, CATEGORY_SESSION_TYPE, QUESTION_SESSION_NUMBER } from 'src/modules/sessionize/schema'
 import { Colors } from 'src/styles/color'
 import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew'
 import EventIcon from '@mui/icons-material/Event'
@@ -16,8 +11,8 @@ import TwitterIcon from '@mui/icons-material/Twitter'
 import dayjs from 'dayjs'
 import { useTranslation } from 'react-i18next'
 import NextLink from 'next/link'
-import { SessionizeViewAllSchemaType } from 'src/modules/sessionize/schema'
 import { replaceUrlWithLink } from 'src/modules/util/text'
+import { fetchSessionize } from 'src/modules/sessionize/fetch-sessionize'
 
 type Props = {
   title: string
@@ -76,29 +71,6 @@ export const getStaticPaths: GetStaticPaths = async () => {
     paths: allSessionPaths,
     fallback: false
   }
-}
-
-/**
- * Cache sessionize data.
- */
-let sessionizeCache: SessionizeViewAllSchemaType | undefined = undefined
-
-/**
- * Fetch sessionize data and cache it.
- */
-const fetchSessionize: () => Promise<SessionizeViewAllSchemaType> = async () => {
-  if (sessionizeCache) {
-    return sessionizeCache
-  }
-  const response = await fetch('https://sessionize.com/api/v2/3qcdixg4/view/All')
-  const parsedResult = await sessionizeViewAllSchema.safeParseAsync(await response.json())
-
-  if (!parsedResult.success) {
-    throw new Error(`Failed to parse: ${parsedResult.error}`)
-  }
-
-  sessionizeCache = parsedResult.data
-  return sessionizeCache
 }
 
 export const getStaticProps: GetStaticProps<Props> = async ({ params }) => {
