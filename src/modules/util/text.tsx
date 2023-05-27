@@ -24,17 +24,19 @@ const shortenUrl: (url: string) => string = url => {
 }
 
 type ReplaceUrlWithLinkOptions = {
-  /** If true, the URL will be displayed in full length */
-  keepFullLength: boolean
+  /** If true, the URL will be displayed in full length. Default as false */
+  keepFullLength?: boolean
 }
 /**
  * Convert URL strings contained in text to links
  * @param text text
  */
-export const replaceUrlWithLink: (text: string, options: ReplaceUrlWithLinkOptions) => ReactNode = (
+export const replaceUrlWithLink: (text: string, options?: ReplaceUrlWithLinkOptions) => ReactNode = (
   text,
-  { keepFullLength }
+  options = {}
 ) => {
+  const { keepFullLength = false } = options
+
   const parts = text.split(URL_REGEX)
 
   return parts.map((part, i) => {
