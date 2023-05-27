@@ -26,7 +26,8 @@ export const PageSessions: FC = () => {
           display: 'flex',
           justifyContent: 'center',
           backgroundColor: Colors.background.secondary,
-          padding: { xs: '32px 16px', md: '80px 20px' }
+          padding: { xs: '32px 16px', md: '80px 20px' },
+          minHeight: '100vh'
         }}
       >
         <Box maxWidth={'1024px'} width={'100%'}>
