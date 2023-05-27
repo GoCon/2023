@@ -28,6 +28,19 @@ export const getSession = (sessions: SessionizeSessionSchemaType[], sessionId: s
 }
 
 /**
+ * Get ID of a session such as 'A3-L', 'B4-S', etc.
+ * @param questionAnswers - list of the set of a question and an answer belongs to each session.
+ */
+export const getSessionId = (questionAnswers: SessionizeSessionSchemaType['questionAnswers']) => {
+  const questionForSessionId = questionAnswers.find(q => q.questionId === QUESTION_SESSION_NUMBER)
+  if (!questionForSessionId) {
+    throw new Error(`Invalid question: ${questionForSessionId}`)
+  }
+
+  return questionForSessionId.answerValue
+}
+
+/**
  * Get single room data from all rooms find by a roomId.
  * @param rooms - list of all rooms data fetched from Sessionize API.
  * @param roomId - ID of a room belongs to each session.
