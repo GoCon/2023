@@ -39,12 +39,9 @@ jobs:
           echo "${{ secrets.ENV }}" > .env
 
       - name: Install deps
-        if: ${{ steps.cache_build.outputs.cache-hit != 'true' }}
         run: yarn install --frozen-lockfile
 
       - name: Lint
-        # next lint caches .next/cache/eslint
-        if: ${{ steps.cache_build.outputs.cache-hit != 'true' }}
         run: yarn lint
 
       - name: Build
