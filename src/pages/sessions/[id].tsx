@@ -16,6 +16,7 @@ import TwitterIcon from '@mui/icons-material/Twitter'
 import dayjs from 'dayjs'
 import { useTranslation } from 'react-i18next'
 import NextLink from 'next/link'
+import { SessionizeViewAllSchemaType } from 'src/modules/sessionize/schema'
 
 type Props = {
   title: string
@@ -76,7 +77,18 @@ export const getStaticPaths: GetStaticPaths = async () => {
   }
 }
 
-export const getStaticProps: GetStaticProps<Props> = async ({ params }) => {
+/**
+ * Cache sessionize data.
+ */
+let sessionizeCache: SessionizeViewAllSchemaType | undefined = undefined
+
+/**
+ * Fetch sessionize data and cache it.
+ */
+const fetchSessionize: () => Promise<SessionizeViewAllSchemaType> = async () => {
+  if (sessionizeCache) {
+    return sessionizeCache
+  }
   const response = await fetch('https://sessionize.com/api/v2/3qcdixg4/view/All')
   const parsedResult = await sessionizeViewAllSchema.safeParseAsync(await response.json())
 
@@ -84,7 +96,12 @@ export const getStaticProps: GetStaticProps<Props> = async ({ params }) => {
     throw new Error(`Failed to parse: ${parsedResult.error}`)
   }
 
-  const { sessions, rooms, categories, speakers } = parsedResult.data
+  sessionizeCache = parsedResult.data
+  return sessionizeCache
+}
+
+export const getStaticProps: GetStaticProps<Props> = async ({ params }) => {
+  const { sessions, rooms, categories, speakers } = await fetchSessionize()
 
   const matchedSession = sessions.find(
     ({ questionAnswers }) =>
