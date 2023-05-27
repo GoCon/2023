@@ -88,6 +88,14 @@ export const theme: ThemeOptions = {
         color: Colors.text.primary,
         fontFamily: poppins.style.fontFamily
       }
+    },
+    MuiListItem: {
+      styleOverrides: {
+        root: {
+          paddingLeft: '0',
+          paddingRight: '0'
+        }
+      }
     }
   }
 }
