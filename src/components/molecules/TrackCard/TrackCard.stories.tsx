@@ -1,7 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react'
 import { faker } from '@faker-js/faker'
 import { TrackCard } from '.'
-import { Colors } from 'src/styles/color'
 
 const meta: Meta<typeof TrackCard> = {
   component: TrackCard
@@ -12,22 +11,22 @@ type Story = StoryObj<typeof TrackCard>
 
 export const Default: Story = {
   args: {
-    id: 'A1-1',
+    roomName: 'Room A',
+    sessionId: 'A0-L',
     title: faker.lorem.paragraph(),
-    minute: 20,
-    speaker: faker.name.fullName(),
-    speakerIcon: faker.image.avatar()
+    sessionType: 'Long Talk(40min)',
+    speakerName: faker.name.fullName(),
+    profilePicture: faker.image.avatar()
   }
 }
 
 export const Green: Story = {
   args: {
-    id: 'A1-1',
+    roomName: 'Room B',
+    sessionId: 'B0-S',
     title: faker.lorem.paragraph(),
-    minute: 20,
-    speaker: faker.name.fullName(),
-    speakerIcon: faker.image.avatar(),
-    color: Colors.background.secondary_green,
-    idColor: Colors.background.primary_green
+    sessionType: 'Short Talk(20min)',
+    speakerName: faker.name.fullName(),
+    profilePicture: faker.image.avatar()
   }
 }
