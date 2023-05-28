@@ -140,3 +140,22 @@ export const getTwitterUserName = (links: SessionizeSpeakerSchemaType['links']):
 
   return userName
 }
+
+/**
+ * Formats speaker's name to the correct to display.
+ * If the name is Japanese, return the name in order of last name to first name.
+ * If the last name is 'N/A' like the handle name, return only the first name.
+ * @param firstName - speaker.firstName from Sessionize API.
+ * @param lastName  - speaker.lastName from Sessionize API.
+ */
+export const formatSpeakerName = (firstName: string, lastName: string): string => {
+  const japaneseUnicodeProperty = /^[\p{Script=Hiragana}\p{Script=Katakana}\p{Script=Han}]*$/u
+  const isJapanese: boolean = japaneseUnicodeProperty.test(lastName)
+  if (isJapanese) {
+    return `${lastName} ${firstName}`
+  }
+  if (lastName === 'N/A') {
+    return `${firstName}`
+  }
+  return `${firstName} ${lastName}`
+}
