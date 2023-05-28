@@ -108,8 +108,6 @@ export const getStaticProps: GetStaticProps<Props> = async () => {
     return 0
   })
 
-  console.log(sortedTimeTableSessions)
-
   return { props: { timeTableSessions: sortedTimeTableSessions } }
 }
 
