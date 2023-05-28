@@ -20,6 +20,7 @@ import {
   getSpeaker,
   getTwitterUserName
 } from 'src/modules/sessionize/utils'
+import Head from 'next/head'
 
 type Props = {
   title: string
@@ -132,6 +133,9 @@ const Page: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({
   const { t } = useTranslation()
   return (
     <Layout>
+      <Head>
+        <title>{`${title} | Go Conference 2023`}</title>
+      </Head>
       <Box
         sx={{
           my: '128px',

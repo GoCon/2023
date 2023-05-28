@@ -4,12 +4,16 @@ import { Layout } from 'src/components/commons'
 import { type SponsorInfo } from 'src/modules/sponsors'
 import Grid from '@mui/material/Unstable_Grid2'
 import { FC } from 'react'
+import Head from 'next/head'
 
 type Props = Omit<SponsorInfo, 'id'>
 
 export const PageSponsor: FC<Props> = ({ name, logo, description }) => {
   return (
     <Layout>
+      <Head>
+        <title>{`${name} | Go Conference 2023`}</title>
+      </Head>
       <Grid container spacing={4} sx={{ maxWidth: '1024px', m: '128px auto 0', px: '16px' }}>
         <Grid xs={12} md={4} sx={{ position: 'relative', aspectRatio: '16/9' }}>
           <Image src={logo} fill alt={name} style={{ objectFit: 'contain' }} />
