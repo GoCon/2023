@@ -5,7 +5,7 @@ import { Fragment } from 'react'
 import { Layout } from 'src/components/commons'
 import { PlenumCard, PlenumCardProps, TrackCard, TrackCardProps } from 'src/components/molecules'
 import { fetchSessionize } from 'src/modules/sessionize/fetch-sessionize'
-import { getSpeaker } from 'src/modules/sessionize/utils'
+import { formatSpeakerName, getSpeaker } from 'src/modules/sessionize/utils'
 import { getSessionType } from 'src/modules/sessionize/utils'
 import { getRoom, getSessionId } from 'src/modules/sessionize/utils'
 import { TimetableRoomHeader } from 'src/components/molecules/TimetableRoomHeader'
@@ -46,7 +46,8 @@ export const getStaticProps: GetStaticProps<Props> = async () => {
       const { name: roomName } = getRoom(rooms, roomId)
       const sessionId = getSessionId(questionAnswers)
       const sessionType = getSessionType(categories, categoryItems)
-      const { fullName: speakerName, profilePicture } = getSpeaker(speakers, speakerIds[0])
+      const { firstName, lastName, profilePicture } = getSpeaker(speakers, speakerIds[0])
+      const speakerName = formatSpeakerName(firstName, lastName)
 
       const sessionInfo: RoomSessionInfo = {
         roomName,
