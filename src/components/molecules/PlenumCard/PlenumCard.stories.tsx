@@ -8,6 +8,7 @@ export default meta
 
 export const Default: StoryObj<typeof PlenumCard> = {
   args: {
-    title: 'Break'
+    title: 'Break',
+    minutes: 10
   }
 }
