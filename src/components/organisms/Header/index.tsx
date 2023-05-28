@@ -58,8 +58,7 @@ export const Header = () => {
     return [
       { href: '/', label: 'Home' },
       { href: '/sessions', label: 'Sessions' },
-      // TODO(taigakiyokawa): Revert to `/timetable` when the page has implemented.
-      { href: 'https://sessionize.com/api/v2/jmtn42ls/view/GridSmart', label: 'Timetable', openNewTab: true },
+      { href: '/timetable', label: 'Timetable' },
       { href: '/floor_guide', label: 'Floor Guide' },
       { href: '/staff', label: 'Staff' },
       {
