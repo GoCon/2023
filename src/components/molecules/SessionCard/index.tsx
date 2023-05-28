@@ -21,7 +21,7 @@ export const SessionCard: FC<Props> = ({
   const { isPCOrOver } = useSize()
 
   return (
-    <Link href={`/sessions/${sessionId}`}>
+    <Link href={`/sessions/${sessionId}`} style={{ display: 'flex' }}>
       <Box
         sx={{
           display: 'flex',
@@ -66,7 +66,8 @@ export const SessionCard: FC<Props> = ({
               WebkitBoxOrient: 'vertical',
               WebkitLineClamp: 5,
               overflow: 'hidden',
-              wordBreak: 'break-word'
+              wordBreak: 'break-word',
+              flexGrow: 1
             }}
           >
             {description}
@@ -77,7 +78,8 @@ export const SessionCard: FC<Props> = ({
             gap: '24px',
             display: 'flex',
             alignItems: 'flex-end',
-            alignSelf: 'stretch'
+            alignSelf: 'stretch',
+            marginTop: 'auto'
           }}
         >
           <SpeakerBlock name={speaker.fullName} tagLine={speaker.tagLine} profilePicture={speaker.profilePicture} />

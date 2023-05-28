@@ -76,7 +76,7 @@ const Index: NextPage<Props> = ({ sessionsAndSpeakers }) => {
           >
             {sessionsAndSpeakers.map(
               ({ title, roomName, sessionId, description, speaker, sessionLevel, sessionType }) => (
-                <Grid item xs={12} md={6} key={sessionId}>
+                <Grid item xs={12} md={6} key={sessionId} sx={{ display: 'flex' }}>
                   <SessionCard
                     title={title}
                     roomName={roomName}
