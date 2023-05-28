@@ -5,20 +5,9 @@ import { FC } from 'react'
 import { SpeakerBlock } from 'src/components/molecules'
 import { useSize } from 'src/modules/hooks'
 import Link from 'next/link'
+import { SessionAndSpeakerForSessionsList } from 'src/types'
 
-type Props = {
-  title: string
-  roomName: 'Room A' | 'Room B'
-  sessionId: string
-  description: string
-  speaker: {
-    fullName: string
-    tagLine: string
-    profilePicture: string
-  }
-  sessionLevel: string
-  sessionType: string
-}
+type Props = SessionAndSpeakerForSessionsList
 
 export const SessionCard: FC<Props> = ({
   title,

@@ -1,13 +1,98 @@
-import { GetStaticProps } from 'next'
-import { PageSessions } from 'src/components/pages'
+import { GetStaticProps, NextPage } from 'next'
+import { fetchSessionize } from 'src/modules/sessionize/fetch-sessionize'
+import { getRoom, getSessionId, getSessionLevel, getSpeaker } from 'src/modules/sessionize/utils'
+import { Box, Grid, Typography } from '@mui/material'
+import { Layout } from 'src/components/commons'
+import { SessionCard } from 'src/components/molecules'
+import { Colors } from 'src/styles/color'
+import { SessionAndSpeakerForSessionsList } from 'src/types'
 
-const Index = () => {
-  return <PageSessions />
+type Props = {
+  sessionsAndSpeakers: SessionAndSpeakerForSessionsList[]
 }
 
-// NOTE: next exportで静的ファイルとして生成するため空のpropsを宣言する
-export const getStaticProps: GetStaticProps = async () => {
-  return { props: {} }
+export const getStaticProps: GetStaticProps<Props> = async () => {
+  const { sessions, rooms, categories, speakers } = await fetchSessionize()
+
+  const sessionsList = sessions.map(
+    ({ id, title, description, roomId, speakers: speakerIds, questionAnswers, categoryItems }) => {
+      const { name: roomName } = getRoom(rooms, roomId)
+      const sessionId = getSessionId(questionAnswers)
+      const { fullName, tagLine, profilePicture } = getSpeaker(speakers, speakerIds[0])
+      const sessionLevel = getSessionLevel(categories, categoryItems)
+      const sessionType = getSessionLevel(categories, categoryItems)
+
+      return {
+        id,
+        title,
+        roomName,
+        sessionId,
+        description,
+        sessionLevel,
+        sessionType,
+        speaker: {
+          fullName,
+          tagLine,
+          profilePicture
+        }
+      }
+    }
+  )
+
+  return { props: { sessionsAndSpeakers: sessionsList } }
+}
+
+const Index: NextPage<Props> = ({ sessionsAndSpeakers }) => {
+  return (
+    <Layout>
+      <Typography
+        variant="h2"
+        align="center"
+        sx={{
+          marginTop: { xs: '80px', sm: '160px' },
+          marginBottom: { xs: '32px', sm: '72px' }
+        }}
+      >
+        Sessions & Speakers
+      </Typography>
+      <Box
+        sx={{
+          display: 'flex',
+          justifyContent: 'center',
+          backgroundColor: Colors.background.secondary,
+          padding: { xs: '32px 16px', md: '80px 20px' },
+          minHeight: '100vh'
+        }}
+      >
+        <Box maxWidth={'1024px'} width={'100%'}>
+          <Grid
+            container
+            spacing={{ xs: 1, md: 3 }}
+            mx={'auto'}
+            columns={12}
+            justifyContent="center"
+            alignItems={'stretch'}
+          >
+            {sessionsAndSpeakers.map(
+              ({ title, roomName, sessionId, description, speaker, sessionLevel, sessionType }) => (
+                <Grid item xs={12} md={6} key={sessionId}>
+                  <SessionCard
+                    title={title}
+                    roomName={roomName}
+                    sessionId={sessionId}
+                    description={description}
+                    speaker={speaker}
+                    sessionLevel={sessionLevel}
+                    sessionType={sessionType}
+                  />
+                </Grid>
+              )
+            )}
+          </Grid>
+        </Box>
+      </Box>
+    </Layout>
+  )
 }
 
 export default Index

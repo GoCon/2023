@@ -3,21 +3,23 @@ import { type NextPage, type GetStaticProps, type GetStaticPaths, InferGetStatic
 import { SessionLabel } from 'src/components/atoms/SessionLabel'
 import { SpeakerIcon } from 'src/components/atoms/SpeakerIcon'
 import { Layout } from 'src/components/commons'
-import {
-  CATEGORY_SESSION_LEVEL,
-  CATEGORY_SESSION_TYPE,
-  QUESTION_SESSION_NUMBER,
-  sessionizeViewAllSchema
-} from 'src/modules/sessionize/schema'
 import { Colors } from 'src/styles/color'
 import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew'
 import EventIcon from '@mui/icons-material/Event'
 import TwitterIcon from '@mui/icons-material/Twitter'
-import dayjs from 'dayjs'
 import { useTranslation } from 'react-i18next'
 import NextLink from 'next/link'
-import { SessionizeViewAllSchemaType } from 'src/modules/sessionize/schema'
 import { replaceUrlWithLink } from 'src/modules/util/text'
+import { fetchSessionize } from 'src/modules/sessionize/fetch-sessionize'
+import {
+  getGoogleCalendarEventCreationLink,
+  getRoom,
+  getSession,
+  getSessionLevel,
+  getSessionType,
+  getSpeaker,
+  getTwitterUserName
+} from 'src/modules/sessionize/utils'
 
 type Props = {
   title: string
@@ -26,13 +28,13 @@ type Props = {
   description: string
   sessionType: string | null
   sessionLevel: string | null
-  addEventToCalendarLink: string
+  googleCalendarEventCreationLink: string
   speaker: {
     fullName: string
     profilePicture: string
     bio: string
     tagLine: string
-    twitterLink: string | null
+    twitterUserName: string | null
   }
 }
 
@@ -78,74 +80,30 @@ export const getStaticPaths: GetStaticPaths = async () => {
   }
 }
 
-/**
- * Cache sessionize data.
- */
-let sessionizeCache: SessionizeViewAllSchemaType | undefined = undefined
-
-/**
- * Fetch sessionize data and cache it.
- */
-const fetchSessionize: () => Promise<SessionizeViewAllSchemaType> = async () => {
-  if (sessionizeCache) {
-    return sessionizeCache
-  }
-  const response = await fetch('https://sessionize.com/api/v2/3qcdixg4/view/All')
-  const parsedResult = await sessionizeViewAllSchema.safeParseAsync(await response.json())
-
-  if (!parsedResult.success) {
-    throw new Error(`Failed to parse: ${parsedResult.error}`)
-  }
-
-  sessionizeCache = parsedResult.data
-  return sessionizeCache
-}
-
 export const getStaticProps: GetStaticProps<Props> = async ({ params }) => {
   const { sessions, rooms, categories, speakers } = await fetchSessionize()
-
-  const matchedSession = sessions.find(
-    ({ questionAnswers }) =>
-      questionAnswers.find(({ questionId }) => questionId === QUESTION_SESSION_NUMBER)?.answerValue === params?.id
-  )
-
-  if (!matchedSession) {
-    throw new Error(`No sessions found.`)
-  }
-
-  const { title, description, roomId, categoryItems, speakers: speakerIds, startsAt, endsAt } = matchedSession
 
   const sessionId = params?.id
   if (!sessionId || typeof sessionId !== 'string') {
     throw new Error(`Invalid sessionId: ${sessionId}`)
   }
 
-  const room = rooms.find(({ id }) => id === roomId)
+  const {
+    title,
+    description,
+    roomId,
+    categoryItems,
+    speakers: speakerIds,
+    startsAt,
+    endsAt
+  } = getSession(sessions, sessionId)
 
-  if (!room) {
-    throw new Error(`Invalid roomId: ${roomId}`)
-  }
-
-  const roomName = room.name
-
-  const sessionLevels = categories.find(({ id }) => id === CATEGORY_SESSION_LEVEL)?.items
-  const sessionLevel = sessionLevels?.find(({ id }) => id === categoryItems[1])?.name ?? null
-
-  const sessionTypes = categories.find(({ id }) => id === CATEGORY_SESSION_TYPE)?.items
-  const sessionType = sessionTypes?.find(({ id }) => id === categoryItems[0])?.name ?? null
-
-  const calendarDateFormat = 'YYYYMMDD[T]HHmmss'
-  const calendarDatesParam = `${dayjs(startsAt).format(calendarDateFormat)}/${dayjs(endsAt).format(calendarDateFormat)}`
-  const addEventToCalendarLink = `http://www.google.com/calendar/event?action=TEMPLATE&text=${title}&details=${description}&dates=${calendarDatesParam}`
-
-  const speaker = speakers.find(({ id }) => id === speakerIds[0])
-
-  if (!speaker) {
-    throw new Error(`Invalid speakerId: ${speakerIds[0]}`)
-  }
-
-  const { fullName, profilePicture, bio, tagLine, links } = speaker
-  const twitterLink = links[0]?.url ?? null
+  const { name: roomName } = getRoom(rooms, roomId)
+  const sessionLevel = getSessionLevel(categories, categoryItems)
+  const sessionType = getSessionType(categories, categoryItems)
+  const googleCalendarEventCreationLink = getGoogleCalendarEventCreationLink(startsAt, endsAt, title, description)
+  const { fullName, profilePicture, bio, tagLine, links } = getSpeaker(speakers, speakerIds[0])
+  const twitterUserName = getTwitterUserName(links)
 
   return {
     props: {
@@ -155,8 +113,8 @@ export const getStaticProps: GetStaticProps<Props> = async ({ params }) => {
       description,
       sessionLevel,
       sessionType,
-      addEventToCalendarLink,
-      speaker: { fullName, profilePicture, bio, tagLine, twitterLink }
+      googleCalendarEventCreationLink,
+      speaker: { fullName, profilePicture, bio, tagLine, twitterUserName }
     }
   }
 }
@@ -168,8 +126,8 @@ const Page: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({
   description,
   sessionLevel,
   sessionType,
-  addEventToCalendarLink,
-  speaker: { fullName, profilePicture, bio, tagLine, twitterLink }
+  googleCalendarEventCreationLink,
+  speaker: { fullName, profilePicture, bio, tagLine, twitterUserName }
 }) => {
   const { t } = useTranslation()
   return (
@@ -221,7 +179,7 @@ const Page: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({
               </Typography>
             </Box>
             <MuiLink
-              href={addEventToCalendarLink}
+              href={googleCalendarEventCreationLink}
               target="_blank"
               variant="body2"
               sx={{
@@ -250,9 +208,9 @@ const Page: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({
                 {tagLine}
               </Typography>
             </Box>
-            {twitterLink && (
+            {twitterUserName && (
               <MuiLink
-                href={twitterLink}
+                href={`https://twitter.com/${twitterUserName}`}
                 target="_blank"
                 sx={{
                   color: Colors.text.primary,
