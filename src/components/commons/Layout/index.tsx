@@ -1,7 +1,8 @@
 import config from '../../../../next.config'
 import type { NextPage } from 'next'
-import { ReactNode, ChangeEvent } from 'react'
+import { ReactNode, ChangeEvent, useMemo } from 'react'
 import Head from 'next/head'
+import { useRouter } from 'next/router'
 
 import { Header } from 'src/components/organisms'
 import { Footer } from 'src/components/organisms'
@@ -15,7 +16,18 @@ export interface LayoutProps {
 }
 
 export const Layout: NextPage<LayoutProps> = ({ children }) => {
+  const router = useRouter()
   const [authorized, setAuthorized] = useLocalStorageState('authorized', { defaultValue: false })
+  const pageTitle = useMemo(() => {
+    const title = router.pathname.replaceAll('/', '')
+    if (title === '') return 'Home'
+
+    // NOTE: snake_caseの文字列を大文字始まり、スペース区切りに変換
+    return title
+      .split('_')
+      .map(word => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())
+      .join(' ')
+  }, [router])
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     if (toSha256(e.target.value) === process.env.NEXT_PUBLIC_AUTH_PASSWORD_HASH) setAuthorized(true)
@@ -41,7 +53,7 @@ export const Layout: NextPage<LayoutProps> = ({ children }) => {
   return (
     <>
       <Head>
-        <title>Go Conference 2023</title>
+        <title>{`${pageTitle} | Go Conference 2023`}</title>
         <base href={config.basePath + '/'} />
         <link rel="icon" href={config.basePath + '/favicon.ico'} />
         <meta name="description" content="Go Conference is a conference for Go programming language users." />
