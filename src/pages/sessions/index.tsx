@@ -1,6 +1,6 @@
 import { GetStaticProps, NextPage } from 'next'
 import { fetchSessionize } from 'src/modules/sessionize/fetch-sessionize'
-import { getRoom, getSessionId, getSessionLevel, getSpeaker } from 'src/modules/sessionize/utils'
+import { formatSpeakerName, getRoom, getSessionId, getSessionLevel, getSpeaker } from 'src/modules/sessionize/utils'
 import { Box, Grid, Typography } from '@mui/material'
 import { Layout } from 'src/components/commons'
 import { SessionCard } from 'src/components/molecules'
@@ -18,7 +18,8 @@ export const getStaticProps: GetStaticProps<Props> = async () => {
     ({ id, title, description, roomId, speakers: speakerIds, questionAnswers, categoryItems }) => {
       const { name: roomName } = getRoom(rooms, roomId)
       const sessionId = getSessionId(questionAnswers)
-      const { fullName, tagLine, profilePicture } = getSpeaker(speakers, speakerIds[0])
+      const { firstName, lastName, tagLine, profilePicture } = getSpeaker(speakers, speakerIds[0])
+      const fullName = formatSpeakerName(firstName, lastName)
       const sessionLevel = getSessionLevel(categories, categoryItems)
       const sessionType = getSessionLevel(categories, categoryItems)
 

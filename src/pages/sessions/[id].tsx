@@ -12,6 +12,7 @@ import NextLink from 'next/link'
 import { replaceUrlWithLink } from 'src/modules/util/text'
 import { fetchSessionize } from 'src/modules/sessionize/fetch-sessionize'
 import {
+  formatSpeakerName,
   getGoogleCalendarEventCreationLink,
   getRoom,
   getSession,
@@ -103,7 +104,8 @@ export const getStaticProps: GetStaticProps<Props> = async ({ params }) => {
   const sessionLevel = getSessionLevel(categories, categoryItems)
   const sessionType = getSessionType(categories, categoryItems)
   const googleCalendarEventCreationLink = getGoogleCalendarEventCreationLink(startsAt, endsAt, title, description)
-  const { fullName, profilePicture, bio, tagLine, links } = getSpeaker(speakers, speakerIds[0])
+  const { firstName, lastName, profilePicture, bio, tagLine, links } = getSpeaker(speakers, speakerIds[0])
+  const fullName = formatSpeakerName(firstName, lastName)
   const twitterUserName = getTwitterUserName(links)
 
   return {
