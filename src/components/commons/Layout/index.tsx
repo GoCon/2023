@@ -18,12 +18,12 @@ export interface LayoutProps {
 export const Layout: NextPage<LayoutProps> = ({ children }) => {
   const router = useRouter()
   const [authorized, setAuthorized] = useLocalStorageState('authorized', { defaultValue: false })
-  const pageName = useMemo(() => {
-    const pageName = router.pathname.replaceAll('/', '')
-    if (pageName === '') return 'Home'
+  const pageTitle = useMemo(() => {
+    const title = router.pathname.replaceAll('/', '')
+    if (title === '') return 'Home'
 
     // NOTE: snake_caseの文字列を大文字始まり、スペース区切りに変換
-    return pageName
+    return title
       .split('_')
       .map(word => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())
       .join(' ')
@@ -53,7 +53,7 @@ export const Layout: NextPage<LayoutProps> = ({ children }) => {
   return (
     <>
       <Head>
-        <title>{`${pageName} | Go Conference 2023`}</title>
+        <title>{`${pageTitle} | Go Conference 2023`}</title>
         <base href={config.basePath + '/'} />
         <link rel="icon" href={config.basePath + '/favicon.ico'} />
         <meta name="description" content="Go Conference is a conference for Go programming language users." />
