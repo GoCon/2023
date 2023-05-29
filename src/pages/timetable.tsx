@@ -1,7 +1,7 @@
-import { Box, Typography } from '@mui/material'
+import { Box, Button, Typography } from '@mui/material'
 import dayjs from 'dayjs'
 import { GetStaticProps, NextPage } from 'next'
-import { Fragment } from 'react'
+import { Fragment, useCallback, useState } from 'react'
 import { Layout } from 'src/components/commons'
 import { PlenumCard, PlenumCardProps, TrackCard, TrackCardProps } from 'src/components/molecules'
 import { fetchSessionize } from 'src/modules/sessionize/fetch-sessionize'
@@ -9,6 +9,10 @@ import { formatSpeakerName, getSpeaker } from 'src/modules/sessionize/utils'
 import { getSessionType } from 'src/modules/sessionize/utils'
 import { getRoom, getSessionId } from 'src/modules/sessionize/utils'
 import { TimetableRoomHeader } from 'src/components/molecules/TimetableRoomHeader'
+import { useSize } from 'src/modules/hooks'
+import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew'
+import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos'
+import { Colors } from 'src/styles/color'
 
 type PlenumSessionInfo = PlenumCardProps
 type RoomSessionInfo = TrackCardProps
@@ -112,32 +116,74 @@ export const getStaticProps: GetStaticProps<Props> = async () => {
 }
 
 const Index: NextPage<Props> = ({ timeTableSessions }) => {
+  const [isRoomBOnMobile, setIsRoomBOnMobile] = useState(false)
+  const { isPCOrOver } = useSize()
+
+  const handleClickToSwitchRoomB = useCallback(() => {
+    setIsRoomBOnMobile(true)
+  }, [])
+  const handleClickToSwitchRoomA = useCallback(() => {
+    setIsRoomBOnMobile(false)
+  }, [])
+
   return (
     <Layout>
       <Box>
         <Typography variant="h2" sx={{ textAlign: 'center', paddingTop: { xs: '64px', sm: '128px' } }}>
           2023.06.02(Fri)
         </Typography>
+        {!isPCOrOver && (
+          <Box sx={{ display: 'flex', m: '32px 16px', justifyContent: 'space-between' }}>
+            <Button
+              onClick={handleClickToSwitchRoomA}
+              disabled={!isRoomBOnMobile}
+              sx={{
+                color: Colors.background.primary_pink,
+                padding: 0,
+                ':hover': { color: Colors.background.secondary_pink, backgroundColor: 'transparent' }
+              }}
+            >
+              <ArrowBackIosNewIcon /> Room A
+            </Button>
+            <Button
+              onClick={handleClickToSwitchRoomB}
+              disabled={isRoomBOnMobile}
+              sx={{
+                color: Colors.background.primary_green,
+                padding: 0,
+                ':hover': { color: Colors.background.secondary_green, backgroundColor: 'transparent' }
+              }}
+            >
+              Room B <ArrowForwardIosIcon />
+            </Button>
+          </Box>
+        )}
         <Box
           sx={{
             maxWidth: '1024px',
             mx: 'auto',
             px: '16px',
             display: 'grid',
-            gridTemplateColumns: 'auto 1fr 1fr',
+            gridTemplateColumns: { xs: 'auto 1fr', md: 'auto 1fr 1fr' },
             rowGap: '4px',
             columnGap: { xs: '8px', sm: '24px' },
             alignItems: 'start'
           }}
         >
           {/* Stick table header to half height of header when scrolled, z-index is header's + 100. */}
-          <Box sx={{ gridColumn: '2 / 3', position: 'sticky', top: '64px', zIndex: 1200 }}>
-            <TimetableRoomHeader roomName="Room A" />
-          </Box>
+          {(isPCOrOver || !isRoomBOnMobile) && (
+            <Box sx={{ gridColumn: '2 / 3', position: 'sticky', top: '64px', zIndex: 1200 }}>
+              <TimetableRoomHeader roomName="Room A" />
+            </Box>
+          )}
+
           {/* Stick table header to half height of header when scrolled, z-index is header's + 100. */}
-          <Box sx={{ gridColumn: '3 / 4', position: 'sticky', top: '64px', zIndex: 1200 }}>
-            <TimetableRoomHeader roomName="Room B" />
-          </Box>
+          {(isPCOrOver || isRoomBOnMobile) && (
+            <Box sx={{ gridColumn: { xs: '2 / 3', md: '3 / 4' }, position: 'sticky', top: '64px', zIndex: 1200 }}>
+              <TimetableRoomHeader roomName="Room B" />
+            </Box>
+          )}
+
           {timeTableSessions.map(({ startsAt, plenum, roomA, roomB }) => {
             return (
               <Fragment key={startsAt}>
@@ -145,11 +191,11 @@ const Index: NextPage<Props> = ({ timeTableSessions }) => {
                   <Typography sx={{ textAlign: 'right' }}>{dayjs(startsAt).format('HH:mm')}</Typography>
                 </Box>
                 {plenum && (
-                  <Box sx={{ gridColumn: '2 / 4' }}>
+                  <Box sx={{ gridColumn: '2 / -1' }}>
                     <PlenumCard title={plenum.title} minutes={plenum.minutes} />
                   </Box>
                 )}
-                {roomA && (
+                {roomA && (isPCOrOver || !isRoomBOnMobile) && (
                   <Box sx={{ gridColumn: '2 / 3' }}>
                     <TrackCard
                       roomName={roomA.roomName}
@@ -161,8 +207,8 @@ const Index: NextPage<Props> = ({ timeTableSessions }) => {
                     />
                   </Box>
                 )}
-                {roomB && (
-                  <Box sx={{ gridColumn: '3 / 4' }}>
+                {roomB && (isPCOrOver || isRoomBOnMobile) && (
+                  <Box sx={{ gridColumn: { xs: '2 / 3', md: '3 / 4' } }}>
                     <TrackCard
                       roomName={roomB.roomName}
                       sessionId={roomB.sessionId}
