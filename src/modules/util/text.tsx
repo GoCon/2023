@@ -1,5 +1,5 @@
 import { Fragment, ReactNode } from 'react'
-import { Colors } from 'src/styles/color'
+import { ExternalLink } from 'src/components/atoms'
 
 /**
  * Regular expression for parsing URLs.
@@ -42,15 +42,9 @@ export const replaceUrlWithLink: (text: string, options?: ReplaceUrlWithLinkOpti
   return parts.map((part, i) => {
     if (part.match(URL_REGEX)) {
       return (
-        <a
-          key={i}
-          href={part}
-          target="_blank"
-          rel="noopener noreferrer"
-          style={{ color: Colors.text.link, textDecoration: 'underline' }}
-        >
+        <ExternalLink key={i} href={part}>
           {keepFullLength ? part : shortenUrl(part)}
-        </a>
+        </ExternalLink>
       )
     } else {
       return <Fragment key={i}>{part}</Fragment>
