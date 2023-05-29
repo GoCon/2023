@@ -132,5 +132,12 @@ export const staff: StaffInfo[] = [
     twitterLink: 'https://twitter.com/tenntenn',
     githubLink: 'https://github.com/tenntenn',
     otherLink: 'https://tenntenn.dev'
+  },
+  {
+    name: 'yagipy',
+    icon: 'https://avatars.githubusercontent.com/u/34264859?v=4',
+    twitterLink: 'https://twitter.com/yagipy_',
+    githubLink: 'https://github.com/yagipy',
+    otherLink: 'https://blog.yagipy.me'
   }
 ]
