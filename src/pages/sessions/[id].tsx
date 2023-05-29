@@ -5,6 +5,7 @@ import { SpeakerIcon } from 'src/components/atoms/SpeakerIcon'
 import { Layout } from 'src/components/commons'
 import { Colors } from 'src/styles/color'
 import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew'
+import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos'
 import EventIcon from '@mui/icons-material/Event'
 import TwitterIcon from '@mui/icons-material/Twitter'
 import { useTranslation } from 'react-i18next'
@@ -140,7 +141,7 @@ const Page: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({
       </Head>
       <Box
         sx={{
-          my: '128px',
+          my: { xs: '64px', sm: '128px' },
           maxWidth: '1024px',
           mx: 'auto',
           backgroundColor: Colors.background.primary,
@@ -148,42 +149,26 @@ const Page: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({
           p: { xs: '16px', sm: '24px 32px' }
         }}
       >
-        <NextLink href="/sessions">
-          <Box
-            sx={{
-              display: 'flex',
-              alignItems: 'center',
-              mb: '40px',
-              color: Colors.text.secondary,
-              ':hover': { color: Colors.text.primary, textDecoration: 'underline' }
-            }}
-          >
-            <ArrowBackIosNewIcon />
-            <Typography variant="body2" sx={{ color: Colors.text.secondary, ':hover': { color: Colors.text.primary } }}>
-              {t('back_to_sessions')}
-            </Typography>
-          </Box>
-        </NextLink>
         <Typography variant="h2">{title}</Typography>
 
         {/* Session's info */}
-        <Box sx={{ display: 'flex', flexDirection: 'column', gap: '8px', mb: '24px' }}>
-          <SessionLabel roomName={roomName} sessionId={sessionId} isRoomNameDisplayed />
+        <Box sx={{ display: 'flex', flexDirection: 'column', gap: '16px', mb: '32px' }}>
+          <Box sx={{ display: 'flex', gap: '8px', alignItems: 'center' }}>
+            <SessionLabel roomName={roomName} sessionId={sessionId} isRoomNameDisplayed />
+          </Box>
           <Typography variant="body2" sx={{ whiteSpace: 'pre-wrap' }}>
             {replaceUrlWithLink(description, { keepFullLength: true })}
           </Typography>
-          <Box sx={{ display: 'flex' }}>
-            <Box sx={{ display: 'flex', gap: '4px' }}>
-              {sessionLevel && (
-                <Typography
-                  variant="subtitle1"
-                  sx={{ color: Colors.text.secondary }}
-                >{`Level: ${sessionLevel} / `}</Typography>
-              )}
-              <Typography variant="subtitle1" sx={{ color: Colors.text.secondary }}>
-                {sessionType}
-              </Typography>
-            </Box>
+          <Box sx={{ display: 'flex', gap: '8px', alignItems: 'flex-end' }}>
+            {sessionLevel && (
+              <Typography
+                variant="subtitle1"
+                sx={{ color: Colors.text.secondary }}
+              >{`Level: ${sessionLevel} /`}</Typography>
+            )}
+            <Typography variant="subtitle1" sx={{ color: Colors.text.secondary }}>
+              {sessionType}
+            </Typography>
             <MuiLink
               href={googleCalendarEventCreationLink}
               target="_blank"
@@ -205,7 +190,14 @@ const Page: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({
         </Box>
 
         {/* Speaker's info */}
-        <Box sx={{ backgroundColor: Colors.background.secondary, borderRadius: '12px', p: { xs: '16px', sm: '32px' } }}>
+        <Box
+          sx={{
+            backgroundColor: Colors.background.secondary,
+            borderRadius: '12px',
+            p: { xs: '16px', sm: '32px' },
+            mb: '40px'
+          }}
+        >
           <Box sx={{ display: 'flex', gap: '8px', alignItems: 'center', mb: '8px' }}>
             <SpeakerIcon iconUrl={profilePicture} name={fullName} size="60px" />
             <Box sx={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
@@ -229,7 +221,48 @@ const Page: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({
               </MuiLink>
             )}
           </Box>
-          <Typography variant="body2">{replaceUrlWithLink(bio, { keepFullLength: true })}</Typography>
+          <Typography variant="body2" sx={{ whiteSpace: 'pre-wrap' }}>
+            {replaceUrlWithLink(bio, { keepFullLength: true })}
+          </Typography>
+        </Box>
+
+        <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+          <NextLink href="/sessions">
+            <Box
+              sx={{
+                display: 'flex',
+                alignItems: 'center',
+                color: Colors.text.secondary,
+                ':hover': { color: Colors.text.primary, textDecoration: 'underline' }
+              }}
+            >
+              <ArrowBackIosNewIcon />
+              <Typography
+                variant="body2"
+                sx={{ color: Colors.text.secondary, ':hover': { color: Colors.text.primary } }}
+              >
+                All Sessions
+              </Typography>
+            </Box>
+          </NextLink>
+          <NextLink href="/timetable">
+            <Box
+              sx={{
+                display: 'flex',
+                alignItems: 'center',
+                color: Colors.text.secondary,
+                ':hover': { color: Colors.text.primary, textDecoration: 'underline' }
+              }}
+            >
+              <Typography
+                variant="body2"
+                sx={{ color: Colors.text.secondary, ':hover': { color: Colors.text.primary } }}
+              >
+                Timetable
+              </Typography>
+              <ArrowForwardIosIcon />
+            </Box>
+          </NextLink>
         </Box>
       </Box>
 

@@ -42,6 +42,7 @@ export const ExternalLink: FC<Props> = ({ href, children, color = 'link' }) => {
       sx={{
         color: defaultColor,
         textDecorationColor: defaultColor,
+        wordBreak: 'break-word',
         ':hover': {
           color: hoverColor,
           textDecorationColor: hoverColor
