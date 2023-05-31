@@ -1,2 +1,2 @@
-export * as KeyVisualWithTextMobile from './key-visual-with-text-mobile.png'
-export * as KeyVisualWithTextPc from './key-visual-with-text-pc.png'
+export * as MainVisualWithTextMobile from './main-visual-with-text-mobile.webp'
+export * as MainVisualWithTextPc from './main-visual-with-text-pc.webp'

@@ -3,12 +3,12 @@ import { useInterval, useSize } from 'src/modules/hooks'
 import { useReward } from 'react-rewards'
 import { confettiColors } from 'src/styles/color'
 import Image from 'next/image'
-import { KeyVisualWithTextPc, KeyVisualWithTextMobile } from './images'
+import { MainVisualWithTextPc, MainVisualWithTextMobile } from './images'
 import { useEffect, useState } from 'react'
 
 export const MainVisual = () => {
   const { isTabletOrOver } = useSize()
-  const keyVisualWithText = isTabletOrOver ? KeyVisualWithTextPc : KeyVisualWithTextMobile
+  const mainVisualWithText = isTabletOrOver ? MainVisualWithTextPc : MainVisualWithTextMobile
   const confettiLeftConfig = {
     angle: 45,
     colors: confettiColors,
@@ -81,7 +81,7 @@ export const MainVisual = () => {
         >
           {mounted && (
             <Image
-              src={keyVisualWithText}
+              src={mainVisualWithText}
               alt="Go Conference 2023 Online at Friday, June Second"
               style={{
                 width: '100%',

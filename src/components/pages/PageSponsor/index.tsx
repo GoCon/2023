@@ -13,6 +13,7 @@ export const PageSponsor: FC<Props> = ({ name, logo, description }) => {
     <Layout>
       <Head>
         <title>{`${name} | Go Conference 2023`}</title>
+        <meta property="og:title" content={name} key="title" />
       </Head>
       <Grid container spacing={4} sx={{ maxWidth: '1024px', m: '128px auto 0', px: '16px' }}>
         <Grid xs={12} md={4} sx={{ position: 'relative', aspectRatio: '16/9' }}>

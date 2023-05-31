@@ -23,12 +23,12 @@ export const PageFloorGuide: NextPage = () => {
         '他には、Goに関わる書籍や記事を集めた「Go Books」やGoのユーザー企業、OSS、コミュニティの情報を集めた「Go Users」もあります。\n' +
         '参加者が自由にホワイトボード（Miro）で情報を共有できるようになっています。\n' +
         '商業誌に限らず本を執筆されてる方、Goを使ってる事を知ってほしい企業のみなさま、コミュニティやOSSの宣伝などにご活用ください。\n' +
-        '何か不明点等あれば、オフィスアワー会場内にある運営ブースにお越しください。\n'
+        '何か不明点等あれば、Main会場内にある運営ブースにお越しください。\n'
     },
     {
       title: 'Room A sponsored by Go inc.',
       description:
-        'トークセッションだけではなく、スポンサーセッション、LT、Ask the Speaker、Opening、Closingが行われます。\nなお、Room Aがいっぱいの場合は、ゲートページに遷移しますので、そこからRoom Aのサテライト会場をご利用ください。\n'
+        'トークセッションだけではなく、スポンサーセッション、LT、Ask the Speaker、Opening、Closingが行われます。なお、Room Aがいっぱいの場合は、ゲートページに遷移しますので、そこからRoom Aのサテライト会場をご利用ください。\n'
     },
     {
       title: 'Room B sponsored by Kanmu',

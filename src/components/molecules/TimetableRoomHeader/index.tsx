@@ -1,8 +1,8 @@
 import { Box, Typography } from '@mui/material'
 import { type FC } from 'react'
 import { Colors } from 'src/styles/color'
-// TODO: スポンサーイラストの掲載許可が取れたらコメントアウトを外す。
-// import Image from 'next/image'
+import Image from 'next/image'
+import { GopherRoomA, GopherRoomB } from './images'
 
 type Props = {
   roomName: 'Room A' | 'Room B'
@@ -19,22 +19,20 @@ const getBackgroundColor = (roomName: Props['roomName']) => {
   }
 }
 
-// TODO: スポンサーイラストの掲載許可が取れたらコメントアウトを外す。
-// const getImage = (roomName: Props['roomName']) => {
-//   switch (roomName) {
-//     case 'Room A':
-//       return { src: '/rooms/gopher_room_a.png' }
-//     case 'Room B':
-//       return { src: '/rooms/gopher_room_b.png' }
-//     default:
-//       throw new Error(`Invalid room: ${roomName}`)
-//   }
-// }
+const getImage = (roomName: Props['roomName']) => {
+  switch (roomName) {
+    case 'Room A':
+      return { src: GopherRoomA }
+    case 'Room B':
+      return { src: GopherRoomB }
+    default:
+      throw new Error(`Invalid room: ${roomName}`)
+  }
+}
 
 export const TimetableRoomHeader: FC<Props> = ({ roomName }) => {
   const { backgroundColor } = getBackgroundColor(roomName)
-  // TODO: スポンサーイラストの掲載許可が取れたらコメントアウトを外す。
-  // const { src } = getImage(roomName)
+  const { src } = getImage(roomName)
 
   return (
     <Box sx={{ position: 'relative', backgroundColor: backgroundColor, borderRadius: '8px 8px 0 0' }}>
@@ -49,7 +47,6 @@ export const TimetableRoomHeader: FC<Props> = ({ roomName }) => {
       >
         {roomName}
       </Typography>
-      {/* TODO: スポンサーイラストの掲載許可が取れたらコメントアウトを外す。
       <Image
         src={src}
         alt={`illustration of Gopher for ${roomName}`}
@@ -64,7 +61,7 @@ export const TimetableRoomHeader: FC<Props> = ({ roomName }) => {
           border: `4px solid ${backgroundColor}`,
           borderRadius: '50%'
         }}
-      /> */}
+      />
     </Box>
   )
 }
