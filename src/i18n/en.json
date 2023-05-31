@@ -21,7 +21,9 @@
   "enter_venue": "enter to venue",
   "booth_information_title": "event booth information",
   "floor_guide_title": "reBako(online venue) information",
-  "floor_guide": "An online venue is available at reBako on the day of the event. \nSessions and Ask the Speaker will broadcast YouTube Live at the reBako venue for public viewing. \nTo move between venues, click the banner in the venue guide, or click the venue you want to go to from the top bar. \nThe placement at the entrance to each venue will be done randomly. \nYou can move the table by double-clicking the table you want to move. \nThe office hour venue and hands-on venue offer content only on the 1st floor. \nFloors can be moved from the floor selection panel on the left side of the venue.",
+  "floor_guide": "On the day of the event, an online venue will be available at reBako. Live streaming of sessions and Ask the Speaker will take place at the reBako venue. To move from one venue to another, please follow the directions in the venue and use the portals (like warp zones). If the venue is full, you will be redirected to a page called \"Gate\", so please move to an available venue.\n",
+  "community_booth_information_title": "community booth information",
+  "contents_information_title": "contents information",
   "back_to_sessions": "Back to Session List",
   "add_to_calendar": "Add to Google calendar"
 }
