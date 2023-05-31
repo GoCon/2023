@@ -138,6 +138,7 @@ const Page: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({
     <Layout>
       <Head>
         <title>{`${title} | Go Conference 2023`}</title>
+        <meta property="og:title" content={`${title} | Go Conference 2023`} key="title" />
       </Head>
       <Box
         sx={{
