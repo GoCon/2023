@@ -6,7 +6,6 @@ import { Layout } from 'src/components/commons'
 import { Colors } from 'src/styles/color'
 import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew'
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos'
-import EventIcon from '@mui/icons-material/Event'
 import TwitterIcon from '@mui/icons-material/Twitter'
 import { useTranslation } from 'react-i18next'
 import NextLink from 'next/link'
@@ -23,6 +22,7 @@ import {
   getTwitterUserName
 } from 'src/modules/sessionize/utils'
 import Head from 'next/head'
+import { GoogleCalendarButton, TweetButton } from 'src/components/molecules'
 
 type Props = {
   title: string
@@ -142,7 +142,7 @@ const Page: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({
       </Head>
       <Box
         sx={{
-          my: { xs: '64px', sm: '128px' },
+          mt: { xs: '64px', sm: '128px' },
           maxWidth: '1024px',
           mx: 'auto',
           backgroundColor: Colors.background.primary,
@@ -170,23 +170,6 @@ const Page: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({
             <Typography variant="subtitle1" sx={{ color: Colors.text.secondary }}>
               {sessionType}
             </Typography>
-            <MuiLink
-              href={googleCalendarEventCreationLink}
-              target="_blank"
-              variant="body2"
-              sx={{
-                display: 'flex',
-                gap: '4px',
-                ml: 'auto',
-                alignItems: 'center',
-                color: Colors.text.primary,
-                textDecoration: 'none',
-                ':hover': { color: Colors.text.secondary, textDecoration: 'underline' }
-              }}
-            >
-              <EventIcon />
-              {t('add_to_calendar')}
-            </MuiLink>
           </Box>
         </Box>
 
@@ -196,7 +179,7 @@ const Page: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({
             backgroundColor: Colors.background.secondary,
             borderRadius: '12px',
             p: { xs: '16px', sm: '32px' },
-            mb: '40px'
+            mb: '16px'
           }}
         >
           <Box sx={{ display: 'flex', gap: '8px', alignItems: 'center', mb: '8px' }}>
@@ -227,6 +210,13 @@ const Page: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({
           </Typography>
         </Box>
 
+        {/* Share */}
+        <Box sx={{ display: 'flex', gap: '16px', justifyContent: 'flex-end', mb: '64px' }}>
+          <GoogleCalendarButton googleCalendarEventCreationLink={googleCalendarEventCreationLink} />
+          <TweetButton sessionId={sessionId} title={title} roomName={roomName} />
+        </Box>
+
+        {/* Navigation */}
         <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
           <NextLink href="/sessions">
             <Box
@@ -240,7 +230,7 @@ const Page: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({
               <ArrowBackIosNewIcon />
               <Typography
                 variant="body2"
-                sx={{ color: Colors.text.secondary, ':hover': { color: Colors.text.primary } }}
+                sx={{ color: Colors.text.secondary, ':hover': { color: Colors.text.secondary_hover } }}
               >
                 All Sessions
               </Typography>
@@ -257,7 +247,7 @@ const Page: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({
             >
               <Typography
                 variant="body2"
-                sx={{ color: Colors.text.secondary, ':hover': { color: Colors.text.primary } }}
+                sx={{ color: Colors.text.secondary, ':hover': { color: Colors.text.secondary_hover } }}
               >
                 Timetable
               </Typography>
