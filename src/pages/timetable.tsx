@@ -132,32 +132,32 @@ const Index: NextPage<Props> = ({ timeTableSessions }) => {
         <Typography variant="h2" sx={{ textAlign: 'center', paddingTop: { xs: '64px', sm: '128px' } }}>
           2023.06.02(Fri)
         </Typography>
-        {!isPCOrOver && (
-          <Box sx={{ display: 'flex', m: '32px 16px', justifyContent: 'space-between' }}>
-            <Button
-              onClick={handleClickToSwitchRoomA}
-              disabled={!isRoomBOnMobile}
-              sx={{
-                color: Colors.background.primary_pink,
-                padding: 0,
-                ':hover': { color: Colors.background.secondary_pink, backgroundColor: 'transparent' }
-              }}
-            >
-              <ArrowBackIosNewIcon /> Room A
-            </Button>
-            <Button
-              onClick={handleClickToSwitchRoomB}
-              disabled={isRoomBOnMobile}
-              sx={{
-                color: Colors.background.primary_green,
-                padding: 0,
-                ':hover': { color: Colors.background.secondary_green, backgroundColor: 'transparent' }
-              }}
-            >
-              Room B <ArrowForwardIosIcon />
-            </Button>
-          </Box>
-        )}
+
+        <Box sx={{ display: { xs: 'flex', md: 'none' }, m: '32px 16px', justifyContent: 'space-between' }}>
+          <Button
+            onClick={handleClickToSwitchRoomA}
+            disabled={!isRoomBOnMobile}
+            sx={{
+              color: Colors.background.primary_pink,
+              padding: 0,
+              ':hover': { color: Colors.background.secondary_pink, backgroundColor: 'transparent' }
+            }}
+          >
+            <ArrowBackIosNewIcon /> Room A
+          </Button>
+          <Button
+            onClick={handleClickToSwitchRoomB}
+            disabled={isRoomBOnMobile}
+            sx={{
+              color: Colors.background.primary_green,
+              padding: 0,
+              ':hover': { color: Colors.background.secondary_green, backgroundColor: 'transparent' }
+            }}
+          >
+            Room B <ArrowForwardIosIcon />
+          </Button>
+        </Box>
+
         <Box
           sx={{
             maxWidth: '1024px',
