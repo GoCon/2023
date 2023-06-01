@@ -13,6 +13,7 @@ import { useSize } from 'src/modules/hooks'
 import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew'
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos'
 import { Colors } from 'src/styles/color'
+import { PageHeading } from 'src/components/atoms'
 
 type PlenumSessionInfo = PlenumCardProps
 type RoomSessionInfo = TrackCardProps
@@ -128,101 +129,96 @@ const Index: NextPage<Props> = ({ timeTableSessions }) => {
 
   return (
     <Layout>
-      <Box>
-        <Typography variant="h2" sx={{ textAlign: 'center', paddingTop: { xs: '64px', sm: '128px' } }}>
-          2023.06.02(Fri)
-        </Typography>
-        {!isPCOrOver && (
-          <Box sx={{ display: 'flex', m: '32px 16px', justifyContent: 'space-between' }}>
-            <Button
-              onClick={handleClickToSwitchRoomA}
-              disabled={!isRoomBOnMobile}
-              sx={{
-                color: Colors.background.primary_pink,
-                padding: 0,
-                ':hover': { color: Colors.background.secondary_pink, backgroundColor: 'transparent' }
-              }}
-            >
-              <ArrowBackIosNewIcon /> Room A
-            </Button>
-            <Button
-              onClick={handleClickToSwitchRoomB}
-              disabled={isRoomBOnMobile}
-              sx={{
-                color: Colors.background.primary_green,
-                padding: 0,
-                ':hover': { color: Colors.background.secondary_green, backgroundColor: 'transparent' }
-              }}
-            >
-              Room B <ArrowForwardIosIcon />
-            </Button>
-          </Box>
-        )}
-        <Box
+      <PageHeading>2023.06.02(Fri)</PageHeading>
+      <Box sx={{ display: { xs: 'flex', md: 'none' }, m: '32px 16px', justifyContent: 'space-between' }}>
+        <Button
+          onClick={handleClickToSwitchRoomA}
+          disabled={!isRoomBOnMobile}
           sx={{
-            maxWidth: '1024px',
-            mx: 'auto',
-            px: '16px',
-            display: 'grid',
-            gridTemplateColumns: { xs: 'auto 1fr', md: 'auto 1fr 1fr' },
-            rowGap: '4px',
-            columnGap: { xs: '8px', sm: '24px' },
-            alignItems: 'start'
+            color: Colors.background.primary_pink,
+            padding: 0,
+            ':hover': { color: Colors.background.secondary_pink, backgroundColor: 'transparent' }
           }}
         >
-          {/* Stick table header to half height of header when scrolled, z-index is header's + 100. */}
-          {(isPCOrOver || !isRoomBOnMobile) && (
-            <Box sx={{ gridColumn: '2 / 3', position: 'sticky', top: '64px', zIndex: 1200 }}>
-              <TimetableRoomHeader roomName="Room A" />
-            </Box>
-          )}
+          <ArrowBackIosNewIcon /> Room A
+        </Button>
+        <Button
+          onClick={handleClickToSwitchRoomB}
+          disabled={isRoomBOnMobile}
+          sx={{
+            color: Colors.background.primary_green,
+            padding: 0,
+            ':hover': { color: Colors.background.secondary_green, backgroundColor: 'transparent' }
+          }}
+        >
+          Room B <ArrowForwardIosIcon />
+        </Button>
+      </Box>
 
-          {/* Stick table header to half height of header when scrolled, z-index is header's + 100. */}
-          {(isPCOrOver || isRoomBOnMobile) && (
-            <Box sx={{ gridColumn: { xs: '2 / 3', md: '3 / 4' }, position: 'sticky', top: '64px', zIndex: 1200 }}>
-              <TimetableRoomHeader roomName="Room B" />
-            </Box>
-          )}
+      <Box
+        sx={{
+          maxWidth: '1024px',
+          mx: 'auto',
+          px: '16px',
+          display: 'grid',
+          gridTemplateColumns: { xs: 'auto 1fr', md: 'auto 1fr 1fr' },
+          rowGap: '4px',
+          columnGap: { xs: '8px', sm: '24px' },
+          alignItems: 'start'
+        }}
+      >
+        {/* Stick table header to half height of header when scrolled, z-index is header's + 100. */}
+        {(isPCOrOver || !isRoomBOnMobile) && (
+          <Box sx={{ gridColumn: '2 / 3', position: 'sticky', top: '64px', zIndex: 1200 }}>
+            <TimetableRoomHeader roomName="Room A" />
+          </Box>
+        )}
 
-          {timeTableSessions.map(({ startsAt, plenum, roomA, roomB }) => {
-            return (
-              <Fragment key={startsAt}>
-                <Box sx={{ gridColumn: '1 / 2' }}>
-                  <Typography sx={{ textAlign: 'right' }}>{dayjs(startsAt).format('HH:mm')}</Typography>
+        {/* Stick table header to half height of header when scrolled, z-index is header's + 100. */}
+        {(isPCOrOver || isRoomBOnMobile) && (
+          <Box sx={{ gridColumn: { xs: '2 / 3', md: '3 / 4' }, position: 'sticky', top: '64px', zIndex: 1200 }}>
+            <TimetableRoomHeader roomName="Room B" />
+          </Box>
+        )}
+
+        {timeTableSessions.map(({ startsAt, plenum, roomA, roomB }) => {
+          return (
+            <Fragment key={startsAt}>
+              <Box sx={{ gridColumn: '1 / 2' }}>
+                <Typography sx={{ textAlign: 'right' }}>{dayjs(startsAt).format('HH:mm')}</Typography>
+              </Box>
+              {plenum && (
+                <Box sx={{ gridColumn: '2 / -1' }}>
+                  <PlenumCard title={plenum.title} minutes={plenum.minutes} />
                 </Box>
-                {plenum && (
-                  <Box sx={{ gridColumn: '2 / -1' }}>
-                    <PlenumCard title={plenum.title} minutes={plenum.minutes} />
-                  </Box>
-                )}
-                {roomA && (isPCOrOver || !isRoomBOnMobile) && (
-                  <Box sx={{ gridColumn: '2 / 3' }}>
-                    <TrackCard
-                      roomName={roomA.roomName}
-                      sessionId={roomA.sessionId}
-                      title={roomA.title}
-                      sessionType={roomA.sessionType}
-                      speakerName={roomA.speakerName}
-                      profilePicture={roomA.profilePicture}
-                    />
-                  </Box>
-                )}
-                {roomB && (isPCOrOver || isRoomBOnMobile) && (
-                  <Box sx={{ gridColumn: { xs: '2 / 3', md: '3 / 4' } }}>
-                    <TrackCard
-                      roomName={roomB.roomName}
-                      sessionId={roomB.sessionId}
-                      title={roomB.title}
-                      sessionType={roomB.sessionType}
-                      speakerName={roomB.speakerName}
-                      profilePicture={roomB.profilePicture}
-                    />
-                  </Box>
-                )}
-              </Fragment>
-            )
-          })}
-        </Box>
+              )}
+              {roomA && (isPCOrOver || !isRoomBOnMobile) && (
+                <Box sx={{ gridColumn: '2 / 3' }}>
+                  <TrackCard
+                    roomName={roomA.roomName}
+                    sessionId={roomA.sessionId}
+                    title={roomA.title}
+                    sessionType={roomA.sessionType}
+                    speakerName={roomA.speakerName}
+                    profilePicture={roomA.profilePicture}
+                  />
+                </Box>
+              )}
+              {roomB && (isPCOrOver || isRoomBOnMobile) && (
+                <Box sx={{ gridColumn: { xs: '2 / 3', md: '3 / 4' } }}>
+                  <TrackCard
+                    roomName={roomB.roomName}
+                    sessionId={roomB.sessionId}
+                    title={roomB.title}
+                    sessionType={roomB.sessionType}
+                    speakerName={roomB.speakerName}
+                    profilePicture={roomB.profilePicture}
+                  />
+                </Box>
+              )}
+            </Fragment>
+          )
+        })}
       </Box>
     </Layout>
   )

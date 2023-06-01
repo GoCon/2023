@@ -3,7 +3,6 @@ import { SessionLabel } from 'src/components/atoms/SessionLabel'
 import { Colors } from 'src/styles/color'
 import { FC } from 'react'
 import { SpeakerBlock } from 'src/components/molecules'
-import { useSize } from 'src/modules/hooks'
 import Link from 'next/link'
 import { SessionAndSpeakerForSessionsList } from 'src/types'
 
@@ -18,8 +17,6 @@ export const SessionCard: FC<Props> = ({
   sessionLevel,
   sessionType
 }) => {
-  const { isPCOrOver } = useSize()
-
   return (
     <Link href={`/sessions/${sessionId}`} style={{ display: 'flex' }}>
       <Box
@@ -27,8 +24,8 @@ export const SessionCard: FC<Props> = ({
           display: 'flex',
           flexDirection: 'column',
           alignItems: 'flex-start',
-          padding: isPCOrOver ? '24px' : '16px',
-          gap: isPCOrOver ? '12px' : '8px',
+          padding: { xs: '16px', md: '24px' },
+          gap: { xs: '8px', md: '12px' },
           borderRadius: '18px',
           boxShadow: '0px 3px 8px rgba(144, 131,  147, 0.15)',
           backgroundColor: Colors.background.primary,

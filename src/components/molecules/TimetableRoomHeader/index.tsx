@@ -58,6 +58,7 @@ export const TimetableRoomHeader: FC<Props> = ({ roomName }) => {
           top: '0',
           bottom: '0',
           margin: 'auto 0',
+          backgroundColor: Colors.background.primary,
           border: `4px solid ${backgroundColor}`,
           borderRadius: '50%'
         }}

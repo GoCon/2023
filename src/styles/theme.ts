@@ -11,6 +11,13 @@ const poppins = Poppins({
 const { breakpoints } = createTheme()
 const defaultTheme = createTheme({
   typography: {
+    h1: {
+      fontSize: '50px',
+      fontWeight: 500,
+      [breakpoints.down('sm')]: {
+        fontSize: '24px'
+      }
+    },
     h2: {
       fontSize: '50px',
       fontWeight: 500,

@@ -15,12 +15,12 @@ export const PageSponsor: FC<Props> = ({ name, logo, description }) => {
         <title>{`${name} | Go Conference 2023`}</title>
         <meta property="og:title" content={name} key="title" />
       </Head>
-      <Grid container spacing={4} sx={{ maxWidth: '1024px', m: '128px auto 0', px: '16px' }}>
+      <Grid container spacing={4} sx={{ maxWidth: '1024px', my: { xs: '80px', sm: '160px' }, mx: 'auto', px: '16px' }}>
         <Grid xs={12} md={4} sx={{ position: 'relative', aspectRatio: '16/9' }}>
           <Image src={logo} fill alt={name} style={{ objectFit: 'contain' }} />
         </Grid>
         <Grid xs={12} md={8} sx={{ display: 'flex', alignItems: 'center' }}>
-          <Typography variant="h2" sx={{ textAlign: 'center', mb: 0 }}>
+          <Typography variant="h1" sx={{ textAlign: 'center' }}>
             {name}
           </Typography>
         </Grid>
