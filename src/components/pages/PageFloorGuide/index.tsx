@@ -66,7 +66,16 @@ export const PageFloorGuide: NextPage = () => {
 
   return (
     <Layout>
-      <Box display={'flex'} flexDirection={'column'} alignItems={'center'} px="24px">
+      <Box
+        sx={{
+          maxWidth: '1024px',
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          px: { xs: '16px', sm: '32px' },
+          mx: 'auto'
+        }}
+      >
         <PageHeading>{t('floor_guide_title')}</PageHeading>
         <VenueInfoSection />
         <Box
