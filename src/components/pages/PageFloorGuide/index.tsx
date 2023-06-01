@@ -6,26 +6,24 @@ import { Colors } from 'src/styles/color'
 import { BoothCard } from 'src/components/molecules'
 import { VenueInfoSection } from 'src/components/organisms'
 import { PageHeading } from 'src/components/atoms'
+import { MainBoothCard } from 'src/components/molecules/MainBoothCard'
 
 type boothItem = {
   title: string
   description: string
 }
 
+const Bar = () => (
+  <Box
+    width="100%"
+    height="8px"
+    sx={{ margin: '40px', borderRadius: '4px', backgroundColor: Colors.background.secondary }}
+  />
+)
+
 export const PageFloorGuide: NextPage = () => {
   const { t } = useTranslation()
   const boothItems: boothItem[] = [
-    {
-      title: 'Main',
-      description:
-        '「platinum"Go"ld」「"Go"ld」「Silver」スポンサーのパートナー企業さまのブースとコミュニティのブースがあり、企業紹介、クイズ、ハンズオンなどさまざまなコンテンツを準備していただいております。\n' +
-        'お気軽にご参加いただき、お楽しみください。\n' +
-        '「ビンGo」ゲームの問題も各企業さまに出題頂いております。各ブースを周って回答を聞いてみましょう！\n' +
-        '他には、Goに関わる書籍や記事を集めた「Go Books」やGoのユーザー企業、OSS、コミュニティの情報を集めた「Go Users」もあります。\n' +
-        '参加者が自由にホワイトボード（Miro）で情報を共有できるようになっています。\n' +
-        '商業誌に限らず本を執筆されてる方、Goを使ってる事を知ってほしい企業のみなさま、コミュニティやOSSの宣伝などにご活用ください。\n' +
-        '何か不明点等あれば、Main会場内にある運営ブースにお越しください。\n'
-    },
     {
       title: 'Room A sponsored by GO Inc.',
       description:
@@ -66,32 +64,30 @@ export const PageFloorGuide: NextPage = () => {
 
   return (
     <Layout>
-      <Box display={'flex'} flexDirection={'column'} alignItems={'center'} px="24px">
+      <Box
+        sx={{
+          maxWidth: '1024px',
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          px: { xs: '16px', sm: '32px' },
+          mx: 'auto'
+        }}
+      >
         <PageHeading>{t('floor_guide_title')}</PageHeading>
         <VenueInfoSection />
-        <Box
-          width="80%"
-          height="8px"
-          sx={{ margin: '40px', borderRadius: '4px', backgroundColor: Colors.background.secondary }}
-        />
+        <Bar />
         <Typography variant="h2">{t('booth_information_title')}</Typography>
+        <MainBoothCard />
         {boothItems.map(({ title, description }, i) => (
           <BoothCard key={i} title={title} description={description} />
         ))}
-        <Box
-          width="80%"
-          height="8px"
-          sx={{ margin: '40px', borderRadius: '4px', backgroundColor: Colors.background.secondary }}
-        />
+        <Bar />
         <Typography variant="h2">{t('community_booth_information_title')}</Typography>
         {communityBoothItems.map(({ title, description }, i) => (
           <BoothCard key={i} title={title} description={description} />
         ))}
-        <Box
-          width="80%"
-          height="8px"
-          sx={{ margin: '40px', borderRadius: '4px', backgroundColor: Colors.background.secondary }}
-        />
+        <Bar />
         <Typography variant="h2">{t('contents_information_title')}</Typography>
         {contentsItems.map(({ title, description }, i) => (
           <BoothCard key={i} title={title} description={description} />
