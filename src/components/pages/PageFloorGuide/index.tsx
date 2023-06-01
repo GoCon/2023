@@ -26,12 +26,12 @@ export const PageFloorGuide: NextPage = () => {
         '何か不明点等あれば、Main会場内にある運営ブースにお越しください。\n'
     },
     {
-      title: 'Room A sponsored by Go inc.',
+      title: 'Room A sponsored by GO Inc.',
       description:
         'トークセッションだけではなく、スポンサーセッション、LT、Ask the Speaker、Opening、Closingが行われます。なお、Room Aがいっぱいの場合は、ゲートページに遷移しますので、そこからRoom Aのサテライト会場をご利用ください。\n'
     },
     {
-      title: 'Room B sponsored by Kanmu',
+      title: 'Room B sponsored by Kanmu, Inc.',
       description:
         'トークセッションとAsk the Speakerが行われます。ご興味あるセッションに是非、ご参加ください。なお、Room Bがいっぱいの場合は、ゲートページに遷移しますので、そこからRoom Bのサテライト会場をご利用ください。\n'
     }
