@@ -84,30 +84,25 @@ export const Header = () => {
 
       <Toolbar disableGutters>
         {isLogoDisplayed && (
-          <Box>
-            <Link href="/">
-              <Logo
-                sx={{
-                  width: isPCOrOver ? '233px' : '140px',
-                  height: isPCOrOver ? '40px' : '24px',
-                  color: headerItemColor.default,
-                  marginLeft: '12px',
-                  borderRadius: '8px',
-                  ...headerItemBehaviorStyles
-                }}
-              />
-            </Link>
-          </Box>
+          <Link href="/">
+            <Logo
+              sx={{
+                width: { xs: '140px', md: '233px' },
+                height: { xs: '24px', md: '40px' },
+                color: headerItemColor.default,
+                marginLeft: '12px',
+                borderRadius: '8px',
+                ...headerItemBehaviorStyles
+              }}
+            />
+          </Link>
         )}
-        {isPCOrOver ? (
-          <HeaderMenu itemColor={headerItemColor} menuList={menuList} itemBehaviorStyles={headerItemBehaviorStyles} />
-        ) : (
-          <Box flex={1} display="flex" justifyContent="flex-end">
-            <IconButton onClick={() => setModalMenuOpen(true)}>
-              <MenuRoundedIcon sx={{ fontSize: 24, color: headerItemColor.default }} />
-            </IconButton>
-          </Box>
-        )}
+        <HeaderMenu itemColor={headerItemColor} menuList={menuList} itemBehaviorStyles={headerItemBehaviorStyles} />
+        <Box sx={{ display: { xs: 'flex', md: 'none' }, justifyContent: 'flex-end', flex: 1 }}>
+          <IconButton onClick={() => setModalMenuOpen(true)}>
+            <MenuRoundedIcon sx={{ fontSize: 24, color: headerItemColor.default }} />
+          </IconButton>
+        </Box>
       </Toolbar>
       <ModalHeaderMenu open={modalMenuOpen} onClose={() => setModalMenuOpen(false)} menuList={menuList} />
     </AppBar>

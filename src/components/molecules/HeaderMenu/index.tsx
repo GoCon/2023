@@ -13,7 +13,7 @@ export const HeaderMenu = ({ menuList, itemColor, itemBehaviorStyles }: HeaderMe
   const router = useRouter()
 
   return (
-    <Box sx={{ display: 'flex', gap: '8px', margin: '0 24px 0 auto' }}>
+    <Box sx={{ display: { xs: 'none', md: 'flex' }, gap: '8px', margin: '0 24px 0 auto' }}>
       {menuList.map((list, i) => {
         return list.href ? (
           <Link href={list.href} key={i}>
