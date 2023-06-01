@@ -1,14 +1,9 @@
 import { Box } from '@mui/material'
-import { useInterval, useSize } from 'src/modules/hooks'
+import { useInterval } from 'src/modules/hooks'
 import { useReward } from 'react-rewards'
 import { confettiColors } from 'src/styles/color'
-import Image from 'next/image'
-import { MainVisualWithTextPc, MainVisualWithTextMobile } from './images'
-import { useEffect, useState } from 'react'
 
 export const MainVisual = () => {
-  const { isTabletOrOver } = useSize()
-  const mainVisualWithText = isTabletOrOver ? MainVisualWithTextPc : MainVisualWithTextMobile
   const confettiLeftConfig = {
     angle: 45,
     colors: confettiColors,
@@ -55,11 +50,6 @@ export const MainVisual = () => {
     true // call the function immediately after rendered
   )
 
-  const [mounted, setMounted] = useState(false)
-  useEffect(() => {
-    setMounted(true)
-  }, [])
-
   return (
     <Box sx={{ width: '100%', overflow: 'hidden' }}>
       <Box
@@ -79,20 +69,19 @@ export const MainVisual = () => {
             margin: '0 auto'
           }}
         >
-          {mounted && (
-            <Image
-              src={mainVisualWithText}
-              alt="Go Conference 2023 Online at Friday, June Second"
+          <picture>
+            <source srcSet="./main-visual/mobile.webp" media="(max-width: 599.95px)" />
+            <img
+              src="./main-visual/pc.webp"
+              alt="Go Conference 2023 Online at Friday, June 2"
               style={{
                 width: '100%',
                 height: 'auto',
                 verticalAlign: 'middle',
                 objectFit: 'contain'
               }}
-              quality={100}
-              priority
             />
-          )}
+          </picture>
         </Box>
         <Box id="confettiTopRight" sx={{ position: 'absolute', right: '32px' }} />
       </Box>
