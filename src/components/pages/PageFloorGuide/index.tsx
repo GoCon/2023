@@ -12,6 +12,14 @@ type boothItem = {
   description: string
 }
 
+const Bar = () => (
+  <Box
+    width="100%"
+    height="8px"
+    sx={{ margin: '40px', borderRadius: '4px', backgroundColor: Colors.background.secondary }}
+  />
+)
+
 export const PageFloorGuide: NextPage = () => {
   const { t } = useTranslation()
   const boothItems: boothItem[] = [
@@ -78,29 +86,17 @@ export const PageFloorGuide: NextPage = () => {
       >
         <PageHeading>{t('floor_guide_title')}</PageHeading>
         <VenueInfoSection />
-        <Box
-          width="80%"
-          height="8px"
-          sx={{ margin: '40px', borderRadius: '4px', backgroundColor: Colors.background.secondary }}
-        />
+        <Bar />
         <Typography variant="h2">{t('booth_information_title')}</Typography>
         {boothItems.map(({ title, description }, i) => (
           <BoothCard key={i} title={title} description={description} />
         ))}
-        <Box
-          width="80%"
-          height="8px"
-          sx={{ margin: '40px', borderRadius: '4px', backgroundColor: Colors.background.secondary }}
-        />
+        <Bar />
         <Typography variant="h2">{t('community_booth_information_title')}</Typography>
         {communityBoothItems.map(({ title, description }, i) => (
           <BoothCard key={i} title={title} description={description} />
         ))}
-        <Box
-          width="80%"
-          height="8px"
-          sx={{ margin: '40px', borderRadius: '4px', backgroundColor: Colors.background.secondary }}
-        />
+        <Bar />
         <Typography variant="h2">{t('contents_information_title')}</Typography>
         {contentsItems.map(({ title, description }, i) => (
           <BoothCard key={i} title={title} description={description} />
