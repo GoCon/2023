@@ -5,6 +5,7 @@ import { Layout } from 'src/components/commons'
 import { Colors } from 'src/styles/color'
 import { BoothCard } from 'src/components/molecules'
 import { VenueInfoSection } from 'src/components/organisms'
+import { PageHeading } from 'src/components/atoms'
 
 type boothItem = {
   title: string
@@ -65,8 +66,8 @@ export const PageFloorGuide: NextPage = () => {
 
   return (
     <Layout>
-      <Box display={'flex'} flexDirection={'column'} alignItems={'center'} py={{ md: 10, xs: 4 }} px="24px" mt="100px">
-        <Typography variant="h2">{t('floor_guide_title')}</Typography>
+      <Box display={'flex'} flexDirection={'column'} alignItems={'center'} px="24px">
+        <PageHeading>{t('floor_guide_title')}</PageHeading>
         <VenueInfoSection />
         <Box
           width="80%"

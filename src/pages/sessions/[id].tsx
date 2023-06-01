@@ -22,6 +22,7 @@ import {
 } from 'src/modules/sessionize/utils'
 import Head from 'next/head'
 import { GoogleCalendarButton, TweetButton } from 'src/components/molecules'
+import { PageHeading } from 'src/components/atoms'
 
 type Props = {
   title: string
@@ -140,15 +141,14 @@ const Page: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({
       </Head>
       <Box
         sx={{
-          mt: { xs: '64px', sm: '128px' },
           maxWidth: '1024px',
           mx: 'auto',
           backgroundColor: Colors.background.primary,
           borderRadius: '20px',
-          p: { xs: '16px', sm: '24px 32px' }
+          px: { xs: '16px', sm: '32px' }
         }}
       >
-        <Typography variant="h2">{title}</Typography>
+        <PageHeading textAlign="left">{title}</PageHeading>
 
         {/* Session's info */}
         <Box sx={{ display: 'flex', flexDirection: 'column', gap: '16px', mb: '32px' }}>
