@@ -8,11 +8,12 @@ import {
   getSessionType,
   getSpeaker
 } from 'src/modules/sessionize/utils'
-import { Box, Grid, Typography } from '@mui/material'
+import { Box, Grid } from '@mui/material'
 import { Layout } from 'src/components/commons'
 import { SessionCard } from 'src/components/molecules'
 import { Colors } from 'src/styles/color'
 import { SessionAndSpeakerForSessionsList } from 'src/types'
+import { PageHeading } from 'src/components/atoms'
 
 type Props = {
   sessionsAndSpeakers: SessionAndSpeakerForSessionsList[]
@@ -53,16 +54,7 @@ export const getStaticProps: GetStaticProps<Props> = async () => {
 const Index: NextPage<Props> = ({ sessionsAndSpeakers }) => {
   return (
     <Layout>
-      <Typography
-        variant="h2"
-        align="center"
-        sx={{
-          marginTop: { xs: '80px', sm: '160px' },
-          marginBottom: { xs: '32px', sm: '72px' }
-        }}
-      >
-        Sessions & Speakers
-      </Typography>
+      <PageHeading>Sessions & Speakers</PageHeading>
       <Box
         sx={{
           display: 'flex',
