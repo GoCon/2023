@@ -1,12 +1,18 @@
 import type { NextPage } from 'next'
 import { Layout } from 'src/components/commons'
-import { MainVisual, TopDescription, SponsorsSection } from 'src/components/organisms'
-import { SpecialThanksSection } from 'src/components/organisms/SpecialThanksSection'
+import {
+  MainVisual,
+  TopDescription,
+  SponsorsSection,
+  SpecialThanksSection,
+  FinishedAnnouncementSection
+} from 'src/components/organisms'
 
 export const PageTop: NextPage = () => {
   return (
     <Layout>
       <MainVisual />
+      <FinishedAnnouncementSection />
       <TopDescription />
       <SponsorsSection />
       <SpecialThanksSection />
