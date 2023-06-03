@@ -3,6 +3,7 @@ import {
   CATEGORY_SESSION_LEVEL,
   CATEGORY_SESSION_TYPE,
   QUESTION_SESSION_NUMBER,
+  QUESTION_SLIDE_URL,
   SessionizeCategorySchemaType,
   SessionizeRoomSchemaType,
   SessionizeSessionSchemaType,
@@ -158,4 +159,17 @@ export const formatSpeakerName = (firstName: string, lastName: string): string =
     return `${firstName}`
   }
   return `${firstName} ${lastName}`
+}
+
+/**
+ * Get URL for the slide of the session.
+ * @param questionAnswers - list of the set of a question and an answer belongs to each session.
+ */
+export const getSlideUrl = (questionAnswers: SessionizeSessionSchemaType['questionAnswers']): string | null => {
+  const questionForSlideUrl = questionAnswers.find(q => q.questionId === QUESTION_SLIDE_URL)
+  if (!questionForSlideUrl) {
+    return null
+  }
+
+  return questionForSlideUrl.answerValue
 }
