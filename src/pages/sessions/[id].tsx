@@ -16,12 +16,14 @@ import {
   getSession,
   getSessionLevel,
   getSessionType,
+  getSlideUrl,
   getSpeaker,
   getTwitterUserName
 } from 'src/modules/sessionize/utils'
 import Head from 'next/head'
-import { TweetButton } from 'src/components/molecules'
-import { PageHeading } from 'src/components/atoms'
+import { TweetButton, YouTubeEmbedFrame } from 'src/components/molecules'
+import { Button, PageHeading } from 'src/components/atoms'
+import { useTranslation } from 'react-i18next'
 
 type Props = {
   title: string
@@ -30,6 +32,8 @@ type Props = {
   description: string
   sessionType: string | null
   sessionLevel: string | null
+  recordingUrl: string | null
+  slideUrl: string | null
   speaker: {
     fullName: string
     profilePicture: string
@@ -89,11 +93,20 @@ export const getStaticProps: GetStaticProps<Props> = async ({ params }) => {
     throw new Error(`Invalid sessionId: ${sessionId}`)
   }
 
-  const { title, description, roomId, categoryItems, speakers: speakerIds } = getSession(sessions, sessionId)
+  const {
+    title,
+    description,
+    roomId,
+    categoryItems,
+    speakers: speakerIds,
+    questionAnswers,
+    recordingUrl
+  } = getSession(sessions, sessionId)
 
   const { name: roomName } = getRoom(rooms, roomId)
   const sessionLevel = getSessionLevel(categories, categoryItems)
   const sessionType = getSessionType(categories, categoryItems)
+  const slideUrl = getSlideUrl(questionAnswers)
   const { firstName, lastName, profilePicture, bio, tagLine, links } = getSpeaker(speakers, speakerIds[0])
   const fullName = formatSpeakerName(firstName, lastName)
   const twitterUserName = getTwitterUserName(links)
@@ -106,6 +119,8 @@ export const getStaticProps: GetStaticProps<Props> = async ({ params }) => {
       description,
       sessionLevel,
       sessionType,
+      recordingUrl,
+      slideUrl,
       speaker: { fullName, profilePicture, bio, tagLine, twitterUserName }
     }
   }
@@ -118,8 +133,11 @@ const Page: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({
   description,
   sessionLevel,
   sessionType,
+  recordingUrl,
+  slideUrl,
   speaker: { fullName, profilePicture, bio, tagLine, twitterUserName }
 }) => {
+  const { t } = useTranslation()
   return (
     <Layout>
       <Head>
@@ -136,6 +154,18 @@ const Page: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({
         }}
       >
         <PageHeading textAlign="left">{title}</PageHeading>
+
+        {/* Archive */}
+        {(recordingUrl || slideUrl) && (
+          <Box sx={{ display: 'flex', flexDirection: 'column', gap: '24px', alignItems: 'center', mb: '40px' }}>
+            {recordingUrl && <YouTubeEmbedFrame recordingUrl={recordingUrl} />}
+            {slideUrl && (
+              <a href={slideUrl} target="_blank">
+                <Button text={t('see_slide')} />
+              </a>
+            )}
+          </Box>
+        )}
 
         {/* Session's info */}
         <Box sx={{ display: 'flex', flexDirection: 'column', gap: '16px', mb: '32px' }}>
