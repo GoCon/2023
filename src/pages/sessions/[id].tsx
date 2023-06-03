@@ -12,7 +12,6 @@ import { replaceUrlWithLink } from 'src/modules/util/text'
 import { fetchSessionize } from 'src/modules/sessionize/fetch-sessionize'
 import {
   formatSpeakerName,
-  getGoogleCalendarEventCreationLink,
   getRoom,
   getSession,
   getSessionLevel,
@@ -21,7 +20,7 @@ import {
   getTwitterUserName
 } from 'src/modules/sessionize/utils'
 import Head from 'next/head'
-import { GoogleCalendarButton, TweetButton } from 'src/components/molecules'
+import { TweetButton } from 'src/components/molecules'
 import { PageHeading } from 'src/components/atoms'
 
 type Props = {
@@ -31,7 +30,6 @@ type Props = {
   description: string
   sessionType: string | null
   sessionLevel: string | null
-  googleCalendarEventCreationLink: string
   speaker: {
     fullName: string
     profilePicture: string
@@ -91,20 +89,11 @@ export const getStaticProps: GetStaticProps<Props> = async ({ params }) => {
     throw new Error(`Invalid sessionId: ${sessionId}`)
   }
 
-  const {
-    title,
-    description,
-    roomId,
-    categoryItems,
-    speakers: speakerIds,
-    startsAt,
-    endsAt
-  } = getSession(sessions, sessionId)
+  const { title, description, roomId, categoryItems, speakers: speakerIds } = getSession(sessions, sessionId)
 
   const { name: roomName } = getRoom(rooms, roomId)
   const sessionLevel = getSessionLevel(categories, categoryItems)
   const sessionType = getSessionType(categories, categoryItems)
-  const googleCalendarEventCreationLink = getGoogleCalendarEventCreationLink(startsAt, endsAt, title, description)
   const { firstName, lastName, profilePicture, bio, tagLine, links } = getSpeaker(speakers, speakerIds[0])
   const fullName = formatSpeakerName(firstName, lastName)
   const twitterUserName = getTwitterUserName(links)
@@ -117,7 +106,6 @@ export const getStaticProps: GetStaticProps<Props> = async ({ params }) => {
       description,
       sessionLevel,
       sessionType,
-      googleCalendarEventCreationLink,
       speaker: { fullName, profilePicture, bio, tagLine, twitterUserName }
     }
   }
@@ -130,7 +118,6 @@ const Page: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({
   description,
   sessionLevel,
   sessionType,
-  googleCalendarEventCreationLink,
   speaker: { fullName, profilePicture, bio, tagLine, twitterUserName }
 }) => {
   return (
@@ -209,8 +196,7 @@ const Page: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({
         </Box>
 
         {/* Share */}
-        <Box sx={{ display: 'flex', gap: '16px', justifyContent: 'flex-end', mb: '64px' }}>
-          <GoogleCalendarButton googleCalendarEventCreationLink={googleCalendarEventCreationLink} />
+        <Box sx={{ display: 'flex', justifyContent: 'flex-end', mb: '64px' }}>
           <TweetButton sessionId={sessionId} title={title} roomName={roomName} />
         </Box>
 
