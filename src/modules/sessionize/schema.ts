@@ -18,7 +18,7 @@ const sessionizeSessionSchema = z.object({
   ),
   roomId: z.number(),
   liveUrl: z.null(),
-  recordingUrl: z.null(),
+  recordingUrl: z.string().nullable(),
   status: z.literal('Accepted')
 })
 
@@ -107,3 +107,7 @@ export const CATEGORY_SESSION_TYPE = 46584
  * ID of the category for the session level.
  */
 export const CATEGORY_SESSION_LEVEL = 53862
+/**
+ * ID of the question for the slide URL.
+ */
+export const QUESTION_SLIDE_URL = 54981
